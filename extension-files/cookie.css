@@ -1,0 +1,18 @@
+body {
+    background: #111;
+}
+button {
+    display: block;
+    height: 2.6em;
+    width: 13em;
+    border: 0;
+    margin: 1px;
+    font: small-caps 110% sans-serif;
+    background: #333;
+    color: #ccc;
+    cursor: pointer;
+}
+button:hover {
+    background: #369;
+    color: #fdcb0b;
+}

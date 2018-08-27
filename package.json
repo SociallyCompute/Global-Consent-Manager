@@ -1,0 +1,41 @@
+{
+    "name": "Global-Consent-Cookie-Sandbox",
+    "version": "3.0.0",
+    "description": "Modifies GVCC",
+    "repository": "Nebrethar/Global-Consent-Cookie-Sandbox",
+    "license": "MIT",
+    "scripts": {
+        "start": "web-ext run",
+        "test": "eslint extension-files/*.js"
+    },
+    "dependencies": {
+        "eslint": "^5.3.0",
+        "eslint-config-google": "^0.9.1",
+        "web-ext": "^2.8.0"
+    },
+    "eslintConfig": {
+        "extends": "google",
+        "parserOptions": {
+            "ecmaVersion": 2017
+        },
+        "rules": {
+            "indent": [
+                "error",
+                4,
+                {
+                    "SwitchCase": 1
+                }
+            ],
+            "max-len": [
+                "error",
+                {
+                    "code": 120,
+                    "ignoreStrings": true
+                }
+            ],
+            "quotes": 0,
+            "require-jsdoc": 0,
+            "valid-jsdoc": 0
+        }
+    }
+}

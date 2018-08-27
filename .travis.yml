@@ -1,0 +1,7 @@
+language: node_js
+node_js: 8
+
+notifications:
+  irc:
+    on_success: change
+    channels: irc.mozilla.org#globalconsent

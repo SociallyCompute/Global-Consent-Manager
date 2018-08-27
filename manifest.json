@@ -1,0 +1,35 @@
+{
+    "manifest_version": 2,
+    "name": "Global Consent Sandbox",
+    "version": "3.0",
+
+    "description": "Modifies GVCC",
+    "homepage_url": "https://github.com/Nebrethar/Global-Consent-Cookie-Sandbox",
+
+    "applications": {
+        "gecko": {
+            "id": "global-consent@example.com"
+        }
+    },
+
+    "permissions": [
+        "<all_urls>",
+        "activeTab",
+        "browsingData",
+        "cookies",
+        "dns",
+        "tabs",
+        "webNavigation"
+    ],
+    "background": {
+        "scripts": ["/extension-files/background.js"]
+    },
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "extension-files/cookie.html"
+    },
+
+    "icons": {
+        "96": "icon-96.png"
+    }
+}
