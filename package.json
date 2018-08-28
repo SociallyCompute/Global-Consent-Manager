@@ -6,7 +6,7 @@
     "license": "MIT",
     "scripts": {
         "start": "web-ext run",
-        "test": "eslint extension-files/*.js"
+        "test": "eslint src/*.js"
     },
     "dependencies": {
         "eslint": "^5.3.0",
