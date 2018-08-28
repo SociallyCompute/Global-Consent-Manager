@@ -24,20 +24,8 @@
  
  ## How to use this Web Extension
  
- To preload all possible cookies that are available. Click the "PRELOAD COOKIES" button.<br /> 
- Any website that this web extension supports should retain its dialog when loaded, for now.
- 
- ### Explanation of Features
- 
- "LOG ALL COOKIES" will send information of all of your cookies to your browser log (ctrl+shift+J).
- 
- "LOG COOKIES (CD)" will send names and values of your cookies in the current directory to your browser log.
- 
- "CHECK GVCC" will list only consent cookies on listed domains.
- 
- "PRELOAD COOKIES" will load required cookies for certain domains.
- 
- "SNAPSHOT CHANGES" will take a "snapshot" of modified cookies.
+ To preload all possible cookies that are available. Click the "ENABLE" button.<br /> 
+ To start getting consent dialogs again, press the "DISABLE" button.
  
  ## Licensing and Copyright
  
