@@ -98,7 +98,7 @@ const css = [
     {
         // uses primary-key identities, couldnt get it to work quickly
         domain: "nytimes.com",
-        selector: "#shown expanded css-sbgq86 e1i2wxpm0",
+        selector: "#app > footer[role=contentinfo] + .shown.expanded:last-child",
     },
     {
         domain: "ctxt.es",
