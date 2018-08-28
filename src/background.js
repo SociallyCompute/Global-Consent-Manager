@@ -189,91 +189,25 @@ const cookies = [
     },
 ];
 
-async function logCookies(currentDomain) {
-    let tabs = await browser.tabs.query({active: true, currentWindow: true});
-    let cookies = null;
-    if (currentDomain == true) {
-        console.log("CURRENT DOMAIN");
-        cookies = await browser.cookies.getAll({url: tabs[0].url});
-    } else {
-        cookies = await browser.cookies.getAll({});
-    }
-    if (cookies === undefined || cookies.length == 0) {
-        console.log("No cookies found!");
-    } else {
-        let j = 1;
-        for (let cookie of cookies) {
-            // console.log(cookie);
-            console.log("#" + j);
-            console.log(cookie);
-            j++;
-        }
-    }
-}
+const css = [
+    {
+        domain: "theverge.com",
+        selector: "#privacy-consent",
+    },
+    {
+        domain: "worldcrunch.com",
+        selector: "#cookie-notice",
+    },
+    {
+        domain: "forsal.pl",
+        selector: "#inforcwp",
+    },
+];
+
+let contentScripts = [];
 
 let actions = {
-    logAll() {
-        logCookies(false);
-    },
-
-    log() {
-        logCookies(true);
-    },
-
-    consent2() {
-        async function addName(name) {
-            let cookies = await browser.cookies.getAll({name: name});
-            if (cookies.length != 0) {
-                for (let cookie of cookies) {
-                    console.log("At domain " + cookie.domain + " found " + name);
-                }
-            }
-        }
-
-        console.log("ALL PRESENT GENERATED CONSENT COOKIES");
-        addName("euconsent");
-        addName("cepubsonsent");
-        addName("banner-cookie");
-        addName("GU_TK");
-        addName("ckns_policy_exp");
-        addName("ckns_policy");
-        addName("ckns_privacy");
-        addName("ckns_explicit");
-        addName("cookie_notice_accepted");
-        addName("cookie-law-bar");
-        addName("closeGDPR");
-        addName("NYT-T");
-        addName("nyt-gdpr");
-        addName("lopd");
-        addName("_iph_pcb");
-        addName("consentSaw");
-        addName("cookieConsent");
-        addName("cookies_notice");
-        addName("cc");
-        addName("displayCookieConsent");
-        addName("cookie-agreed");
-        addName("_evidon_consent_cookie");
-        addName("rtiCookieLaw01");
-        addName("gdprCookie");
-        addName("sn_cookie");
-        addName("ObsRGPD");
-        addName("_iph_pcb");
-        addName("_gali");
-        addName("consentSaw");
-        addName("closeGDPR");
-    },
-
-    /* click "CLEAR COOKIES" WILL CLEAR ALL YOUR COOKIES */
-    async clear() {
-        try {
-            await browser.browsingData.removeCookies({});
-            console.log("Removed!");
-        } catch (error) {
-            console.error(error);
-        }
-    },
-
-    async preload() {
+    async enable() {
         for (let c of cookies) {
             await browser.cookies.set({
                 domain: c.domain,
@@ -284,27 +218,42 @@ let actions = {
             });
             console.log(`Cookie ${c.name} set for domain ${c.domain}`);
         }
-        browser.runtime.sendMessage("loadCSS");
+        for (let c of css) {
+            let cs = await browser.contentScripts.register({
+                matches: [`*://*.${c.domain}/*`],
+                css: [{code: `${c.selector} { display: none !important }`}],
+                runAt: "document_start",
+            });
+            contentScripts.push(cs);
+        }
+        browser.storage.sync.set({enabled: true});
     },
 
-    async snapshot() {
-        let [tab] = await browser.tabs.query({active: true});
-        let domain = new URL(tab.url).host;
-        let cookies = await browser.cookies.getAll({domain});
-        console.log("snapshot for: ", domain);
+    async disable() {
         for (let c of cookies) {
-            let same = (s) => s.name === c.name && s.value === c.value;
-            if (!snapshot.some(same)) {
-                console.log(c);
-            }
+            await browser.cookies.remove({
+                name: c.name,
+                url: `http://${c.domain}/`,
+                firstPartyDomain: "",
+            });
         }
-        snapshot = cookies;
+        for (let cs of contentScripts) {
+            await cs.unregister();
+        }
+        contentScripts = [];
+        console.log("Cookies and CSS hiders disabled")
+        browser.storage.sync.set({enabled: false});
     },
 };
 
-// Save a snapshot of cookies to compare to.
-let snapshot = [];
+async function main() {
+    let state = await browser.storage.sync.get();
+    if (state.enabled) {
+        actions.enable();
+    }
+    browser.runtime.onMessage.addListener((msg) => {
+        actions[msg]();
+    });
+}
 
-document.addEventListener("click", (e) => {
-    actions[e.target.id]();
-});
+main();

@@ -1,14 +1,14 @@
 {
     "manifest_version": 2,
-    "name": "Global Consent Sandbox",
-    "version": "3.0",
+    "name": "Global Consent Manager",
+    "version": "1.0",
 
-    "description": "Modifies GVCC",
-    "homepage_url": "https://github.com/Nebrethar/Global-Consent-Cookie-Sandbox",
+    "description": "A browser extension for easier managing of GDPR consent cookies acros websites",
+    "homepage_url": "http://www.globalconsentmanager.com/",
 
     "applications": {
         "gecko": {
-            "id": "global-consent@example.com"
+            "id": "we@globalconsentmanager.com"
         }
     },
 
@@ -18,15 +18,17 @@
         "browsingData",
         "cookies",
         "dns",
+        "storage",
         "tabs",
-        "webNavigation"
+        "webNavigation",
+        "webRequest"
     ],
     "background": {
-        "scripts": ["/extension-files/background.js"]
+        "scripts": ["src/background.js"]
     },
     "browser_action": {
         "default_icon": "icon.png",
-        "default_popup": "extension-files/cookie.html"
+        "default_popup": "src/cookie.html"
     },
 
     "icons": {
