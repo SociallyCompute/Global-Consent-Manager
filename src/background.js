@@ -67,11 +67,11 @@ const css = [
     },
     {
         domain: "index.hr",
-        selector: "#cookie-consent-container",
+        selector: ".cookie-consent-container",
     },
     {
         domain: "investing.com",
-        selector: "#consentBarWrapper",
+        selector: ".consentBarWrapper",
     },
     {
         domain: "thejournal.ie",
@@ -79,24 +79,22 @@ const css = [
     },
     {
         domain: "politico.eu",
-        selector: "#super-inner",
-        // somehow becomes consent dialog
+        selector: ".alert-cookies",
     },
     {
         // takes a little while to load
         domain: "voterspost.com",
-        selector: "#cookie-notice-container",
+        selector: "#cookie-notice",
     },
     {
         domain: "bbc.com",
-        selector: "#bbccookies-banner",
+        selector: "#cookiePrompt",
     },
     {
         domain: "euractiv.com",
-        selector: "cookie-law-bar-transition-bottom",
+        selector: "#cookie-law-bar",
     },
     {
-        // uses primary-key identities, couldnt get it to work quickly
         domain: "nytimes.com",
         selector: "#app > footer[role=contentinfo] + .shown.expanded:last-child",
     },
@@ -106,11 +104,11 @@ const css = [
     },
     {
         domain: "lepetitjournal.com",
-        selector: "#popup-content",
+        selector: ".popup-content",
     },
     {
         domain: "portfolio.hu",
-        selector: "#_iph_cp_standalone",
+        selector: "#_iph_cp_popup",
     },
     {
         domain: "nouvelobs.com",
@@ -138,7 +136,7 @@ const css = [
     },
     {
         domain: "trtworld.com",
-        selector: "#gdpr-banner",
+        selector: ".gdpr-banner",
     },
 ];
 
