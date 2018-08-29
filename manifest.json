@@ -3,7 +3,7 @@
     "name": "Global Consent Manager",
     "version": "1.0",
 
-    "description": "A browser extension for easier managing of GDPR consent cookies acros websites",
+    "description": "A browser extension for easier managing of GDPR consent cookies across websites",
     "homepage_url": "http://www.globalconsentmanager.com/",
 
     "applications": {
