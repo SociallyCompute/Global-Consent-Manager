@@ -1,6 +1,6 @@
 {
     "name": "Global-Consent-Manager",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "A browser extension for easier managing of GDPR consent cookies acros websites",
     "repository": "SociallyCompute/Global-Consent-Manager",
     "license": "MIT",
@@ -21,10 +21,7 @@
         "rules": {
             "indent": [
                 "error",
-                4,
-                {
-                    "SwitchCase": 1
-                }
+                4
             ],
             "max-len": [
                 "error",
