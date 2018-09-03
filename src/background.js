@@ -165,15 +165,17 @@ async function enable(site) {
 }
 
 async function disable(site) {
-    site.enabled = false;
-    if (site.cs) {
+    if (site.cs && site.enabled) {
+		site.enabled = false;
         return site.cs.unregister();
     }
+	if (site.name != undefined) {
     await browser.cookies.remove({
         name: site.name,
         url: `http://${site.domain}/`,
         firstPartyDomain: "",
     });
+	}
 }
 
 async function onBeforeRequest(request) {
