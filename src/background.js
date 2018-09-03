@@ -1,52 +1,40 @@
 "use strict";
-const epoch = (new Date).getTime();
-const cookies = [
+
+const sites = [
     {
-        // NO-CONSENT
         // Working 8/29/2018 (M)
         domain: "mediapart.fr",
         name: "cc",
-        value: "{%22disagreement%22:[%22visit%22%2C%22ad%22]%2C%22creation%22:" + epoch + "%2C%22update%22:" + epoch + "}",
+        value: "{%22disagreement%22:[%22visit%22%2C%22ad%22]%2C%22creation%22:1535909178562%2C%22update%22:1535909178562}",
     },
     {
-        // NO CONSENT
         // Working 8/29/2018 (M)
         domain: "theguardian.com",
         name: "GU_TK",
         value: "0",
     },
     {
-        // NO CONSENT
         // Working 8/29/2018 (M)
         domain: "theguardian.co.uk",
         name: "GU_TK",
         value: "0",
     },
     {
-        // NO CONSENT
         // Working 8/29/2018 (M)
-        domain: "www.independent.co.uk",
+        domain: "thelocal.es",
         name: "euconsent",
         value: "BOTRKYzOTRKYzABABBENBdAAAAAgWAAA",
     },
     {
-        // NO CONSENT
         // Working 8/29/2018 (M)
-        domain: "www.thelocal.es",
-        name: "euconsent",
-        value: "BOTRKYzOTRKYzABABBENBdAAAAAgWAAA",
-    },
-    {
-        // NO CONSENT
-        // Working 8/29/2018 (M)
-        domain: "www.telegraph.co.uk",
+        domain: "telegraph.co.uk",
         name: "_evidon_consent_cookie",
-        value: "{\"vendors\":{\"6\":[]},\"consent_" +
-            "date\":\"2018-08-23T18:33:49.352Z\"}",
+        value: "{\"vendors\":{\"6\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
     },
-];
-
-const css = [
+    {
+        domain: "independent.co.uk",
+        selector: ".qc-cmp-ui-container.qc-cmp-showing",
+    },
     {
         // Working 8/29/2018 (M)
         domain: "theverge.com",
@@ -140,13 +128,8 @@ const css = [
     },
     {
         // Working 8/29/2018 (M)
-        domain: "www.tgcom24.mediaset.it",
-        selector: "#cookieGdpr",
-    },
-    {
-        // Working 8/29/2018 (M)
-        domain: "www.tgcom24.mediaset.it",
-        selector: "#cookieAdv",
+        domain: "tgcom24.mediaset.it",
+        selector: "#cookieGdpr, #cookieAdv",
     },
     {
         // Working 8/29/2018 (M)
@@ -155,44 +138,72 @@ const css = [
     },
 ];
 
-let contentScripts = [];
+function get(url) {
+    let {host} = new URL(url);
+    return sites.find((s) => host.endsWith(s.domain));
+}
+
+async function enable(site) {
+    site.enabled = true;
+    if (site.selector) {
+        site.cs = await browser.contentScripts.register({
+            matches: [`*://*.${site.domain}/*`],
+            css: [{code: `${site.selector} { display: none !important }`}],
+            runAt: "document_start",
+        });
+        console.log(site.selector + " rule set for " + site.domain);
+        return;
+    }
+    await browser.cookies.set({
+        domain: site.domain,
+        name: site.name,
+        value: site.value,
+        url: `http://${site.domain}/`,
+        firstPartyDomain: "",
+    });
+    console.log(`Cookie ${site.name} set for domain ${site.domain}`);
+}
+
+async function disable(site) {
+    if (site.cs && site.enabled) {
+		site.enabled = false;
+        return site.cs.unregister();
+    }
+	if (site.name != undefined) {
+    await browser.cookies.remove({
+        name: site.name,
+        url: `http://${site.domain}/`,
+        firstPartyDomain: "",
+    });
+	}
+}
+
+async function onBeforeRequest(request) {
+    let site = get(request.url);
+    if (site && site.enabled) {
+        site.visits++;
+        console.log(site.domain, "visits:", site.visits);
+        await browser.storage.sync.set({[site.domain]: site.visits});
+        if (site.visits > 7) {
+            disable(site);
+        }
+    }
+}
 
 let actions = {
     async enable() {
-        for (let c of cookies) {
-            await browser.cookies.set({
-                domain: c.domain,
-                name: c.name,
-                value: c.value,
-                url: `http://${c.domain}/`,
-                firstPartyDomain: "",
-            });
-            console.log(`Cookie ${c.name} set for domain ${c.domain}`);
-        }
-        for (let c of css) {
-            let cs = await browser.contentScripts.register({
-                matches: [`*://*.${c.domain}/*`],
-                css: [{code: `${c.selector} { display: none !important }`}],
-                runAt: "document_start",
-            });
-            console.log(c.selector + " rule set for " + c.domain);
-            contentScripts.push(cs);
+        for (let site of sites) {
+            if (site.visits < 7) {
+                await enable(site);
+            }
         }
         browser.storage.sync.set({enabled: true});
     },
 
     async disable() {
-        for (let c of cookies) {
-            await browser.cookies.remove({
-                name: c.name,
-                url: `http://${c.domain}/`,
-                firstPartyDomain: "",
-            });
+        for (let site of sites) {
+            await disable(site);
         }
-        for (let cs of contentScripts) {
-            await cs.unregister();
-        }
-        contentScripts = [];
         console.log("Cookies and CSS hiders disabled");
         browser.storage.sync.set({enabled: false});
     },
@@ -200,11 +211,18 @@ let actions = {
 
 async function main() {
     let state = await browser.storage.sync.get();
+    for (let site of sites) {
+        site.visits = state[site.domain] || 0;
+    }
     if (state.enabled) {
         actions.enable();
     }
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();
+    });
+    browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
+        types: ["main_frame"],
+        urls: ["<all_urls>"],
     });
 }
 
