@@ -138,48 +138,69 @@ const sites = [
     },
 ];
 
-async function enable(c) {
-    if (c.selector) {
-        c.cs = await browser.contentScripts.register({
-            matches: [`*://*.${c.domain}/*`],
-            css: [{code: `${c.selector} { display: none !important }`}],
+function get(url) {
+    let {host} = new URL(url);
+    return sites.find((s) => host.endsWith(s.domain));
+}
+
+async function enable(site) {
+    site.enabled = true;
+    if (site.selector) {
+        site.cs = await browser.contentScripts.register({
+            matches: [`*://*.${site.domain}/*`],
+            css: [{code: `${site.selector} { display: none !important }`}],
             runAt: "document_start",
         });
-        console.log(c.selector + " rule set for " + c.domain);
+        console.log(site.selector + " rule set for " + site.domain);
         return;
     }
     await browser.cookies.set({
-        domain: c.domain,
-        name: c.name,
-        value: c.value,
-        url: `http://${c.domain}/`,
+        domain: site.domain,
+        name: site.name,
+        value: site.value,
+        url: `http://${site.domain}/`,
         firstPartyDomain: "",
     });
-    console.log(`Cookie ${c.name} set for domain ${c.domain}`);
+    console.log(`Cookie ${site.name} set for domain ${site.domain}`);
 }
 
-async function disable(c) {
-    if (c.cs) {
-        return c.cs.unregister();
+async function disable(site) {
+    site.enabled = false;
+    if (site.cs) {
+        return site.cs.unregister();
     }
     await browser.cookies.remove({
-        name: c.name,
-        url: `http://${c.domain}/`,
+        name: site.name,
+        url: `http://${site.domain}/`,
         firstPartyDomain: "",
     });
+}
+
+async function onBeforeRequest(request) {
+    let site = get(request.url);
+    if (site && site.enabled) {
+        site.visits++;
+        console.log(site.domain, "visits:", site.visits);
+        await browser.storage.sync.set({[site.domain]: site.visits});
+        if (site.visits > 7) {
+            disable(site);
+        }
+    }
 }
 
 let actions = {
     async enable() {
-        for (let c of sites) {
-            await enable(c);
+        for (let site of sites) {
+            if (site.visits < 7) {
+                await enable(site);
+            }
         }
         browser.storage.sync.set({enabled: true});
     },
 
     async disable() {
-        for (let c of sites) {
-            await disable(c);
+        for (let site of sites) {
+            await disable(site);
         }
         console.log("Cookies and CSS hiders disabled");
         browser.storage.sync.set({enabled: false});
@@ -188,11 +209,18 @@ let actions = {
 
 async function main() {
     let state = await browser.storage.sync.get();
+    for (let site of sites) {
+        site.visits = state[site.domain] || 0;
+    }
     if (state.enabled) {
         actions.enable();
     }
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();
+    });
+    browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
+        types: ["main_frame"],
+        urls: ["<all_urls>"],
     });
 }
 

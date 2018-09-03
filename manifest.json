@@ -15,7 +15,8 @@
     "permissions": [
         "<all_urls>",
         "cookies",
-        "storage"
+        "storage",
+        "webRequest"
     ],
     "background": {
         "scripts": ["src/background.js"]
