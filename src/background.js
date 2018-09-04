@@ -207,6 +207,7 @@ let actions = {
         console.log("Cookies and CSS hiders disabled");
         browser.storage.sync.set({enabled: false});
     },
+
 };
 
 async function main() {
@@ -214,15 +215,19 @@ async function main() {
     for (let site of sites) {
         site.visits = state[site.domain] || 0;
     }
+	
     if (state.enabled) {
         actions.enable();
     }
+	
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();
     });
+
     browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
         types: ["main_frame"],
         urls: ["<all_urls>"],
+
     });
 }
 
