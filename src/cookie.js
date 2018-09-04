@@ -30,6 +30,10 @@ let actions = {
     disable() {
         browser.runtime.sendMessage("disable");
     },
+    
+    trust() {
+        browser.runtime.sendMessage("trust");
+    },
 
     logAll() {
         logCookies(false);

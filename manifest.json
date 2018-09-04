@@ -16,7 +16,8 @@
         "<all_urls>",
         "cookies",
         "storage",
-        "webRequest"
+        "webRequest",
+        "tabs"
     ],
     "background": {
         "scripts": ["src/background.js"]
