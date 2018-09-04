@@ -215,15 +215,12 @@ async function main() {
     for (let site of sites) {
         site.visits = state[site.domain] || 0;
     }
-	
     if (state.enabled) {
         actions.enable();
     }
-	
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();
     });
-
     browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
         types: ["main_frame"],
         urls: ["<all_urls>"],
