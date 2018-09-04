@@ -191,24 +191,22 @@ async function onBeforeRequest(request) {
 }
 
 async function trust(trustedSite) {
-    var tsDomain = trustedSite.url.split("/")[2];
-    //conditional for "www." cases
-    if (tsDomain.startsWith("www.")) 
-    {
+    let tsDomain = trustedSite.url.split("/")[2];
+    // conditional for "www." cases
+    if (tsDomain.startsWith("www.")) {
         tsDomain = tsDomain.substr(4);
     }
-    if (tsDomain.startsWith("de.")) 
-    {
+    if (tsDomain.startsWith("de.")) {
         tsDomain = tsDomain.substr(3);
     }
     console.log("Trusting " + tsDomain);
     for (let site of sites) {
-            if (site.domain == tsDomain) {
-                disable(site);
-            }
+        if (site.domain == tsDomain) {
+            disable(site);
         }
-    //Reloads the tab
-    await browser.tabs.reload({bypassCache:true});
+    }
+    // Reloads the tab
+    await browser.tabs.reload({bypassCache: true});
 }
 
 let actions = {
@@ -228,26 +226,26 @@ let actions = {
         console.log("Cookies and CSS hiders disabled");
         browser.storage.sync.set({enabled: false});
     },
-    
+
     trust() {
         browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
-        .then(tabs => browser.tabs.get(tabs[0].id))
-        .then(tab => {
-        trust(tab);
-        });
-    }
-}
+            .then((tabs) => browser.tabs.get(tabs[0].id))
+            .then((tab) => {
+                trust(tab);
+            });
+    },
+};
 
 async function main() {
     let state = await browser.storage.sync.get();
     for (let site of sites) {
         site.visits = state[site.domain] || 0;
     }
-	
+
     if (state.enabled) {
         actions.enable();
     }
-	
+
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();
     });
