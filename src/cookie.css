@@ -23,7 +23,6 @@ label, button {
     cursor: pointer;
     box-sizing: border-box;
     padding: 0.5em;
-    height: 6em;
 }
 label.switcher {
     padding-top: 1.2em;
@@ -80,14 +79,6 @@ button:hover:not(#indicator) {
 input[type=checkbox]:checked {
     background: #369;
 }
-.smalltext {
-    font: 90%;
-}
-
-#trust { 
-    margin-bottom: 3px;
-}
-
 .switch {
   position: relative;
   display: inline-block;
@@ -162,4 +153,12 @@ a.alink {
 
 label {
     display: inline;
+}
+
+#checktrust {
+    visibility: hidden;
+}
+
+#gcmtext {
+    text-align: center;
 }

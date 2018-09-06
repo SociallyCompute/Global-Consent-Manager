@@ -213,7 +213,7 @@ async function trust(trustedSite, doTrust) {
                 console.log("Revoking trust for " + tsDomain);
                 enable(site, false);
             }
-    }
+        }
     }
     // Reloads the tab
     await browser.tabs.reload({bypassCache: true});
@@ -264,8 +264,6 @@ async function main() {
         site.visits = state[site.domain] || 0;
     }
 
-    if (state.enabled) {
-
     let {enabled} = await browser.storage.sync.get({enabled: true});
     if (enabled) {
         actions.enable();
@@ -280,8 +278,5 @@ async function main() {
     //     urls: ["<all_urls>"],
     // });
 }
-}
-
-activate();
 
 main();
