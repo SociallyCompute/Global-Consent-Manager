@@ -50,5 +50,5 @@
    -browsingData
    
   The technical specifications and framework that this project depends on are (c) 2018 IAB Technology Laboratory.
-  This content is used under the terms of the MIT License.
+  This content is used under the terms of the MIT License.<br /> 
   Source: https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework
