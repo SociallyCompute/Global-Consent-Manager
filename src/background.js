@@ -181,7 +181,7 @@ async function disable(site) {
     }
 }
 
-async function onBeforeRequest(request) {
+async function onBeforeRequest(request) {   // eslint-disable-line
     let site = get(request.url);
     if (site && site.enabled) {
         /*
@@ -213,7 +213,7 @@ async function trust(trustedSite, doTrust) {
                 console.log("Revoking trust for " + tsDomain);
                 enable(site, false);
             }
-        }
+    }
     }
     // Reloads the tab
     await browser.tabs.reload({bypassCache: true});
@@ -260,13 +260,14 @@ let actions = {
 
 async function main() {
     let state = await browser.storage.sync.get();
-    /*
     for (let site of sites) {
         site.visits = state[site.domain] || 0;
     }
-    */
 
     if (state.enabled) {
+
+    let {enabled} = await browser.storage.sync.get({enabled: true});
+    if (enabled) {
         actions.enable();
     }
 
@@ -274,11 +275,11 @@ async function main() {
         actions[msg]();
     });
 
-    browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
-        types: ["main_frame"],
-        urls: ["<all_urls>"],
-
-    });
+    // browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
+    //     types: ["main_frame"],
+    //     urls: ["<all_urls>"],
+    // });
+}
 }
 
 activate();
