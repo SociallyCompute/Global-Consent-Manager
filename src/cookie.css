@@ -1,18 +1,68 @@
 body {
+    -moz-user-select: none;
+    user-select: none;
     background: #111;
 }
-button {
+label, button {
     display: block;
-    height: 2.6em;
-    width: 13em;
+    width: 17em;
+    font: 1em sans-serif;
     border: 0;
     margin: 1px;
-    font: small-caps 110% sans-serif;
-    background: #333;
     color: #ccc;
+    background: #333;
     cursor: pointer;
+    box-sizing: border-box;
+    padding: 0.5em;
 }
-button:hover {
+label {
+    padding-left: 1em;
+}
+button:hover, label:hover {
+    background: #444;
+    color: #fff;
+}
+
+input[type=checkbox] {
+    -moz-appearance: none;
+    appearance: none;
+    margin-left: 1em;
+    width: 62px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    background: #111;
+    vertical-align: middle;
+    transition: all ease 0.2s;
+}
+
+input[type=checkbox]:before {
+    content: "ON OFF";
+    display: block;
+    position: absolute;
+    /* z-index: 2; */
+    width: 22px;
+    height: 22px;
+    background: #ccc;
+    left: 5px;
+    top: 5px;
+    border-radius: 50%;
+    font: bold 10px/22px sans-serif;
+    text-indent: -22px;
+    word-spacing: 34px;
+    white-space: nowrap;
+    transition: all ease 0.2s;
+}
+
+input[type=checkbox]:checked:before {
+    left: 34px;
+    color: #fff;
+    background: #fff;
+}
+input[type=checkbox]:checked {
     background: #369;
-    color: #fdcb0b;
 }
