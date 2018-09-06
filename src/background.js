@@ -225,7 +225,6 @@ async function activate() {
         await enable(site, true);
         // }
     }
-    enabled = false;
 }
 
 let actions = {
@@ -239,7 +238,6 @@ let actions = {
             await disable(site);
         }
         console.log("Cookies and CSS hiders disabled");
-        enabled = true;
         browser.storage.sync.set({enabled: false});
     },
 
