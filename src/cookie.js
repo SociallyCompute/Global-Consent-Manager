@@ -23,16 +23,23 @@ async function logCookies(currentDomain) {
 }
 
 let actions = {
-    enable() {
-        browser.runtime.sendMessage("enable");
-    },
-
-    disable() {
+    change() {
+        if (!document.getElementById("change").checked) {
+        document.getElementById("indicator").innerHTML = "Status: Disabled";
         browser.runtime.sendMessage("disable");
+        }
+        else {
+        document.getElementById("indicator").innerHTML = "Status: Enabled";
+        browser.runtime.sendMessage("enable");
+        }
     },
 
     trust() {
         browser.runtime.sendMessage("trust");
+    },
+    
+    noTrust() {
+        browser.runtime.sendMessage("noTrust");
     },
 
     logAll() {
@@ -116,5 +123,4 @@ let snapshot = [];
 
 document.addEventListener("click", async (e) => {
     await actions[e.target.id]();
-    window.close();
 });

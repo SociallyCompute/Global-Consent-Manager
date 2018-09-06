@@ -1,5 +1,5 @@
 "use strict";
-
+let enabled = false;
 const sites = [
     {
         // Working 8/29/2018 (M)
@@ -143,7 +143,7 @@ function get(url) {
     return sites.find((s) => host.endsWith(s.domain));
 }
 
-async function enable(site) {
+async function enable(site, log) {
     site.enabled = true;
     if (site.selector) {
         site.cs = await browser.contentScripts.register({
@@ -151,7 +151,9 @@ async function enable(site) {
             css: [{code: `${site.selector} { display: none !important }`}],
             runAt: "document_start",
         });
+        if (log) {
         console.log(site.selector + " rule set for " + site.domain);
+        }
         return;
     }
     await browser.cookies.set({
@@ -161,7 +163,9 @@ async function enable(site) {
         url: `http://${site.domain}/`,
         firstPartyDomain: "",
     });
+    if (log) {
     console.log(`Cookie ${site.name} set for domain ${site.domain}`);
+    }
 }
 
 async function disable(site) {
@@ -181,16 +185,18 @@ async function disable(site) {
 async function onBeforeRequest(request) {
     let site = get(request.url);
     if (site && site.enabled) {
+        /*
         site.visits++;
         console.log(site.domain, "visits:", site.visits);
         await browser.storage.sync.set({[site.domain]: site.visits});
         if (site.visits > 7) {
             disable(site);
         }
+        */
     }
 }
 
-async function trust(trustedSite) {
+async function trust(trustedSite, doTrust) {
     let tsDomain = trustedSite.url.split("/")[2];
     // conditional for "www." cases
     if (tsDomain.startsWith("www.")) {
@@ -199,31 +205,44 @@ async function trust(trustedSite) {
     if (tsDomain.startsWith("de.")) {
         tsDomain = tsDomain.substr(3);
     }
-    console.log("Trusting " + tsDomain);
     for (let site of sites) {
         if (site.domain == tsDomain) {
+            if (doTrust == true) {
+            console.log("Trusting " + tsDomain);
             disable(site);
+            
+            }
+            else {
+            console.log("Revoking trust for " + tsDomain);
+            enable(site, false);
+            }
         }
     }
     // Reloads the tab
     await browser.tabs.reload({bypassCache: true});
 }
 
+async function activate() {
+        for (let site of sites) {
+        //if (site.visits < 7) {
+        await enable(site, true);
+        //}
+    }
+    enabled  = false;
+}
+
 let actions = {
     async enable() {
-        for (let site of sites) {
-            if (site.visits < 7) {
-                await enable(site);
-            }
-        }
-        browser.storage.sync.set({enabled: true});
+        activate();
     },
-
+    
     async disable() {
+        browser.storage.sync.set({enabled: true});
         for (let site of sites) {
             await disable(site);
         }
         console.log("Cookies and CSS hiders disabled");
+        enabled = true;
         browser.storage.sync.set({enabled: false});
     },
 
@@ -231,16 +250,26 @@ let actions = {
         browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
             .then((tabs) => browser.tabs.get(tabs[0].id))
             .then((tab) => {
-                trust(tab);
+                trust(tab,true);
             });
     },
+    
+    noTrust() {
+        browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
+            .then((tabs) => browser.tabs.get(tabs[0].id))
+            .then((tab) => {
+                trust(tab,false);
+            });
+    }
 };
 
 async function main() {
     let state = await browser.storage.sync.get();
+    /*
     for (let site of sites) {
         site.visits = state[site.domain] || 0;
     }
+    */
 
     if (state.enabled) {
         actions.enable();
@@ -256,5 +285,7 @@ async function main() {
 
     });
 }
+
+activate();
 
 main();
