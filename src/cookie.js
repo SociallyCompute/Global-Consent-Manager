@@ -110,7 +110,20 @@ let actions = {
 // Save a snapshot of cookies to compare to.
 let snapshot = [];
 
-document.addEventListener("click", async (e) => {
-    await actions[e.target.id]();
-    window.close();
-});
+async function main() {
+    let block = document.querySelector("#block");
+    let {enabled} = await browser.storage.sync.get();
+    block.checked = enabled;
+
+    // document.addEventListener("click", async (e) => {
+    //     await actions[e.target.id]();
+    //     window.close();
+    // });
+
+    block.addEventListener("change", async (e) => {
+        let msg = block.checked ? "enable" : "disable";
+        await actions[msg]();
+    });
+}
+
+main();

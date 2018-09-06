@@ -178,7 +178,7 @@ async function disable(site) {
     }
 }
 
-async function onBeforeRequest(request) {
+async function onBeforeRequest(request) {   // eslint-disable-line
     let site = get(request.url);
     if (site && site.enabled) {
         site.visits++;
@@ -193,9 +193,7 @@ async function onBeforeRequest(request) {
 let actions = {
     async enable() {
         for (let site of sites) {
-            if (site.visits < 7) {
-                await enable(site);
-            }
+            await enable(site);
         }
         browser.storage.sync.set({enabled: true});
     },
@@ -215,17 +213,20 @@ async function main() {
     for (let site of sites) {
         site.visits = state[site.domain] || 0;
     }
-    if (state.enabled) {
+
+    let {enabled} = await browser.storage.sync.get({enabled: true});
+    if (enabled) {
         actions.enable();
     }
+
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();
     });
-    browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
-        types: ["main_frame"],
-        urls: ["<all_urls>"],
 
-    });
+    // browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
+    //     types: ["main_frame"],
+    //     urls: ["<all_urls>"],
+    // });
 }
 
 main();
