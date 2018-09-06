@@ -1,5 +1,4 @@
 "use strict";
-let enabled = false;
 const sites = [
     {
         // Working 8/29/2018 (M)
@@ -152,7 +151,7 @@ async function enable(site, log) {
             runAt: "document_start",
         });
         if (log) {
-        console.log(site.selector + " rule set for " + site.domain);
+            console.log(site.selector + " rule set for " + site.domain);
         }
         return;
     }
@@ -164,7 +163,7 @@ async function enable(site, log) {
         firstPartyDomain: "",
     });
     if (log) {
-    console.log(`Cookie ${site.name} set for domain ${site.domain}`);
+        console.log(`Cookie ${site.name} set for domain ${site.domain}`);
     }
 }
 
@@ -208,13 +207,11 @@ async function trust(trustedSite, doTrust) {
     for (let site of sites) {
         if (site.domain == tsDomain) {
             if (doTrust == true) {
-            console.log("Trusting " + tsDomain);
-            disable(site);
-            
-            }
-            else {
-            console.log("Revoking trust for " + tsDomain);
-            enable(site, false);
+                console.log("Trusting " + tsDomain);
+                disable(site);
+            } else {
+                console.log("Revoking trust for " + tsDomain);
+                enable(site, false);
             }
         }
     }
@@ -223,19 +220,19 @@ async function trust(trustedSite, doTrust) {
 }
 
 async function activate() {
-        for (let site of sites) {
-        //if (site.visits < 7) {
+    for (let site of sites) {
+        // if (site.visits < 7) {
         await enable(site, true);
-        //}
+        // }
     }
-    enabled  = false;
+    enabled = false;
 }
 
 let actions = {
     async enable() {
         activate();
     },
-    
+
     async disable() {
         browser.storage.sync.set({enabled: true});
         for (let site of sites) {
@@ -250,17 +247,17 @@ let actions = {
         browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
             .then((tabs) => browser.tabs.get(tabs[0].id))
             .then((tab) => {
-                trust(tab,true);
+                trust(tab, true);
             });
     },
-    
+
     noTrust() {
         browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
             .then((tabs) => browser.tabs.get(tabs[0].id))
             .then((tab) => {
-                trust(tab,false);
+                trust(tab, false);
             });
-    }
+    },
 };
 
 async function main() {
