@@ -244,7 +244,7 @@ async function activate() {
     }
 }
 
-//let enabled = false;
+// let enabled = false;
 let actions = {
     async enable() {
         activate();
@@ -287,8 +287,8 @@ let actions = {
     },
 };
 
-//This function determines if a domain is in the set list of domains.
-//It is similar to trust().
+// This function determines if a domain is in the set list of domains.
+// It is similar to trust().
 
 /* let worthValue = true;
    sync function checkifTrust(tabsSecond) {
@@ -333,7 +333,6 @@ function update() {
 }*/
 
 async function main() {
-    let state = await browser.storage.sync.get();
     /*
     for (let site of sites) {
         site.visits = state[site.domain] || 0;
@@ -341,20 +340,18 @@ async function main() {
 
     let {enabled} = await browser.storage.sync.get({enabled: true});
     let {trusted} = await browser.storage.sync.get({trusted: true});
-    
+
     if (enabled) {
         actions.enable();
-    }
-    else {
+    } else {
         actions.disable();
     }
     if (trusted) {
         actions.noTrust();
-    }
-    else {
+    } else {
         actions.trust();
     }
-    
+
     console.log((await browser.storage.sync.get()));
     console.log(enabled);
     console.log(trusted);
