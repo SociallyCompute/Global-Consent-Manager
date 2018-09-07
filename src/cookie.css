@@ -1,13 +1,24 @@
+/*The section of css indented with two spaces was provided by W3
+and can be found at:
+https://www.w3schools.com/howto/howto_css_switch.asp
+
+This code was modified from the original
+And is used under the Refsnes Data terms of fair use 
+in an educational environment.*/
 body {
     -moz-user-select: none;
     user-select: none;
     background: #111;
 }
-label, button {
+button {
     display: block;
-    width: 17em;
+}
+label, button{
+    width: 16.85em;
     font: 1em sans-serif;
     border: 0;
+    font: small-caps 100% sans-serif;
+    background: #333;
     margin: 1px;
     color: #ccc;
     background: #333;
@@ -15,8 +26,9 @@ label, button {
     box-sizing: border-box;
     padding: 0.5em;
 }
-label {
-    padding-left: 1em;
+label.switcher {
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
 }
 button:hover, label:hover {
     background: #444;
@@ -26,7 +38,7 @@ button:hover, label:hover {
 input[type=checkbox] {
     -moz-appearance: none;
     appearance: none;
-    margin-left: 1em;
+    margin: 1em 0.2em 1em 0em;
     width: 62px;
     height: 32px;
     display: inline-block;
@@ -63,6 +75,35 @@ input[type=checkbox]:checked:before {
     color: #fff;
     background: #fff;
 }
+button:hover:not(#indicator) {
+    background: #369;
+}
 input[type=checkbox]:checked {
     background: #369;
+}
+
+p {
+    margin: 0;
+    color: #ccc;
+    font: small-caps 85% sans-serif;
+    text-align: center;
+}
+
+a.alink {
+    color: #369;
+    font: small-caps 105% sans-serif;
+    text-align: center;
+    width:100%;
+}
+
+label {
+    display: inline;
+}
+
+#checktrust {
+    visibility: hidden;
+}
+
+#gcmtext {
+    text-align: center;
 }

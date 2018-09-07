@@ -5,17 +5,17 @@
     <script src="cookie.js" defer></script>
 </head>
 
-<label>
-    Block Consent Dialogs
-    <input id="block" type="checkbox">
-</label>
 
+<label class="switcher" id ="switch">
+    Block Consent Dialogs
+    <input id="block" type="checkbox" checked>
+</label>
+<span hidden><input id="checkTrust" type="checkbox"></input></span>
 <!--
-    <button id="enable">Enable</button>
-    <button id="disable">Disable</button>
-    <button id="logAll">Log all cookies</button>
-    <button id="log">Log cookies (CD)</button>
-    <button id="clear">Clear cookies</button>
-    <button id="consent2">Check GVCC</button>
-    <button id="snapshot">Snapshot changes</button>
+<input type="checkbox" id="activate"></input>
 -->
+<button id="trust" class="smalltext">Website Trusted<br>(Click to Change)</button>
+<div id="gcmtext">
+<p>More on Global Consent Manager:</p>
+<a href="http://www.globalconsentmanager.com/learnmore/" class="alink">globalconsentmanager.com</a>
+</div>
