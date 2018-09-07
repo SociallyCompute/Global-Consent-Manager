@@ -142,6 +142,13 @@ function get(url) {
     return sites.find((s) => host.endsWith(s.domain));
 }
 
+async function resetTrust(enabled) {
+    await browser.runtime.sendMessage({
+        greet:"resetTrust",
+        stat:enabled
+    });
+}
+
 async function enable(site, log) {
     site.enabled = true;
     if (site.selector) {
@@ -198,6 +205,10 @@ async function onBeforeRequest(request) {   // eslint-disable-line
 async function trust(trustedSite, doTrust) {
     let tsDomain = trustedSite.url.split("/")[2];
     // conditional for "www." cases
+    if (tsDomain == undefined) {
+        console.log("No value for Domain!");
+    }
+    else {
     if (tsDomain.startsWith("www.")) {
         tsDomain = tsDomain.substr(4);
     }
@@ -209,11 +220,14 @@ async function trust(trustedSite, doTrust) {
             if (doTrust == true) {
                 console.log("Trusting " + tsDomain);
                 disable(site);
+                await browser.runtime.sendMessage({greet:"trust"});
             } else {
                 console.log("Revoking trust for " + tsDomain);
                 enable(site, false);
+                await browser.runtime.sendMessage({greet:"noTrust"});
             }
         }
+    }
     }
     // Reloads the tab
     await browser.tabs.reload({bypassCache: true});
@@ -227,9 +241,11 @@ async function activate() {
     }
 }
 
+
 let actions = {
     async enable() {
         activate();
+        resetTrust(true);
     },
 
     async disable() {
@@ -239,6 +255,7 @@ let actions = {
         }
         console.log("Cookies and CSS hiders disabled");
         browser.storage.sync.set({enabled: false});
+        resetTrust(false);
     },
 
     trust() {
@@ -272,7 +289,6 @@ async function main() {
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();
     });
-
     // browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
     //     types: ["main_frame"],
     //     urls: ["<all_urls>"],

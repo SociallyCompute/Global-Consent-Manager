@@ -11,16 +11,23 @@ let actions = {
 
     trust() {
         if (!document.getElementById("checkTrust").checked) {
-            document.getElementById("trust").innerHTML = "Website Not Trusted<br>(Click to Change)";
-            document.getElementById("checkTrust").checked = true;
             browser.runtime.sendMessage("noTrust");
         } else {
-            document.getElementById("trust").innerHTML = "Website Trusted<br>(Click to Change)";
-            document.getElementById("checkTrust").checked = false;
             browser.runtime.sendMessage("trust");
         }
     },
 };
+
+async function handleMessage(message) {
+    if (message.greet == "trust" || (!message.stat && message.greet == "resetTrust")) {
+    document.getElementById("trust").innerHTML = "Website Trusted<br>(Click to Change)";
+    document.getElementById("checkTrust").checked = false;
+    }
+    else if (message.greet == "noTrust" || (message.stat && message.greet == "resetTrust")){
+    document.getElementById("trust").innerHTML = "Website Not Trusted<br>(Click to Change)";
+    document.getElementById("checkTrust").checked = true;
+    }
+}
 
 async function main() {
     let block = document.querySelector("#block");
@@ -30,6 +37,10 @@ async function main() {
     document.addEventListener("click", async (e) => {
         await actions[e.target.id]();
     });
+    
+    browser.runtime.onMessage.addListener(handleMessage);
 }
 
 main();
+
+                

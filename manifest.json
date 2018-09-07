@@ -16,7 +16,6 @@
         "<all_urls>",
         "cookies",
         "storage",
-        "webRequest",
         "tabs"
     ],
     "background": {
