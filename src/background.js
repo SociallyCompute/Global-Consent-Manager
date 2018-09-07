@@ -142,10 +142,10 @@ function get(url) {
     return sites.find((s) => host.endsWith(s.domain));
 }
 
-async function resetTrust(enabled) {
+async function resetValues(string, enabled) {
     await browser.runtime.sendMessage({
-        greet:"resetTrust",
-        stat:enabled
+        greet: string,
+        stat: enabled,
     });
 }
 
@@ -207,27 +207,31 @@ async function trust(trustedSite, doTrust) {
     // conditional for "www." cases
     if (tsDomain == undefined) {
         console.log("No value for Domain!");
-    }
-    else {
-    if (tsDomain.startsWith("www.")) {
-        tsDomain = tsDomain.substr(4);
-    }
-    if (tsDomain.startsWith("de.")) {
-        tsDomain = tsDomain.substr(3);
-    }
-    for (let site of sites) {
-        if (site.domain == tsDomain) {
-            if (doTrust == true) {
-                console.log("Trusting " + tsDomain);
-                disable(site);
-                await browser.runtime.sendMessage({greet:"trust"});
-            } else {
-                console.log("Revoking trust for " + tsDomain);
-                enable(site, false);
-                await browser.runtime.sendMessage({greet:"noTrust"});
+    } else {
+        if (tsDomain.startsWith("www.")) {
+            tsDomain = tsDomain.substr(4);
+        }
+        if (tsDomain.startsWith("de.")) {
+            tsDomain = tsDomain.substr(3);
+        }
+        let foundOne = false;
+        for (let site of sites) {
+            if (site.domain == tsDomain) {
+                foundOne = true;
+                if (doTrust == true) {
+                    console.log("Trusting " + tsDomain);
+                    disable(site);
+                    await browser.runtime.sendMessage({greet: "trust"});
+                } else {
+                    console.log("Revoking trust for " + tsDomain);
+                    enable(site, false);
+                    await browser.runtime.sendMessage({greet: "noTrust"});
+                }
             }
         }
-    }
+        if (!foundOne) {
+            console.log("This website is not in the list!");
+        }
     }
     // Reloads the tab
     await browser.tabs.reload({bypassCache: true});
@@ -241,11 +245,13 @@ async function activate() {
     }
 }
 
-
+// let enabled = false;
 let actions = {
     async enable() {
         activate();
-        resetTrust(true);
+        resetValues("resetTrust", true);
+        await browser.tabs.reload({bypassCache: true});
+        // enabled = true;
     },
 
     async disable() {
@@ -255,7 +261,9 @@ let actions = {
         }
         console.log("Cookies and CSS hiders disabled");
         browser.storage.sync.set({enabled: false});
-        resetTrust(false);
+        resetValues("resetTrust", false);
+        await browser.tabs.reload({bypassCache: true});
+        // enabled = false;
     },
 
     trust() {
@@ -264,6 +272,7 @@ let actions = {
             .then((tab) => {
                 trust(tab, true);
             });
+        resetValues("resetTrust", true);
     },
 
     noTrust() {
@@ -272,8 +281,50 @@ let actions = {
             .then((tab) => {
                 trust(tab, false);
             });
+        resetValues("resetTrust", false);
     },
 };
+
+// let worthValue = true;
+
+a;/* sync function checkifTrust(tabsSecond) {
+    let tsDomain = tabsSecond.url.split("/")[2];
+    let foundOne = false;
+    for (let site of sites) {
+        if (tsDomain.startsWith("www.")) {
+            tsDomain = tsDomain.substr(4);
+        }
+        if (tsDomain.startsWith("de.")) {
+            tsDomain = tsDomain.substr(3);
+        }
+        if (site.domain == tsDomain) {
+            foundOne = true;
+        }
+    }
+    if (foundOne == false) {
+        worthValue = false;
+    }
+    console.log(foundOne);
+}*/
+
+/*
+function singleUpdate() {
+    browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
+        .then((tabs) => browser.tabs.get(tabs[0].id))
+        .then((tab) => {
+            checkifTrust(tab);
+        });
+    if (!worthValue) {
+        resetValues("notList");
+    }
+}*/
+
+/*
+function update() {
+    resetValues("resetTrust", enabled);
+    resetValues("checkbox", enabled);
+    singleUpdate();
+}*/
 
 async function main() {
     let state = await browser.storage.sync.get();
@@ -286,9 +337,12 @@ async function main() {
         actions.enable();
     }
 
+    // browser.webNavigation.onCommitted.addListener(singleUpdate);
+
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();
     });
+
     // browser.webRequest.onBeforeRequest.addListener(onBeforeRequest, {
     //     types: ["main_frame"],
     //     urls: ["<all_urls>"],
