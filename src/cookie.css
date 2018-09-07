@@ -10,8 +10,10 @@ body {
     user-select: none;
     background: #111;
 }
-label, button {
+button {
     display: block;
+}
+label, button{
     width: 16.85em;
     font: 1em sans-serif;
     border: 0;
@@ -78,63 +80,6 @@ button:hover:not(#indicator) {
 }
 input[type=checkbox]:checked {
     background: #369;
-}
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 4em;
-  height: 2.32em;
-}
-
-/* Hide default HTML checkbox */
-.switch input {display:none;}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 1.9em;
-  width: 1.9em;
-  left: .3em;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .36s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #369;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #369;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(1.4em);
-  -ms-transform: translateX(1.4em);
-  transform: translateX(1.4em);
-}
-
-button#indicator {
-    position:absolute;
-    display: inline;
-    height: 2.2em;
-    width: 9.2em;
-    margin-left: 4px;
-    cursor: context-menu;
 }
 
 p {
