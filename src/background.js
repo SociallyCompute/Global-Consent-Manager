@@ -175,8 +175,8 @@ async function enable(site, log) {
 }
 
 async function disable(site) {
-    if (site.cs && site.enabled) {
-        site.enabled = false;
+    site.enabled = false;
+    if (site.cs != undefined & site.enabled) {
         return site.cs.unregister();
     }
     if (site.name != undefined) {

@@ -16,8 +16,7 @@
         "<all_urls>",
         "cookies",
         "storage",
-        "tabs",
-        "webNavigation"
+        "tabs"
     ],
     "background": {
         "scripts": ["src/background.js"]
