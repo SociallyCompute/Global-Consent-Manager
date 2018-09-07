@@ -48,10 +48,8 @@ async function main() {
     block.checked = enabled;
 
     let {trusted} = await browser.storage.sync.get("trusted");
-    if (!trusted) {
-        document.getElementById("trust").innerHTML = "Website Not Trusted<br>(Click to Change)";
-        document.getElementById("checkTrust").checked = true;
-    } else if (trusted) {
+
+    if (trusted) {
         document.getElementById("trust").innerHTML = "Website Trusted<br>(Click to Change)";
         document.getElementById("checkTrust").checked = false;
     }
