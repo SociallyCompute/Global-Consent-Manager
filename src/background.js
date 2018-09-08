@@ -158,7 +158,7 @@ async function enable(site, log) {
             runAt: "document_start",
         });
         if (log) {
-            console.log(site.selector + " rule set for " + site.domain);
+           console.log(site.selector + " rule set for " + site.domain);
         }
         return;
     }
@@ -175,17 +175,19 @@ async function enable(site, log) {
 }
 
 async function disable(site) {
-    site.enabled = false;
     if (site.cs != undefined & site.enabled) {
+        site.enabled = false;
         return site.cs.unregister();
     }
     if (site.name != undefined) {
+        site.enabled = false;
         await browser.cookies.remove({
             name: site.name,
             url: `http://${site.domain}/`,
             firstPartyDomain: "",
         });
     }
+
 }
 
 async function onBeforeRequest(request) {   // eslint-disable-line
@@ -236,101 +238,52 @@ async function trust(trustedSite, doTrust) {
     // Reloads the tab
 }
 
-async function activate() {
-    for (let site of sites) {
+// let enabled = false;
+let actions = {
+    async enable() {
+        for (let site of sites) {
         // if (site.visits < 7) {
         await enable(site, true);
         // }
     }
-}
-
-// let enabled = false;
-let actions = {
-    async enable() {
-        activate();
         resetValues("resetTrust", true);
-        await browser.tabs.reload({bypassCache: true});
-        browser.storage.sync.set({enabled: true});
+        await browser.storage.sync.set({
+            enabled: true,
+            trusted: false});
     },
 
     async disable() {
-        browser.storage.sync.set({enabled: false});
+        await browser.storage.sync.set({
+            enabled: false,
+            trusted: true});
         for (let site of sites) {
             await disable(site);
         }
         console.log("Cookies and CSS hiders disabled");
         resetValues("resetTrust", false);
-        await browser.tabs.reload({bypassCache: true});
         // enabled = false;
     },
 
     async trust() {
-        browser.storage.sync.set({trusted: true});
         browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
             .then((tabs) => browser.tabs.get(tabs[0].id))
             .then((tab) => {
                 trust(tab, true);
             });
         resetValues("resetTrust", true);
-        await browser.tabs.reload({bypassCache: true});
+        await browser.storage.sync.set({trusted: true});
     },
 
     async noTrust() {
-        browser.storage.sync.set({trusted: false});
+        await browser.storage.sync.set({trusted: false});
         browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
             .then((tabs) => browser.tabs.get(tabs[0].id))
             .then((tab) => {
                 trust(tab, false);
             });
         resetValues("resetTrust", false);
-        await browser.tabs.reload({bypassCache: true});
     },
 };
-
-// This function determines if a domain is in the set list of domains.
-// It is similar to trust().
-
-/* let worthValue = true;
-   sync function checkifTrust(tabsSecond) {
-    let tsDomain = tabsSecond.url.split("/")[2];
-    let foundOne = false;
-    for (let site of sites) {
-        if (tsDomain.startsWith("www.")) {
-            tsDomain = tsDomain.substr(4);
-        }
-        if (tsDomain.startsWith("de.")) {
-            tsDomain = tsDomain.substr(3);
-        }
-        if (site.domain == tsDomain) {
-            foundOne = true;
-        }
-    }
-    if (foundOne == false) {
-        worthValue = false;
-    }
-    console.log(foundOne);
-}
-
-//This function's purpose is to break down the process of checkifTrust.
-
-function singleUpdate() {
-    browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
-        .then((tabs) => browser.tabs.get(tabs[0].id))
-        .then((tab) => {
-            checkifTrust(tab);
-        });
-    if (!worthValue) {
-        resetValues("notList");
-    }
-}
-
-//When called, this function updates the checkboxes, based on persistent values.
-
-function update() {
-    resetValues("resetTrust", enabled);
-    resetValues("checkbox", enabled);
-    singleUpdate();
-}*/
 
 async function main() {
     /*
@@ -338,9 +291,9 @@ async function main() {
         site.visits = state[site.domain] || 0;
     }*/
 
-    let {enabled} = await browser.storage.sync.get({enabled: true});
-    let {trusted} = await browser.storage.sync.get({trusted: true});
-
+    let {enabled} = await browser.storage.sync.get({enabled:true});
+    let {trusted} = await browser.storage.sync.get({trusted:true});
+    
     if (enabled) {
         actions.enable();
     } else {
@@ -351,10 +304,6 @@ async function main() {
     } else {
         actions.trust();
     }
-
-    console.log((await browser.storage.sync.get()));
-    console.log(enabled);
-    console.log(trusted);
 
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();

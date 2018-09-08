@@ -10,13 +10,15 @@ let actions = {
     },
 
     trust() {
-        if (!document.getElementById("checkTrust").checked) {
-            browser.runtime.sendMessage("noTrust");
-        } else {
+        if (document.getElementById("checkTrust").checked) {
             browser.runtime.sendMessage("trust");
+        } else {
+            browser.runtime.sendMessage("noTrust");
         }
     },
 };
+
+
 async function handleMessage(message) {
     if (message.greet == "notList" && !message.stat) {
         document.getElementById("trust").innerHTML = "Website is not on the list.<br>(Reports coming soon)";
@@ -37,32 +39,37 @@ async function handleMessage(message) {
         }
     }
 }
-/*
-function check() {
-    browser.runtime.sendMessage("reset");
-}*/
 
 async function main() {
     let block = document.querySelector("#block");
     let {enabled} = await browser.storage.sync.get("enabled");
     block.checked = enabled;
+    
 
+    
     let {trusted} = await browser.storage.sync.get("trusted");
-
+    
     if (trusted) {
-        document.getElementById("trust").innerHTML = "Website Trusted<br>(Click to Change)";
-        document.getElementById("checkTrust").checked = false;
+        document.getElementById("checkTrust").checked = true;
+        await actions["trust"]();
     }
-    console.log(enabled);
-    console.log(trusted);
+    else {
+        document.getElementById("checkTrust").checked = false;
+        await actions["trust"]();
+    }
+    
     document.addEventListener("click", async (e) => {
         if (e.target.id == "block" || "trust") {
             await actions[e.target.id]();
         }
     });
-
     // document.addEventListener("load", check);
     browser.runtime.onMessage.addListener(handleMessage);
+}
+
+async function log() {
+    console.log(await browser.storage.sync.get("enabled"));
+    console.log(await browser.storage.sync.get("trusted"));
 }
 
 main();
