@@ -158,7 +158,7 @@ async function enable(site, log) {
             runAt: "document_start",
         });
         if (log) {
-           console.log(site.selector + " rule set for " + site.domain);
+            console.log(site.selector + " rule set for " + site.domain);
         }
         return;
     }
@@ -187,7 +187,6 @@ async function disable(site) {
             firstPartyDomain: "",
         });
     }
-
 }
 
 async function onBeforeRequest(request) {   // eslint-disable-line
@@ -243,9 +242,9 @@ let actions = {
     async enable() {
         for (let site of sites) {
         // if (site.visits < 7) {
-        await enable(site, true);
+            await enable(site, true);
         // }
-    }
+        }
         resetValues("resetTrust", true);
         await browser.storage.sync.set({
             enabled: true,
@@ -291,9 +290,9 @@ async function main() {
         site.visits = state[site.domain] || 0;
     }*/
 
-    let {enabled} = await browser.storage.sync.get({enabled:true});
-    let {trusted} = await browser.storage.sync.get({trusted:true});
-    
+    let {enabled} = await browser.storage.sync.get({enabled: true});
+    let {trusted} = await browser.storage.sync.get({trusted: true});
+
     if (enabled) {
         actions.enable();
     } else {

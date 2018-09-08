@@ -44,20 +44,18 @@ async function main() {
     let block = document.querySelector("#block");
     let {enabled} = await browser.storage.sync.get("enabled");
     block.checked = enabled;
-    
 
-    
+
     let {trusted} = await browser.storage.sync.get("trusted");
-    
+
     if (trusted) {
         document.getElementById("checkTrust").checked = true;
         await actions["trust"]();
-    }
-    else {
+    } else {
         document.getElementById("checkTrust").checked = false;
         await actions["trust"]();
     }
-    
+
     document.addEventListener("click", async (e) => {
         if (e.target.id == "block" || "trust") {
             await actions[e.target.id]();
@@ -65,11 +63,6 @@ async function main() {
     });
     // document.addEventListener("load", check);
     browser.runtime.onMessage.addListener(handleMessage);
-}
-
-async function log() {
-    console.log(await browser.storage.sync.get("enabled"));
-    console.log(await browser.storage.sync.get("trusted"));
 }
 
 main();
