@@ -12,7 +12,7 @@
  
  ### Installation: npm
  
- 3. Install Global-Consent-Cookie-Sandbox in its directory:
+ 3. Install Global-Consent-Manager in its directory:
  ```
  npm install
  ```
@@ -24,8 +24,15 @@
  
  ## How to use this Web Extension
  
- To preload all possible cookies that are available. Click the "ENABLE" button.<br /> 
- To start getting consent dialogs again, press the "DISABLE" button.
+ Toggle the switch labeled "BLOCK CONSENT DIALOGS" to show or hide consent dialogs. <br /> 
+     -If the toggle switch status is "ON", supported sites will not provide consent dialogs.<br /> 
+     -If the toggle switch status is "OFF", supported sites will proceed normally.<br /> 
+ <br /> 
+ To show or hide consent dialogs on a single page, click Global Consent Manager's second button.<br />
+     -If this button is labeled "WEBSITE TRUSTED", the current website should display a consent dialog.<br />
+     -If this button is labeled "WEBSITE NOT TRUSTED" and the current website is on the list of supported websites, it should not display a consent dialog.<br />
+     <br />
+ Note: The secondary button will change its label to support primary consent options that are set by the user.<br />
  
  ## Licensing and Copyright
  
