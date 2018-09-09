@@ -1,4 +1,4 @@
- # Global Consent Cookie Sandbox
+ # Global Consent Manager
 
  This public repository is used to publish a Firefox web extension.
  
@@ -12,7 +12,7 @@
  
  ### Installation: npm
  
- 3. Install Global-Consent-Cookie-Sandbox in its directory:
+ 3. Install Global-Consent-Manager in its directory:
  ```
  npm install
  ```
@@ -24,14 +24,21 @@
  
  ## How to use this Web Extension
  
- To preload all possible cookies that are available. Click the "ENABLE" button.<br /> 
- To start getting consent dialogs again, press the "DISABLE" button.
+ Toggle the switch labeled "BLOCK CONSENT DIALOGS" to show or hide consent dialogs. <br /> 
+     -If the toggle switch status is "ON", supported sites will not provide consent dialogs.<br /> 
+     -If the toggle switch status is "OFF", supported sites will proceed normally.<br /> 
+ <br /> 
+ To show or hide consent dialogs on a single page, click Global Consent Manager's second button.<br />
+     -If this button is labeled "WEBSITE TRUSTED", the current website should display a consent dialog.<br />
+     -If this button is labeled "WEBSITE NOT TRUSTED" and the current website is on the list of supported websites, it should not display a consent dialog.<br />
+     <br />
+ Note: The secondary button will change its label to support primary consent options that are set by the user.<br />
  
  ## Licensing and Copyright
  
  All source code copyright is retained by the contributors. All contriubtions and source code are licensed under the MIT license. 
  
- Copyright (c) 2018 Global-Consent-Cookie-Sandbox Contributors
+ Copyright (c) 2018 Global-Consent-Manager Contributors
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -46,8 +53,8 @@
   Source: https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API<br /> 
   WebExtension API packages currently used:<br />
    -cookies<br />
-   -tabs<br />
-   -browsingData
+   -storage<br />
+   -tabs
    
   The technical specifications and framework that this project depends on are (c) 2018 IAB Technology Laboratory.
   This content is used under the terms of the MIT License.<br /> 
