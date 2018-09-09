@@ -143,6 +143,8 @@ function get(url) {
 }
 
 async function resetValues(string, enabled) {
+    // console.log(string);
+    // console.log(enabled);
     await browser.runtime.sendMessage({
         greet: string,
         stat: enabled,
@@ -172,10 +174,11 @@ async function enable(site, log) {
     if (log) {
         console.log(`Cookie ${site.name} set for domain ${site.domain}`);
     }
+    console.log(site);
 }
 
 async function disable(site) {
-    if (site.cs != undefined & site.enabled) {
+    if (site.cs != undefined && site.enabled) {
         site.enabled = false;
         return site.cs.unregister();
     }
@@ -205,7 +208,6 @@ async function onBeforeRequest(request) {   // eslint-disable-line
 
 async function trust(trustedSite, doTrust) {
     let tsDomain = trustedSite.url.split("/")[2];
-    // conditional for "www." cases
     if (tsDomain == undefined) {
         console.log("No value for Domain!");
     } else {
@@ -222,11 +224,9 @@ async function trust(trustedSite, doTrust) {
                 if (doTrust == true) {
                     console.log("Trusting " + tsDomain);
                     disable(site);
-                    await browser.runtime.sendMessage({greet: "trust"});
                 } else {
                     console.log("Revoking trust for " + tsDomain);
                     enable(site, false);
-                    await browser.runtime.sendMessage({greet: "noTrust"});
                 }
             }
         }
@@ -237,50 +237,83 @@ async function trust(trustedSite, doTrust) {
     // Reloads the tab
 }
 
-// let enabled = false;
+
+let enabledStatus = false;
+let trustedStatus = false;
 let actions = {
     async enable() {
-        for (let site of sites) {
-        // if (site.visits < 7) {
-            await enable(site, true);
-        // }
+        if (!enabledStatus) {
+            for (let site of sites) {
+            // if (site.visits < 7) {
+                await enable(site, true);
+            // }
+            }
+            resetValues("resetTrust", true);
         }
-        resetValues("resetTrust", true);
         await browser.storage.sync.set({
             enabled: true,
             trusted: false});
+        enabledStatus = true;
+        trustedStatus = false;
     },
 
     async disable() {
+        if (enabledStatus) {
+            for (let site of sites) {
+                await disable(site);
+            }
+            console.log("Cookies and CSS hiders disabled");
+            resetValues("resetTrust", false);
+        }
         await browser.storage.sync.set({
             enabled: false,
             trusted: true});
-        for (let site of sites) {
-            await disable(site);
-        }
-        console.log("Cookies and CSS hiders disabled");
-        resetValues("resetTrust", false);
-        // enabled = false;
+        enabledStatus = false;
+        trustedStatus = true;
     },
 
     async trust() {
-        browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
-            .then((tabs) => browser.tabs.get(tabs[0].id))
-            .then((tab) => {
-                trust(tab, true);
-            });
-        resetValues("resetTrust", true);
+        if (!trustedStatus) {
+            browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
+                .then((tabs) => browser.tabs.get(tabs[0].id))
+                .then((tab) => {
+                    trust(tab, true);
+                });
+            resetValues("resetTrust", true);
+        }
         await browser.storage.sync.set({trusted: true});
+        trustedStatus = true;
+        actions.setTrust();
     },
 
     async noTrust() {
+        if (trustedStatus) {
+            browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
+                .then((tabs) => browser.tabs.get(tabs[0].id))
+                .then((tab) => {
+                    trust(tab, false);
+                });
+            resetValues("resetTrust", false);
+        }
         await browser.storage.sync.set({trusted: false});
-        browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
-            .then((tabs) => browser.tabs.get(tabs[0].id))
-            .then((tab) => {
-                trust(tab, false);
-            });
-        resetValues("resetTrust", false);
+        trustedStatus = false;
+        actions.setTrust();
+    },
+
+    setTrust() {
+        if (trustedStatus) {
+            resetValues("initTrustTrue", false);
+        } else {
+            resetValues("initTrustFalse", false);
+        }
+    },
+
+    setTrustInit() {
+        if (trustedStatus) {
+            resetValues("initTrustTrue", true);
+        } else {
+            resetValues("initTrustFalse", true);
+        }
     },
 };
 
@@ -289,20 +322,7 @@ async function main() {
     for (let site of sites) {
         site.visits = state[site.domain] || 0;
     }*/
-
-    let {enabled} = await browser.storage.sync.get({enabled: true});
-    let {trusted} = await browser.storage.sync.get({trusted: true});
-
-    if (enabled) {
-        actions.enable();
-    } else {
-        actions.disable();
-    }
-    if (trusted) {
-        actions.noTrust();
-    } else {
-        actions.trust();
-    }
+    actions["enable"];
 
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();

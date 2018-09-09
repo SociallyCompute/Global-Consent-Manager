@@ -9,7 +9,7 @@ let actions = {
         }
     },
 
-    trust() {
+    async trust() {
         if (document.getElementById("checkTrust").checked) {
             browser.runtime.sendMessage("trust");
         } else {
@@ -25,17 +25,28 @@ async function handleMessage(message) {
         document.getElementById("trust").disabled = true;
     } else if (message.greet == "notList" && message.stat) {
         document.getElementById("trust").disabled = false;
-    } else if (message.greet == "trust" || (!message.stat && message.greet == "resetTrust")) {
-        document.getElementById("trust").innerHTML = "Website Trusted<br>(Click to Change)";
-        document.getElementById("checkTrust").checked = false;
-    } else if (message.greet == "noTrust" || (message.stat && message.greet == "resetTrust")) {
-        document.getElementById("trust").innerHTML = "Website Not Trusted<br>(Click to Change)";
-        document.getElementById("checkTrust").checked = true;
-    } else if (message.greet = "checkbox") {
+    } else if (message.greet == "list") {
+    } else if (message.greet == "checkbox") {
         if (message.stat) {
             document.getElementById("block").checked = true;
         } else {
             document.getElementById("block").checked = false;
+        }
+    } else if (message.stat == false) {
+        if (message.greet == "initTrustTrue") {
+            document.getElementById("checkTrust").checked = false;
+            document.getElementById("trust").innerHTML = "Website Not Trusted<br>(Click to Change)";
+        } else {
+            document.getElementById("checkTrust").checked = true;
+            document.getElementById("trust").innerHTML = "Website Trusted<br>(Click to Change)";
+        }
+    } else {
+        if (message.greet == "initTrustTrue") {
+            document.getElementById("checkTrust").checked = true;
+            document.getElementById("trust").innerHTML = "Website Trusted<br>(Click to Change)";
+        } else {
+            document.getElementById("checkTrust").checked = false;
+            document.getElementById("trust").innerHTML = "Website Not Trusted<br>(Click to Change)";
         }
     }
 }
@@ -44,24 +55,15 @@ async function main() {
     let block = document.querySelector("#block");
     let {enabled} = await browser.storage.sync.get("enabled");
     block.checked = enabled;
+    actions.block();
 
-
-    let {trusted} = await browser.storage.sync.get("trusted");
-
-    if (trusted) {
-        document.getElementById("checkTrust").checked = true;
-        await actions["trust"]();
-    } else {
-        document.getElementById("checkTrust").checked = false;
-        await actions["trust"]();
-    }
+    browser.runtime.sendMessage("setTrustInit");
 
     document.addEventListener("click", async (e) => {
         if (e.target.id == "block" || "trust") {
             await actions[e.target.id]();
         }
     });
-    // document.addEventListener("load", check);
     browser.runtime.onMessage.addListener(handleMessage);
 }
 
