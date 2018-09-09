@@ -53,8 +53,8 @@
   Source: https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API<br /> 
   WebExtension API packages currently used:<br />
    -cookies<br />
-   -tabs<br />
-   -browsingData
+   -storage<br />
+   -tabs
    
   The technical specifications and framework that this project depends on are (c) 2018 IAB Technology Laboratory.
   This content is used under the terms of the MIT License.<br /> 
