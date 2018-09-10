@@ -22,7 +22,7 @@ let actions = {
 };
 
 async function main() {
-    let [tab] = await browser.tabs.query({active: true});
+    let [tab] = await browser.tabs.query({active: true, currentWindow: true});
 
     let {host} = new URL(tab.url);
     let domain = document.querySelector("#domain");
