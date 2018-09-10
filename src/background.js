@@ -53,5 +53,4 @@ async function main() {
 
     browser.runtime.onMessage.addListener(actions.message);
 }
-
 main();
