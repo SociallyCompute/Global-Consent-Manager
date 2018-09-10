@@ -5,135 +5,161 @@ const sites = [
         domain: "mediapart.fr",
         name: "cc",
         value: "{%22disagreement%22:[%22visit%22%2C%22ad%22]%2C%22creation%22:1535909178562%2C%22update%22:1535909178562}",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "theguardian.com",
         name: "GU_TK",
         value: "0",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "theguardian.co.uk",
         name: "GU_TK",
         value: "0",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "thelocal.es",
         name: "euconsent",
         value: "BOTRKYzOTRKYzABABBENBdAAAAAgWAAA",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "telegraph.co.uk",
         name: "_evidon_consent_cookie",
         value: "{\"vendors\":{\"6\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
+        trusted: false,
     },
     {
         domain: "independent.co.uk",
         selector: ".qc-cmp-ui-container.qc-cmp-showing",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "theverge.com",
         selector: "#privacy-consent",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "worldcrunch.com",
         selector: "#cookie-notice",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "forsal.pl",
         selector: "#inforcwp",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "index.hr",
         selector: ".cookie-consent-container",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "investing.com",
         selector: ".consentBarWrapper",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "thejournal.ie",
         selector: "#notify-container",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "politico.eu",
         selector: ".alert-cookies",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         // takes a little while to load
         domain: "voterspost.com",
         selector: "#cookie-notice",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "bbc.com",
         selector: "#cookiePrompt",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "euractiv.com",
         selector: "#cookie-law-bar",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "nytimes.com",
         selector: "#app > footer[role=contentinfo] + .shown.expanded:last-child",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "ctxt.es",
         selector: "#aviso-cookies",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "lepetitjournal.com",
         selector: ".popup-content",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "portfolio.hu",
         selector: "#_iph_cp_popup",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "nouvelobs.com",
         selector: "#ObsCnil",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "index.hu",
         selector: "#_iph_cp_popup",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "reuters.com",
         selector: "#_evidon_banner",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "shetnews.co.uk",
         selector: "#alert",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "tgcom24.mediaset.it",
         selector: "#cookieGdpr, #cookieAdv",
+        trusted: false,
     },
     {
         // Working 8/29/2018 (M)
         domain: "trtworld.com",
         selector: ".gdpr-banner",
+        trusted: false,
     },
 ];
 
@@ -143,6 +169,8 @@ function get(url) {
 }
 
 async function resetValues(string, enabled) {
+    // console.log(string);
+    // console.log(enabled);
     await browser.runtime.sendMessage({
         greet: string,
         stat: enabled,
@@ -175,11 +203,12 @@ async function enable(site, log) {
 }
 
 async function disable(site) {
-    site.enabled = false;
-    if (site.cs != undefined & site.enabled) {
+    if (site.cs != undefined && site.enabled) {
+        site.enabled = false;
         return site.cs.unregister();
     }
     if (site.name != undefined) {
+        site.enabled = false;
         await browser.cookies.remove({
             name: site.name,
             url: `http://${site.domain}/`,
@@ -202,9 +231,10 @@ async function onBeforeRequest(request) {   // eslint-disable-line
     }
 }
 
-async function trust(trustedSite, doTrust) {
+let foundOne = false;
+
+async function queryTrust(trustedSite, trusting) {
     let tsDomain = trustedSite.url.split("/")[2];
-    // conditional for "www." cases
     if (tsDomain == undefined) {
         console.log("No value for Domain!");
     } else {
@@ -214,18 +244,15 @@ async function trust(trustedSite, doTrust) {
         if (tsDomain.startsWith("de.")) {
             tsDomain = tsDomain.substr(3);
         }
-        let foundOne = false;
+        foundOne = false;
         for (let site of sites) {
             if (site.domain == tsDomain) {
+                console.log("TRUSTED VALUE AT RUN: " + site.trusted);
                 foundOne = true;
-                if (doTrust == true) {
-                    console.log("Trusting " + tsDomain);
-                    disable(site);
-                    await browser.runtime.sendMessage({greet: "trust"});
+                if (trusting) {
+                    trust(site, tsDomain);
                 } else {
-                    console.log("Revoking trust for " + tsDomain);
-                    enable(site, false);
-                    await browser.runtime.sendMessage({greet: "noTrust"});
+                    site.trusted = trustedStatus;
                 }
             }
         }
@@ -233,128 +260,100 @@ async function trust(trustedSite, doTrust) {
             console.log("This website is not in the list!");
         }
     }
-    // Reloads the tab
 }
 
-async function activate() {
-    for (let site of sites) {
-        // if (site.visits < 7) {
-        await enable(site, true);
-        // }
+async function trust(site, tsDomain) {
+    if (site.trusted) {
+        site.trusted = false;
+        trustedStatus = false;
+        console.log("Trusting " + tsDomain);
+    } else {
+        site.trusted = true;
+        trustedStatus = true;
+        console.log("Revoking trust for " + tsDomain);
     }
+    if (!trustedStatus) {
+        disable(site);
+    } else {
+        enable(site, false);
+    }
+    await actions.setTrust();
+    console.log("TRUSTED VALUE CHANGED TO: " + site.trusted);
 }
 
-// let enabled = false;
+let enabledStatus = false;
+let trustedStatus = false;
 let actions = {
     async enable() {
-        activate();
-        resetValues("resetTrust", true);
-        await browser.tabs.reload({bypassCache: true});
-        browser.storage.sync.set({enabled: true});
+        if (!enabledStatus) {
+            for (let site of sites) {
+            // if (site.visits < 7) {
+                await enable(site, true);
+            // }
+            }
+            resetValues("initTrustFalse", false);
+        }
+        await browser.storage.sync.set({
+            enabled: true,
+            trusted: false});
+        enabledStatus = true;
     },
 
     async disable() {
-        browser.storage.sync.set({enabled: false});
-        for (let site of sites) {
-            await disable(site);
+        if (enabledStatus) {
+            for (let site of sites) {
+                await disable(site);
+            }
+            console.log("Cookies and CSS hiders disabled");
+            resetValues("initTrustTrue", true);
         }
-        console.log("Cookies and CSS hiders disabled");
-        resetValues("resetTrust", false);
-        await browser.tabs.reload({bypassCache: true});
-        // enabled = false;
+        await browser.storage.sync.set({
+            enabled: false,
+            trusted: true});
+        enabledStatus = false;
     },
 
     async trust() {
-        browser.storage.sync.set({trusted: true});
         browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
             .then((tabs) => browser.tabs.get(tabs[0].id))
             .then((tab) => {
-                trust(tab, true);
+                queryTrust(tab, true);
             });
-        resetValues("resetTrust", true);
-        await browser.tabs.reload({bypassCache: true});
+        // resetValues("resetTrust");
+        await browser.storage.sync.set({trusted: true});
     },
 
-    async noTrust() {
-        browser.storage.sync.set({trusted: false});
+    setTrust() {
+        if (trustedStatus) {
+            resetValues("initTrustTrue", false);
+        } else {
+            resetValues("initTrustFalse", false);
+        }
+    },
+
+    setTrustInit() {
+        console.log("TRUSTED STATUS: " + trustedStatus);
         browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
             .then((tabs) => browser.tabs.get(tabs[0].id))
             .then((tab) => {
-                trust(tab, false);
+                queryTrust(tab, false);
             });
-        resetValues("resetTrust", false);
-        await browser.tabs.reload({bypassCache: true});
+        if (foundOne) {
+            if (trustedStatus) {
+                resetValues("initTrustTrue", true);
+            } else {
+                resetValues("initTrustFalse", false);
+            }
+        }
     },
 };
-
-// This function determines if a domain is in the set list of domains.
-// It is similar to trust().
-
-/* let worthValue = true;
-   sync function checkifTrust(tabsSecond) {
-    let tsDomain = tabsSecond.url.split("/")[2];
-    let foundOne = false;
-    for (let site of sites) {
-        if (tsDomain.startsWith("www.")) {
-            tsDomain = tsDomain.substr(4);
-        }
-        if (tsDomain.startsWith("de.")) {
-            tsDomain = tsDomain.substr(3);
-        }
-        if (site.domain == tsDomain) {
-            foundOne = true;
-        }
-    }
-    if (foundOne == false) {
-        worthValue = false;
-    }
-    console.log(foundOne);
-}
-
-//This function's purpose is to break down the process of checkifTrust.
-
-function singleUpdate() {
-    browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT})
-        .then((tabs) => browser.tabs.get(tabs[0].id))
-        .then((tab) => {
-            checkifTrust(tab);
-        });
-    if (!worthValue) {
-        resetValues("notList");
-    }
-}
-
-//When called, this function updates the checkboxes, based on persistent values.
-
-function update() {
-    resetValues("resetTrust", enabled);
-    resetValues("checkbox", enabled);
-    singleUpdate();
-}*/
 
 async function main() {
     /*
     for (let site of sites) {
         site.visits = state[site.domain] || 0;
     }*/
-
-    let {enabled} = await browser.storage.sync.get({enabled: true});
-    let {trusted} = await browser.storage.sync.get({trusted: true});
-
-    if (enabled) {
-        actions.enable();
-    } else {
-        actions.disable();
-    }
-    if (trusted) {
-        actions.noTrust();
-    } else {
-        actions.trust();
-    }
-
-    console.log((await browser.storage.sync.get()));
-    console.log(enabled);
-    console.log(trusted);
+    actions["enable"];
 
     browser.runtime.onMessage.addListener((msg) => {
         actions[msg]();
