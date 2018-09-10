@@ -4,7 +4,7 @@ let actions = {
     async blocked(e) {
         await browser.runtime.sendMessage({
             domain: document.querySelector("#domain").textContent,
-            blocked: e.target.checked,
+            blocked: !e.target.checked,
         });
         await browser.tabs.reload({bypassCache: true});
     },
@@ -13,8 +13,8 @@ let actions = {
         let [tab] = await browser.tabs.query({active: true, currentWindow: true});
         await browser.tabs.create({
             url: "https://github.com/SociallyCompute/Global-Consent-Manager/issues/new?title="
-            + "Unlisted: " + domain.textContent + "&body=The site at this url is unlisted: " + "\n"
-            + "&projects=loading..." + tab.url + "&labels=Unlisted",
+            + "Not listed yet: " + domain.textContent + "&body=The website at this url is unlisted: " + "\n"
+            + tab.url + "&projects=loading..." + "&labels=Unlisted",
         });
         window.close();
     },
@@ -35,7 +35,7 @@ async function main() {
     if (site) {
         document.body.className = "managed";
         let blocked = document.querySelector("#blocked");
-        blocked.checked = site.blocked;
+        blocked.checked = !site.blocked;
         blocked.addEventListener("change", actions);
     } else {
         document.body.className = "unknown";
