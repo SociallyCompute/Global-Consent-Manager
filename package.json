@@ -19,6 +19,10 @@
         "parserOptions": {
             "ecmaVersion": 2017
         },
+        "globals": {
+            "getSite": true,
+            "sites": true
+        },
         "rules": {
             "indent": [
                 "error",

@@ -2,20 +2,27 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="cookie.css"/>
+    <script src="sites.js"></script>
     <script src="cookie.js" defer></script>
 </head>
 
+<section>
+    <img src="../icon-96.png">
+    <h1>Global Consent Manager</h1>
+    <a href="http://www.globalconsentmanager.com/learnmore/">Learn More...</a>
+</section>
 
-<label class="switcher" id ="switch">
-    Block Consent Dialogs
-    <input id="block" type="checkbox" checked>
+<p>
+    <span id="managed">managed site:</span>
+    <span id="unknown">unknown site:</span>
+    <span id="domain">example.com</span>
+</p>
+
+<label title="">
+    Blocking Consent Dialog
+    <input id="blocked" type="checkbox">
 </label>
-<span hidden><input id="checkTrust" type="checkbox"></input></span>
-<!--
-<input type="checkbox" id="activate"></input>
--->
-<button id="trust" class="smalltext">Website Not Trusted<br>(Click to Change)</button>
-<div id="gcmtext">
-<p>More on Global Consent Manager:</p>
-<a href="http://www.globalconsentmanager.com/learnmore/" class="alink">globalconsentmanager.com</a>
-</div>
+
+<button id="report" title="Let us know if this site should be managed">
+    Report Missing Site...
+</button>

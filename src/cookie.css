@@ -1,44 +1,69 @@
-/*The section of css indented with two spaces was provided by W3
-and can be found at:
-https://www.w3schools.com/howto/howto_css_switch.asp
-
-This code was modified from the original
-And is used under the Refsnes Data terms of fair use 
-in an educational environment.*/
 body {
     -moz-user-select: none;
     user-select: none;
     background: #111;
+    font: 1em sans-serif;
+    max-width: 22em;
 }
-button {
+
+img {
+    float: left;
+    margin-right: 0.5em;
+}
+h1 {
+    font: small-caps 1.4em sans-serif;
+    padding-top: 0.3em;
+    margin: 0.5em;
+    color: #bbb;
+}
+a {
+    color: #369;
+    text-decoration: none;
+    text-align: right;
+}
+section:hover a {
+    color: #eee;
+    text-decoration: underline;
+}
+
+p {
+    clear: left;
+    margin: 2em 1em 1.5em 1.5em;
+    color: #666;
+    text-align: left;
+}
+span {
     display: block;
 }
-label, button{
-    width: 16.85em;
-    font: 1em sans-serif;
+#domain {
+    color: #bbb;
+}
+
+label, button {
+    display: block;
+    width: 100%;
     border: 0;
-    font: small-caps 100% sans-serif;
+    font: small-caps 1em sans-serif;
     background: #333;
-    margin: 1px;
-    color: #ccc;
+    margin: 2px 0;
+    color: #bbb;
     background: #333;
     cursor: pointer;
     box-sizing: border-box;
-    padding: 0.5em;
+    padding: 0.5em 1em;
 }
-label.switcher {
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;
+button {
+    padding: 0.9em 0.5em;
 }
 button:hover, label:hover {
     background: #444;
-    color: #fff;
+    color: #eee;
 }
 
 input[type=checkbox] {
     -moz-appearance: none;
     appearance: none;
-    margin: 1em 0.2em 1em 0em;
+    margin: 0 0 0 1em;
     width: 62px;
     height: 32px;
     display: inline-block;
@@ -51,15 +76,13 @@ input[type=checkbox] {
     vertical-align: middle;
     transition: all ease 0.2s;
 }
-
 input[type=checkbox]:before {
     content: "ON OFF";
     display: block;
     position: absolute;
-    /* z-index: 2; */
     width: 22px;
     height: 22px;
-    background: #ccc;
+    background: #bbb;
     left: 5px;
     top: 5px;
     border-radius: 50%;
@@ -69,41 +92,16 @@ input[type=checkbox]:before {
     white-space: nowrap;
     transition: all ease 0.2s;
 }
-
 input[type=checkbox]:checked:before {
     left: 34px;
-    color: #fff;
-    background: #fff;
-}
-button:hover:not(#indicator) {
-    background: #369;
+    color: #eee;
+    background: #eee;
 }
 input[type=checkbox]:checked {
     background: #369;
 }
 
-p {
-    margin: 0;
-    color: #ccc;
-    font: small-caps 85% sans-serif;
-    text-align: center;
-}
-
-a.alink {
-    color: #369;
-    font: small-caps 105% sans-serif;
-    text-align: center;
-    width:100%;
-}
-
-label {
-    display: inline;
-}
-
-#checktrust {
-    visibility: hidden;
-}
-
-#gcmtext {
-    text-align: center;
+.unknown #managed, .unknown label, 
+.managed #unknown, .managed button {
+    display: none;
 }
