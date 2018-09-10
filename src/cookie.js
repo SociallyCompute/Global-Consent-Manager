@@ -10,11 +10,7 @@ let actions = {
     },
 
     async trust() {
-        if (document.getElementById("checkTrust").checked) {
-            browser.runtime.sendMessage("trust");
-        } else {
-            browser.runtime.sendMessage("noTrust");
-        }
+        browser.runtime.sendMessage("trust");
     },
 };
 
@@ -25,21 +21,6 @@ async function handleMessage(message) {
         document.getElementById("trust").disabled = true;
     } else if (message.greet == "notList" && message.stat) {
         document.getElementById("trust").disabled = false;
-    } else if (message.greet == "list") {
-    } else if (message.greet == "checkbox") {
-        if (message.stat) {
-            document.getElementById("block").checked = true;
-        } else {
-            document.getElementById("block").checked = false;
-        }
-    } else if (message.stat == false) {
-        if (message.greet == "initTrustTrue") {
-            document.getElementById("checkTrust").checked = false;
-            document.getElementById("trust").innerHTML = "Website Not Trusted<br>(Click to Change)";
-        } else {
-            document.getElementById("checkTrust").checked = true;
-            document.getElementById("trust").innerHTML = "Website Trusted<br>(Click to Change)";
-        }
     } else {
         if (message.greet == "initTrustTrue") {
             document.getElementById("checkTrust").checked = true;
@@ -49,6 +30,9 @@ async function handleMessage(message) {
             document.getElementById("trust").innerHTML = "Website Not Trusted<br>(Click to Change)";
         }
     }
+    // console.log("GREET: " + message.greet);
+    // console.log("STAT: " + message.stat);
+    // console.log("CHECKED: " + document.getElementById("checkTrust").checked);
 }
 
 async function main() {
@@ -61,6 +45,7 @@ async function main() {
 
     document.addEventListener("click", async (e) => {
         if (e.target.id == "block" || "trust") {
+            console.log("**************************************");
             await actions[e.target.id]();
         }
     });
