@@ -2,8 +2,7 @@
 
  This public repository is used to publish a Firefox web extension.
  
- This extension creates consent cookies to streamline the user's consent experience while on GDPR-regulated websites.<br />
- The code is not a finished product.
+ This extension streamlines the user's consent experience while on GDPR-regulated websites.<br />
  
  ## How to install this web extension
  
@@ -23,16 +22,17 @@
  This will also launch Web-Ext.
  
  ## How to use this Web Extension
- 
- Toggle the switch labeled "BLOCK CONSENT DIALOGS" to show or hide consent dialogs. <br /> 
-     -If the toggle switch status is "ON", supported sites will not provide consent dialogs.<br /> 
-     -If the toggle switch status is "OFF", supported sites will proceed normally.<br /> 
- <br /> 
- To show or hide consent dialogs on a single page, click Global Consent Manager's second button.<br />
-     -If this button is labeled "WEBSITE TRUSTED", the current website should display a consent dialog.<br />
-     -If this button is labeled "WEBSITE NOT TRUSTED" and the current website is on the list of supported websites, it should not display a consent dialog.<br />
-     <br />
- Note: The secondary button will change its label to support primary consent options that are set by the user.<br />
+ Global Consent Manager will do almost all of the work for you; your consent is managed with one click on each supported website.
+ ### Supported Sites
+ If the domain you are on is registered by Global Consent Manager, it will not show consent dialogs on first visit.<br /> 
+ If so, you can toggle the button labeled "Trust Site (Allow Dialogs)" to hide or show consent dialogs. <br /> 
+     -If the toggle switch status is "ON", supported sites will proceed normally.<br /> 
+     -If the toggle switch status is "OFF", supported sites will not provide consent dialogs.<br /> 
+ ### Unsupported Sites
+ If you see a consent dialog on first visit, the site is probably not registered by Global Consent Manager.<br /> 
+ In this case, please click the button labeled "Report Missing Site..." and present an issue on GitHub.<br />
+ This will be automatically populated, but feel free to customize it.<br /> <br />
+ Note: The button will change its label depending on the domain.<br />
  
  ## Licensing and Copyright
  
