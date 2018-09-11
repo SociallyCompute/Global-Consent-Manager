@@ -10,8 +10,11 @@ let actions = {
     },
 
     async report(e) {
+        let [tab] = await browser.tabs.query({active: true, currentWindow: true});
         await browser.tabs.create({
-            url: "https://github.com/SociallyCompute/Global-Consent-Manager/issues/new",
+            url: "https://github.com/SociallyCompute/Global-Consent-Manager/issues/new?title="
+            + "Not listed yet: " + domain.textContent + "&body=The website at this url is unlisted: " + "\n"
+            + tab.url + "&projects=loading..." + "&labels=Unlisted",
         });
         window.close();
     },
