@@ -4,7 +4,7 @@ let actions = {
     async blocked(e) {
         await browser.runtime.sendMessage({
             domain: document.querySelector("#domain").textContent,
-            blocked: !e.target.checked,
+            blocked: e.target.checked,
         });
         await browser.tabs.reload({bypassCache: true});
     },
@@ -35,7 +35,7 @@ async function main() {
     if (site) {
         document.body.className = "managed";
         let blocked = document.querySelector("#blocked");
-        blocked.checked = !site.blocked;
+        blocked.checked = site.blocked;
         blocked.addEventListener("change", actions);
     } else {
         document.body.className = "unknown";
