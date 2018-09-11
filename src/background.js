@@ -34,12 +34,28 @@ async function disable(site) {
 let actions = {
     async message({domain, blocked}) {
         let site = await getSite(domain);
+        site.storage.blocked = blocked;
+        await browser.storage.sync.set({[site.domain]: site.storage});
         if (blocked) {
             await enable(site);
         } else {
             await disable(site);
         }
-        await browser.storage.sync.set({[site.domain]: {blocked}});
+    },
+
+    async navigation({url}) {
+        let site = await getSite(new URL(url).host);
+        if (site && site.blocked) {
+            let keys = Object.keys(site.storage);
+            let date = new Date().toISOString().substr(0, 20);
+            if (keys.length <= 5 && !keys.includes(date)) {
+                site.storage[date] = 1;
+                await browser.storage.sync.set({[site.domain]: site.storage});
+                if (keys.length >= 5) {
+                    await disable(site);
+                }
+            }
+        }
     },
 };
 
@@ -51,6 +67,7 @@ async function main() {
         }
     }
 
-    browser.runtime.onMessage.addListener(actions.message);
+    await browser.runtime.onMessage.addListener(actions.message);
+    await browser.webNavigation.onCompleted.addListener(actions.navigation);
 }
 main();
