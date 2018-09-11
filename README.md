@@ -25,7 +25,7 @@
  Global Consent Manager will do almost all of the work for you; your consent is managed with one click on each supported website.
  ### Supported Sites
  If the domain you are on is registered by Global Consent Manager, it will not show consent dialogs on first visit.<br /> 
- If so, you can toggle the button labeled "Trust Site (Allow Dialogs)" to hide or show consent dialogs. <br /> 
+ If so, you can toggle the button labeled "Block Consent Dialog" to hide or show consent dialogs on this page. <br /> 
      -If the toggle switch status is "ON", supported sites will proceed normally.<br /> 
      -If the toggle switch status is "OFF", supported sites will not provide consent dialogs.<br /> 
  ### Unsupported Sites
