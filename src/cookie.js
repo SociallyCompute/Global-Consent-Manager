@@ -1,23 +1,31 @@
 "use strict";
 
+function updateManaged(site) {
+    let {blocked} = site.storage;
+    let visits = Object.keys(site.storage).length;
+    let managed = document.querySelector("#managed");
+    managed.className = `manually-${blocked} visits-${visits}`;
+    console.log("managed: ", managed.className);
+}
+
 let actions = {
     async blocked(e) {
+        let domain = document.querySelector("#domain").textContent;
         await browser.runtime.sendMessage({
-            domain: document.querySelector("#domain").textContent,
+            domain: domain,
             blocked: e.target.checked,
         });
-        let managed = document.querySelector("#managed");
-        let site = await getSite(document.querySelector("#domain").textContent);
-        managed.parentNode.className = `${site.storage.blocked} v${Object.keys(site.storage).length}`;
+        updateManaged(await getSite(domain));
         await browser.tabs.reload({bypassCache: true});
     },
 
     async report(e) {
         let [tab] = await browser.tabs.query({active: true, currentWindow: true});
+        let domain = document.querySelector("#domain").textContent;
         await browser.tabs.create({
             url: "https://github.com/SociallyCompute/Global-Consent-Manager/issues/new?title="
-            + "Not listed yet: " + domain.textContent + "&body=The website at this url is unlisted: " + "\n"
-            + tab.url + "&projects=loading..." + "&labels=Unlisted",
+                + "Not listed yet: " + domain + "&body=The website at this url is unlisted: " + "\n"
+                + tab.url + "&projects=loading..." + "&labels=Unlisted",
         });
         window.close();
     },
@@ -40,10 +48,7 @@ async function main() {
         let blocked = document.querySelector("#blocked");
         blocked.checked = site.blocked;
         blocked.addEventListener("change", actions);
-
-        let managed = document.querySelector("#managed");
-        managed.parentNode.className = `${site.storage.blocked} v${Object.keys(site.storage).length}`;
-        console.log("managed.className", managed.className);
+        updateManaged(site);
     } else {
         document.body.className = "unknown";
         let report = document.querySelector("#report");

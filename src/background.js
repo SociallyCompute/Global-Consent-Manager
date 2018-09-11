@@ -47,11 +47,11 @@ let actions = {
         let site = await getSite(new URL(url).host);
         if (site && site.blocked) {
             let keys = Object.keys(site.storage);
-            let date = new Date().toISOString().substr(0, 20);
+            let date = new Date().toISOString().substr(0, 16);
             if (keys.length <= 5 && !keys.includes(date)) {
                 site.storage[date] = 1;
                 await browser.storage.sync.set({[site.domain]: site.storage});
-                if (keys.length >= 5) {
+                if (keys.length >= 5 && !site.storage.blocked) {
                     await disable(site);
                 }
             }
@@ -68,6 +68,6 @@ async function main() {
     }
 
     await browser.runtime.onMessage.addListener(actions.message);
-    await browser.webNavigation.onCompleted.addListener(actions.navigation);
+    await browser.webNavigation.onCommitted.addListener(actions.navigation);
 }
 main();
