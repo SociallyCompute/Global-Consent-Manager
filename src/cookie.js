@@ -6,6 +6,9 @@ let actions = {
             domain: document.querySelector("#domain").textContent,
             blocked: e.target.checked,
         });
+        let managed = document.querySelector("#managed");
+        let site = await getSite(document.querySelector("#domain").textContent);
+        managed.parentNode.className = `${site.storage.blocked} v${Object.keys(site.storage).length}`;
         await browser.tabs.reload({bypassCache: true});
     },
 
@@ -34,6 +37,10 @@ async function main() {
         let blocked = document.querySelector("#blocked");
         blocked.checked = site.blocked;
         blocked.addEventListener("change", actions);
+
+        let managed = document.querySelector("#managed");
+        managed.parentNode.className = `${site.storage.blocked} v${Object.keys(site.storage).length}`;
+        console.log("managed.className", managed.className);
     } else {
         document.body.className = "unknown";
         let report = document.querySelector("#report");

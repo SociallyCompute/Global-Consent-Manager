@@ -36,7 +36,7 @@ span {
     display: block;
 }
 #domain {
-    color: #bbb;
+    color: #eee;
 }
 
 label, button {
@@ -104,4 +104,27 @@ input[type=checkbox]:checked {
 .unknown #managed, .unknown label, 
 .managed #unknown, .managed button {
     display: none;
+}
+
+/* managed.className = `${site.storage.blocked} v${Object.keys(site.storage).length}`; */
+
+.v6:after, .undefined:after {
+    content: "trusted because visited regularly";
+    color: yellow;
+}
+.v0:after, .v1:after {
+    content: "first visit, not trusted yet";
+    color: #666;
+}
+.v2:after, .v3:after, .v4:after, .v5:after {
+    content: "previously visited, not yet trusted";
+    color: #999;
+}
+.true::after {
+    content: "blocked manually";
+    color: #369;
+}
+.false:after {
+    content: "trusted manually";
+    color: yellow;
 }

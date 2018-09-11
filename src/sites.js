@@ -143,7 +143,8 @@ const sites = [
 async function getSite(host) {
     let site = sites.find((s) => host.endsWith(s.domain));
     if (site) {
-        let storage = await browser.storage.sync.get(site.domain);
-        return Object.assign(site, storage[site.domain] || {blocked: true});
+        let storage = (await browser.storage.sync.get(site.domain))[site.domain] || {};
+        let blocked = Object.keys(storage).length <= 5;
+        return Object.assign(site, {storage, blocked}, storage);
     }
 }
