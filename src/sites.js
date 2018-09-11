@@ -23,7 +23,7 @@ const sites = [
     },
     {
         // Working 9/11/2018 (M)
-		// ADD MORE thelocal.*
+        // ADD MORE thelocal.*
         domain: "thelocal.es",
         name: "euconsent",
         value: "BOTRKYzOTRKYzABABBENBdAAAAAgWAAA",
@@ -35,7 +35,7 @@ const sites = [
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
     },
     {
-		// Working 9/11/2018 (M)
+        // Working 9/11/2018 (M)
         domain: "independent.co.uk",
         selector: ".qc-cmp-ui-container.qc-cmp-showing",
     },
@@ -56,13 +56,13 @@ const sites = [
     },
     {
         // Broken 9/11/2018 (M)
-		// Manage consentSaw cookie on load?
+        // Manage consentSaw cookie on load?
         domain: "index.hr",
         selector: ".cookie-consent-container",
     },
     {
         // Broken 9/11/2018 (M)
-		// Manage was-set cookie on load?
+        // Manage was-set cookie on load?
         domain: "investing.com",
         selector: ".consentBarWrapper",
     },
