@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Global Consent Manager",
-    "version": "1.2.0",
+    "version": "1.2.1",
 
     "description": "A browser extension for easier managing of GDPR consent cookies across websites",
     "homepage_url": "http://www.globalconsentmanager.com/",
