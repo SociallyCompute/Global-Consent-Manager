@@ -106,23 +106,24 @@ input[type=checkbox]:checked {
     display: none;
 }
 
-.manually-undefined:after {
-    content: "trusted because visited regularly";
-    color: yellow;
-}
-.visits-0:after, .visits-1:after {
+.blocked:after {
     content: "first visit, not trusted yet";
     color: #666;
 }
-.visits-2:after, .visits-3:after, .visits-4:after, .visits-5:after {
+.blocked.visited:after {
     content: "previously visited, not yet trusted";
     color: #999;
 }
-.manually-false:after {
+.unblocked:after {
+    content: "trusted because visited regularly";
+    color: yellow;
+}
+
+.manual.unblocked:after {
     content: "trusted manually";
     color: yellow;
 }
-.manually-true:after {
+.manual.blocked:after {
     content: "blocked manually";
     color: #369;
 }
