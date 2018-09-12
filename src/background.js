@@ -34,7 +34,7 @@ async function disable(site) {
 let actions = {
     async message({domain, blocked}) {
         let site = await getSite(domain);
-        site.storage.blocked = blocked;
+        site.storage = {blocked, manual: true};
         await browser.storage.sync.set({[site.domain]: site.storage});
         if (blocked) {
             await enable(site);
@@ -45,17 +45,19 @@ let actions = {
 
     async navigation({url}) {
         let site = await getSite(new URL(url).host);
-        if (site && site.blocked) {
-            let keys = Object.keys(site.storage);
-            let date = new Date().toISOString().substr(0, 16);
-            if (keys.length <= 5 && !keys.includes(date)) {
-                site.storage[date] = 1;
-                await browser.storage.sync.set({[site.domain]: site.storage});
-                if (keys.length >= 5 && !site.storage.blocked) {
-                    await disable(site);
-                }
-            }
+        let date = new Date().toISOString().substr(0, 16);
+
+        if (!site || site.manual || !site.blocked || date in site.storage) {
+            return;
         }
+
+        if (Object.keys(site.storage).length <= 5) {
+            site.storage[date] = 1;
+        } else {
+            site.storage = {blocked: false};
+            await disable(site);
+        }
+        await browser.storage.sync.set({[site.domain]: site.storage});
     },
 };
 

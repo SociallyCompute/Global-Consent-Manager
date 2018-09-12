@@ -1,11 +1,12 @@
 "use strict";
 
 function updateManaged(site) {
-    let {blocked} = site.storage;
-    let visits = Object.keys(site.storage).length;
     let managed = document.querySelector("#managed");
-    managed.className = `manually-${blocked} visits-${visits}`;
-    console.log("managed: ", managed.className);
+    managed.classList.toggle("manual", !!site.manual);
+    managed.classList.toggle("blocked", site.blocked);
+    managed.classList.toggle("unblocked", !site.blocked);
+    managed.classList.toggle("visited", Object.keys(site.storage).length > 2);
+    console.log("managed: ", managed.className, Object.keys(site.storage).length);
 }
 
 let actions = {
