@@ -45,7 +45,7 @@ let actions = {
 
     async navigation({url}) {
         let site = await getSite(new URL(url).host);
-        let date = new Date().toISOString().substr(0, 16);
+        let date = new Date().toISOString().substr(0, 10);
 
         if (!site || site.manual || !site.blocked || date in site.storage) {
             return;

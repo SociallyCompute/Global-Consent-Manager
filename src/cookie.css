@@ -107,11 +107,11 @@ input[type=checkbox]:checked {
 }
 
 .blocked:after {
-    content: "first visit, not trusted yet";
+    content: "first visited today, not trusted";
     color: #666;
 }
 .blocked.visited:after {
-    content: "previously visited, not yet trusted";
+    content: "previously visited, not trusted yet";
     color: #999;
 }
 .unblocked:after {
@@ -120,10 +120,10 @@ input[type=checkbox]:checked {
 }
 
 .manual.unblocked:after {
-    content: "trusted manually";
+    content: "trusted by choice";
     color: yellow;
 }
 .manual.blocked:after {
-    content: "blocked manually";
+    content: "blocked by choice";
     color: #369;
 }
