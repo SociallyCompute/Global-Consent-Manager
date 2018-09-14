@@ -147,37 +147,37 @@ const sites = [
         domain: "meneame.net",
         selector: ".qc-cmp-ui-container",
     },
-	{
+    {
         // Working 9/14/2018 (M)
         domain: "cyclingnews.com",
         selector: ".qc-cmp-ui-container",
     },
-	{
+    {
         // Working 9/14/2018 (M)
         domain: "euronews.com",
         selector: ".qc-cmp-ui-container",
     },
-	{
+    {
         // Working 9/14/2018 (M)
         domain: "joe.ie",
         selector: ".qc-cmp-ui-container",
-	},
-	{
+    },
+    {
         // Working 9/14/2018 (M)
         domain: "vilaweb.cat",
         selector: ".qc-cmp-ui-container, #accept_cookies",
     },
-	{
+    {
         // Working 9/14/2018 (M)
         domain: "public.fr",
         selector: "#footer_tc_privacy",
     },
-	{
+    {
         // Working 9/14/2018 (M)
         domain: "vrt.be",
         selector: ".js-cookie-consent",
     },
-	{
+    {
         // Working 9/14/2018 (M)
         domain: "dailymail.co.uk",
         selector: ".mol-ads-cmp--banner",
