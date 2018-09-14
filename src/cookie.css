@@ -36,7 +36,7 @@ span {
     display: block;
 }
 #domain {
-    color: #bbb;
+    color: #eee;
 }
 
 label, button {
@@ -104,4 +104,26 @@ input[type=checkbox]:checked {
 .unknown #managed, .unknown label, 
 .managed #unknown, .managed button {
     display: none;
+}
+
+.blocked:after {
+    content: "first visited today, not trusted";
+    color: #666;
+}
+.blocked.visited:after {
+    content: "previously visited, not trusted yet";
+    color: #999;
+}
+.unblocked:after {
+    content: "trusted because visited regularly";
+    color: yellow;
+}
+
+.manual.unblocked:after {
+    content: "trusted by choice";
+    color: yellow;
+}
+.manual.blocked:after {
+    content: "blocked by choice";
+    color: #369;
 }
