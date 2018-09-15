@@ -174,7 +174,7 @@ const sites = [
         domain: "vilaweb.cat",
         selector: ".qc-cmp-ui-container, #accept_cookies",
     },
-    // End Quantcasrt
+    // End Quantcast
     {
         // Working 9/14/2018 (M)
         domain: "public.fr",
