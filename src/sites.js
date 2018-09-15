@@ -148,7 +148,7 @@ const sites = [
         domain: "trtworld.com",
         selector: ".gdpr-banner",
     },
-	//Begin Quantcast
+    // Begin Quantcast
     {
         // Working 9/14/2018 (M)
         domain: "meneame.net",
@@ -174,7 +174,7 @@ const sites = [
         domain: "vilaweb.cat",
         selector: ".qc-cmp-ui-container, #accept_cookies",
     },
-	//End Quantcasrt
+    // End Quantcasrt
     {
         // Working 9/14/2018 (M)
         domain: "public.fr",
