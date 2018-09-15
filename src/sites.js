@@ -35,6 +35,12 @@ const sites = [
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
     },
     {
+        // Fixed 9/11/2018 (M)
+        domain: "cnet.com",
+        name: "_evidon_consent_cookie",
+        value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
+    },
+    {
         // Working 9/11/2018 (M)
         domain: "independent.co.uk",
         selector: ".qc-cmp-ui-container.qc-cmp-showing",
@@ -142,6 +148,7 @@ const sites = [
         domain: "trtworld.com",
         selector: ".gdpr-banner",
     },
+	//Begin Quantcast
     {
         // Working 9/14/2018 (M)
         domain: "meneame.net",
@@ -167,6 +174,7 @@ const sites = [
         domain: "vilaweb.cat",
         selector: ".qc-cmp-ui-container, #accept_cookies",
     },
+	//End Quantcasrt
     {
         // Working 9/14/2018 (M)
         domain: "public.fr",
