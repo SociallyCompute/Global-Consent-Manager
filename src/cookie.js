@@ -42,17 +42,26 @@ async function main() {
     let {host} = new URL(tab.url);
     let domain = document.querySelector("#domain");
     domain.textContent = host;
-
+    let report = document.getElementById("report");
     let site = await getSite(host);
-    if (site) {
-        document.body.className = "managed";
+
+    if (tab.url.startsWith("about:") || tab.url.startsWith("file:") || tab.url == "") {
+        console.log("Condition met");
+        report.innerHTML = "This site is not a webpage...";
+        report.disabled = true;
+        report.style.display = "initial";
+        document.body.className = "unknown";
+    } else if (site) {
+        report.style.display = "none";
         let blocked = document.querySelector("#blocked");
         blocked.checked = site.blocked;
         blocked.addEventListener("change", actions);
         updateManaged(site);
     } else {
+        report.innerHTML = "Report Missing Site...";
+        report.disabled = false;
+        report.style.display = "initial";
         document.body.className = "unknown";
-        let report = document.querySelector("#report");
         report.addEventListener("click", actions);
     }
 }

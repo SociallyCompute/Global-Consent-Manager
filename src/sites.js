@@ -42,6 +42,16 @@ const sites = [
     },
     {
         // Working 9/11/2018 (M)
+        domain: "popularmechanics.com",
+        selector: "#_evidon-banner, #_evidon-background",
+    },
+    {
+        // Working 9/11/2018 (M)
+        domain: "thenextweb.com",
+        selector: ".cookieConsent-popOut",
+    },
+    {
+        // Working 9/11/2018 (M)
         domain: "independent.co.uk",
         selector: ".qc-cmp-ui-container.qc-cmp-showing",
     },
