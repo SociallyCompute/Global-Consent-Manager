@@ -35,6 +35,12 @@ const sites = [
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
     },
     {
+        // Fixed 9/11/2018 (M)
+        domain: "cnet.com",
+        name: "_evidon_consent_cookie",
+        value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
+    },
+    {
         // Working 9/11/2018 (M)
         domain: "independent.co.uk",
         selector: ".qc-cmp-ui-container.qc-cmp-showing",
@@ -141,6 +147,48 @@ const sites = [
         // Working 9/11/2018 (M)
         domain: "trtworld.com",
         selector: ".gdpr-banner",
+    },
+    // Begin Quantcast
+    {
+        // Working 9/14/2018 (M)
+        domain: "meneame.net",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 9/14/2018 (M)
+        domain: "cyclingnews.com",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 9/14/2018 (M)
+        domain: "euronews.com",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 9/14/2018 (M)
+        domain: "joe.ie",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 9/14/2018 (M)
+        domain: "vilaweb.cat",
+        selector: ".qc-cmp-ui-container, #accept_cookies",
+    },
+    // End Quantcast
+    {
+        // Working 9/14/2018 (M)
+        domain: "public.fr",
+        selector: "#footer_tc_privacy",
+    },
+    {
+        // Working 9/14/2018 (M)
+        domain: "vrt.be",
+        selector: ".js-cookie-consent",
+    },
+    {
+        // Working 9/14/2018 (M)
+        domain: "dailymail.co.uk",
+        selector: ".mol-ads-cmp--banner",
     },
 ];
 
