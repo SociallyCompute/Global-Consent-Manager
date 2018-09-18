@@ -44,22 +44,21 @@ async function main() {
     domain.textContent = host;
     let report = document.getElementById("report");
     let site = await getSite(host);
+    let nosite = document.getElementById("nosite");
 
     if (tab.url.startsWith("about:") || tab.url.startsWith("file:") || tab.url == "") {
-        console.log("Condition met");
-        report.textContext = "This site is not a webpage...";
-        report.disabled = true;
-        report.style.display = "initial";
+        nosite.style.display = "initial";
+        report.style.display = "none";
         document.body.className = "unknown";
     } else if (site) {
         report.style.display = "none";
+        nosite.style.display = "none";
         let blocked = document.querySelector("#blocked");
         blocked.checked = site.blocked;
         blocked.addEventListener("change", actions);
         updateManaged(site);
     } else {
-        report.textContext = "Report Missing Site...";
-        report.disabled = false;
+        nosite.style.display = "none";
         report.style.display = "initial";
         document.body.className = "unknown";
         report.addEventListener("click", actions);

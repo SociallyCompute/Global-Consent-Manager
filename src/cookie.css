@@ -55,7 +55,7 @@ label, button {
 button {
     padding: 0.9em 0.5em;
 }
-button:hover, label:hover {
+button:hover:not([id=nosite]), label:hover {
     background: #444;
     color: #eee;
 }
