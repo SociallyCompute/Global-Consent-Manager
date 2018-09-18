@@ -40,14 +40,14 @@ const sites = [
         // Fixed 9/11/2018 (M)
         domain: "telegraph.co.uk",
         name: "_evidon_consent_cookie",
-        // Need to figure out current time sonversion for evidon format of date.
+        // Need to figure out current time conversion for evidon format of date.
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
     },
     {
         // Fixed 9/15/2018 (M)
         domain: "cnet.com",
         name: "_evidon_consent_cookie",
-        // Need to figure out current time sonversion for evidon format of date.
+        // Need to figure out current time conversion for evidon format of date.
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
     },
     {
