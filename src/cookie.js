@@ -47,7 +47,7 @@ async function main() {
 
     if (tab.url.startsWith("about:") || tab.url.startsWith("file:") || tab.url == "") {
         console.log("Condition met");
-        report.innerHTML = "This site is not a webpage...";
+        report.textContext = "This site is not a webpage...";
         report.disabled = true;
         report.style.display = "initial";
         document.body.className = "unknown";
@@ -58,7 +58,7 @@ async function main() {
         blocked.addEventListener("change", actions);
         updateManaged(site);
     } else {
-        report.innerHTML = "Report Missing Site...";
+        report.textContext = "Report Missing Site...";
         report.disabled = false;
         report.style.display = "initial";
         document.body.className = "unknown";
