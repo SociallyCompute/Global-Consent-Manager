@@ -2,12 +2,14 @@
 
 /* exported sites, getSite */
 
+const time = new Date().getTime();
+
 const sites = [
     {
         // Working 9/11/2018 (M)
         domain: "mediapart.fr",
         name: "cc",
-        value: "{%22disagreement%22:[%22visit%22%2C%22ad%22]%2C%22creation%22:1535909178562%2C%22update%22:1535909178562}",
+        value: "{%22disagreement%22:[%22visit%22%2C%22ad%22]%2C%22creation%22:" + time + "%2C%22update%22:" + time + "}",
     },
     {
         // Working 9/11/2018 (M)
@@ -29,24 +31,53 @@ const sites = [
         value: "BOTRKYzOTRKYzABABBENBdAAAAAgWAAA",
     },
     {
+        // Working 9/17/2018 (M)
+        domain: "digitaltrends.com",
+        name: "CookieConsent",
+        value: "{stamp:'dv8/ZEvl7WmSKpF9zRuHOD/EcIGUL5sq/IiDrPYYe0q8SsOtlsV7ng=='%2Cnecessary:true%2Cpreferences:false%2Cstatistics:false%2Cmarketing:false%2Cver:1}",
+    },
+    {
         // Fixed 9/11/2018 (M)
         domain: "telegraph.co.uk",
         name: "_evidon_consent_cookie",
+        // Need to figure out current time sonversion for evidon format of date.
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
     },
     {
-        // Fixed 9/11/2018 (M)
+        // Fixed 9/15/2018 (M)
         domain: "cnet.com",
         name: "_evidon_consent_cookie",
+        // Need to figure out current time sonversion for evidon format of date.
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2018-08-23T18:33:49.352Z\"}",
     },
     {
-        // Working 9/11/2018 (M)
+        // Working 9/17/2018 (M)
         domain: "popularmechanics.com",
-        selector: "#_evidon-banner, #_evidon-background",
+        selector: "#_evidon-barrier-wrapper, #_evidon-banner, #_evidon-background",
     },
     {
-        // Working 9/11/2018 (M)
+        // Working 9/17/2018 (M)
+        domain: "mashable.com",
+        selector: "#_evidon-barrier-wrapper, #_evidon-banner, #_evidon-background",
+    },
+    {
+        // Working 9/17/2018 (M)
+        domain: "wired.com",
+        selector: "#_evidon_banner",
+    },
+    {
+        // Working 9/17/2018 (M)
+        // Note the .de
+        domain: "businessinsider.de",
+        selector: ".cc-window, .cc-banner, .cc-type-info, .cc-theme-block, .cc-bottom",
+    },
+    {
+        // Working 9/17/2018 (M)
+        domain: "eurogamer.net",
+        selector: ".cookie-gdpr, .cookie-bar",
+    },
+    {
+        // Working 9/17/2018 (M)
         domain: "thenextweb.com",
         selector: ".cookieConsent-popOut",
     },
