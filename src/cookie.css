@@ -4,6 +4,7 @@ body {
     background: #111;
     font: 1em sans-serif;
     max-width: 22em;
+    overflow:auto;
 }
 
 img {
@@ -40,7 +41,7 @@ span {
 }
 
 label, button {
-    display: block;
+    display:block;
     width: 100%;
     border: 0;
     font: small-caps 1em sans-serif;
@@ -126,4 +127,26 @@ input[type=checkbox]:checked {
 .manual.blocked:after {
     content: "blocked by choice";
     color: #369;
+}
+button#bug {
+    width: 3em;
+}
+
+
+.bugcontainer {
+    height:6em;
+    padding-bottom: 1em;
+}
+
+div#left {
+    float:left;
+    position:absolute;
+}
+
+div#right {
+    float:right; 
+}
+
+div#clear {
+    clear:both;
 }
