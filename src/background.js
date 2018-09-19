@@ -70,7 +70,7 @@ async function main() {
     }
 
     async function bug(e) {
-        let [URL] =  await browser.tabs.query({active: true, currentWindow: true});
+        let [URL] = await browser.tabs.query({active: true, currentWindow: true});
         let domain = (URL.url).split("/")[2];
         let body = "I found a bug in Global Consent Manager!";
         body += "%0A%0A";
@@ -86,10 +86,10 @@ async function main() {
     browser.contextMenus.create({
         id: "report-bug",
         title: "Report a GCM Bug",
-        contexts: ["all"]
-      });
-      
-      browser.contextMenus.onClicked.addListener(bug);
+        contexts: ["all"],
+    });
+
+    browser.contextMenus.onClicked.addListener(bug);
     await browser.runtime.onMessage.addListener(actions.message);
     await browser.webNavigation.onCommitted.addListener(actions.navigation);
 }
