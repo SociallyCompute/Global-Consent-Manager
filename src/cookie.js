@@ -9,6 +9,18 @@ function updateManaged(site) {
     console.log("managed: ", managed.className, Object.keys(site.storage).length);
 }
 
+function updateSecondary(isWebsite) {
+    console.log(isWebsite);
+    let report = document.querySelector("#report");
+    let nosite = document.querySelector("#nosite");
+    let cdblock = document.querySelector("#cdblock");
+    cdblock.classList.toggle("hide", !isWebsite);
+    report.classList.toggle("hide", !isWebsite);
+    nosite.classList.toggle("hide", isWebsite);
+    console.log("Report: ", report.ClassName);
+    console.log("NoSite: ", nosite.ClassName);
+}
+
 let actions = {
     async blocked(e) {
         let domain = document.querySelector("#domain").textContent;
@@ -57,27 +69,25 @@ async function main() {
     let {host} = new URL(tab.url);
     let domain = document.querySelector("#domain");
     domain.textContent = host;
-    let report = document.getElementById("report");
     let site = await getSite(host);
+    let isWebsite = true;
 
-    if (tab.url.startsWith("about:") || tab.url.startsWith("file:") || tab.url == "") {
-        console.log("Condition met");
-        report.innerHTML = "This site is not a webpage...";
-        report.disabled = true;
-        report.style.display = "initial";
-        document.body.className = "unknown";
-    } else if (site) {
-        report.style.display = "none";
+    if (tab.url.startsWith("about:") || tab.url.startsWith("file:")
+        || tab.url.startsWith("view-source:") || tab.url == "") {
+        isWebsite = false;
+        updateSecondary(isWebsite);
+    } else
+    if (site) {
         let blocked = document.querySelector("#blocked");
         blocked.checked = site.blocked;
         blocked.addEventListener("change", actions);
         updateManaged(site);
     } else {
-        report.innerHTML = "Report Missing Site...";
-        report.disabled = false;
-        report.style.display = "initial";
+        isWebsite = true;
+        let report = document.querySelector("#report");
         document.body.className = "unknown";
         report.addEventListener("click", actions);
+        updateSecondary(isWebsite);
     }
 }
 

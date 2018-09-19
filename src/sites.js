@@ -2,14 +2,12 @@
 
 /* exported sites, getSite */
 
-const time = new Date().getTime();
-
 const sites = [
     {
         // Working 9/11/2018 (M)
         domain: "mediapart.fr",
         name: "cc",
-        value: "{%22disagreement%22:[%22visit%22%2C%22ad%22]%2C%22creation%22:" + time + "%2C%22update%22:" + time + "}",
+        value: "{%22disagreement%22:[%22visit%22%2C%22ad%22]%2C%22creation%22:1537283817003%2C%22update%22:1537283817003}",
     },
     {
         // Working 9/11/2018 (M)
