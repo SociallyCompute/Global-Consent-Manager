@@ -69,6 +69,27 @@ async function main() {
         }
     }
 
+    async function bug(e) {
+        let [URL] =  await browser.tabs.query({active: true, currentWindow: true});
+        let domain = (URL.url).split("/")[2];
+        let body = "I found a bug in Global Consent Manager!";
+        body += "%0A%0A";
+        body += "(Explain the issue here)";
+        await browser.tabs.create({
+            url: "https://github.com/SociallyCompute/Global-Consent-Manager/issues/new?title="
+                + "Bug found while browsing " + domain + "&body=" + body +
+                "&projects=loading..." + "&labels=bug",
+        });
+        window.close();
+    }
+
+    browser.contextMenus.create({
+        id: "report-bug",
+        title: "Report a GCM Bug",
+        contexts: ["all"]
+      });
+      
+      browser.contextMenus.onClicked.addListener(bug);
     await browser.runtime.onMessage.addListener(actions.message);
     await browser.webNavigation.onCommitted.addListener(actions.navigation);
 }

@@ -104,7 +104,7 @@ input[type=checkbox]:checked {
 
 .unknown #managed, .unknown label, 
 .managed #unknown, .managed button, 
-.hide{
+.hide {
     display: none;
 }
 
@@ -128,26 +128,4 @@ input[type=checkbox]:checked {
 .manual.blocked:after {
     content: "blocked by choice";
     color: #369;
-}
-button#bug {
-    width: 3em;
-}
-
-
-.bugcontainer {
-    height:6em;
-    padding-bottom: 1em;
-}
-
-div#left {
-    float:left;
-    position:absolute;
-}
-
-div#right {
-    float:right; 
-}
-
-div#clear {
-    clear:both;
 }

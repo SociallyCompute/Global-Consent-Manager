@@ -43,19 +43,6 @@ let actions = {
         window.close();
     },
 
-    async bug(e) {
-        let domain = document.querySelector("#domain").textContent;
-        let body = "I found a bug in Global Consent Manager!";
-        body += "%0A%0A";
-        body += "(Explain the issue here)";
-        await browser.tabs.create({
-            url: "https://github.com/SociallyCompute/Global-Consent-Manager/issues/new?title="
-                + "Bug found while browsing " + domain + "&body=" + body +
-                "&projects=loading..." + "&labels=bug",
-        });
-        window.close();
-    },
-
     handleEvent(e) {
         this[e.target.id](e);
     },
@@ -63,8 +50,6 @@ let actions = {
 
 async function main() {
     let [tab] = await browser.tabs.query({active: true, currentWindow: true});
-
-    document.querySelector("#bug").addEventListener("click", actions);
 
     let {host} = new URL(tab.url);
     let domain = document.querySelector("#domain");
