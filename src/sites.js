@@ -232,12 +232,47 @@ const sites = [
 ];
 
 async function getSite(host) {
-    let site = sites.find((s) => host.endsWith(s.domain));
-    if (site) {
-        let storage = await browser.storage.sync.get(site.domain);
-        site.storage = storage[site.domain] || {blocked: true};
-        site.blocked = site.storage.blocked;
-        site.manual = site.storage.manual;
-        return site;
+    var site;
+    if (host) {
+        site = sites.find((s) => host.endsWith(s.domain));
+        //console.log(site);
+    } else {
+        //pass an empty site value (needs work)
+        site = sites.find((s) => s.domain = s.domain);
     }
+    let storage = await browser.storage.sync.get(site.domain);
+    site.storage = storage[site.domain] || {blocked: true};
+    site.blocked = site.storage.blocked;
+    site.manual = site.storage.manual;
+    return site;
 }
+
+async function sendSite() {
+    var newContent = "";
+    for (let i = 0; i < sites.length; i++) {
+        newContent += sites[i].domain + "<br>";
+    }
+    console.log("*************************************");
+    document.body.innerHTML += newContent;
+    console.log(document.body.innerHTML)
+    console.log("*************************************");
+}
+function listen(){
+if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded',     
+    browser.runtime.onMessage.addListener(function(message){
+        console.log("GREETING: " + message.greeting);
+        if (message.greeting == "sendSite"){
+            sendSite();
+        }
+    }))
+} else {
+    browser.runtime.onMessage.addListener(function(message){
+        console.log("GREETING: " + message.greeting);
+        if (message.greeting == "sendSite"){
+            sendSite();
+        }
+    });
+}
+}
+window.onload = listen();

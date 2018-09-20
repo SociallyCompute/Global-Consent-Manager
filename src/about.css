@@ -1,0 +1,128 @@
+body {
+    font: 1em sans-serif;
+    max-width: 22em;
+    overflow:auto;
+}
+
+img {
+    float: left;
+    margin-right: 0.5em;
+}
+h1 {
+    font: small-caps 1.4em sans-serif;
+    padding-top: 0.3em;
+    margin: 0.5em;
+    color: #bbb;
+}
+a {
+    color: #369;
+    text-decoration: none;
+    text-align: right;
+}
+section:hover a {
+    color: #eee;
+    text-decoration: underline;
+}
+
+p {
+    clear: left;
+    margin: 2em 1em 1.5em 1.5em;
+    color: #666;
+    text-align: left;
+}
+span {
+    display: block;
+}
+#domain {
+    color: #eee;
+}
+
+label, button {
+    display:block;
+    width: 100%;
+    border: 0;
+    font: small-caps 1em sans-serif;
+    background: #333;
+    margin: 2px 0;
+    color: #bbb;
+    background: #333;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+}
+button {
+    padding: 0.9em 0.5em;
+}
+button:hover:not([id=nosite]), label:hover {
+    background: #444;
+    color: #eee;
+}
+
+input[type=checkbox] {
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0 0 0 1em;
+    width: 62px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    background: #111;
+    vertical-align: middle;
+    transition: all ease 0.2s;
+}
+input[type=checkbox]:before {
+    content: "ON OFF";
+    display: block;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: #bbb;
+    left: 5px;
+    top: 5px;
+    border-radius: 50%;
+    font: bold 10px/22px sans-serif;
+    text-indent: -22px;
+    word-spacing: 34px;
+    white-space: nowrap;
+    transition: all ease 0.2s;
+}
+input[type=checkbox]:checked:before {
+    left: 34px;
+    color: #eee;
+    background: #eee;
+}
+input[type=checkbox]:checked {
+    background: #369;
+}
+
+.unknown #managed, .unknown label, 
+.managed #unknown, .managed button, 
+.hide {
+    display: none;
+}
+
+.blocked:after {
+    content: "first visited today, not trusted";
+    color: #666;
+}
+.blocked.visited:after {
+    content: "previously visited, not trusted yet";
+    color: #999;
+}
+.unblocked:after {
+    content: "trusted because visited regularly";
+    color: yellow;
+}
+
+.manual.unblocked:after {
+    content: "trusted by choice";
+    color: yellow;
+}
+.manual.blocked:after {
+    content: "blocked by choice";
+    color: #369;
+}
