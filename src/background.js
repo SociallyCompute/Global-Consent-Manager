@@ -34,12 +34,14 @@ async function disable(site) {
 let actions = {
     async message({domain, blocked}) {
         let site = await getSite(domain);
-        site.storage = {blocked, manual: true};
-        await browser.storage.sync.set({[site.domain]: site.storage});
-        if (blocked) {
-            await enable(site);
-        } else {
-            await disable(site);
+        if (site) {
+            site.storage = {blocked, manual: true};
+            await browser.storage.sync.set({[site.domain]: site.storage});
+            if (blocked) {
+                await enable(site);
+            } else {
+                await disable(site);
+            }
         }
     },
 
@@ -64,7 +66,8 @@ let actions = {
 async function main() {
     for (let {domain} of sites) {
         let site = await getSite(domain);
-        if (site.blocked) {
+
+        if (site && site.blocked) {
             await enable(site);
         }
     }

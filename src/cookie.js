@@ -53,7 +53,7 @@ async function main() {
     let site = await getSite(host);
     let isWebsite = true;
 
-    if (tab.url.startsWith("about:") 
+    if (tab.url.startsWith("about:")
         || tab.url.startsWith("file:")
         || tab.url.startsWith("view-source:")
         || tab.url == "") {
