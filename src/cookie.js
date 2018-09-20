@@ -10,15 +10,12 @@ function updateManaged(site) {
 }
 
 function updateSecondary(isWebsite) {
-    console.log(isWebsite);
     let report = document.querySelector("#report");
     let nosite = document.querySelector("#nosite");
     let cdblock = document.querySelector("#cdblock");
     cdblock.classList.toggle("hide", !isWebsite);
     report.classList.toggle("hide", !isWebsite);
     nosite.classList.toggle("hide", isWebsite);
-    console.log("Report: ", report.ClassName);
-    console.log("NoSite: ", nosite.ClassName);
 }
 
 let actions = {
