@@ -1,0 +1,200 @@
+body {
+    background: #111;
+    font: 1em sans-serif;
+    overflow:auto;
+    min-width:96%;
+    min-height:96%;
+    position:absolute;
+    padding-left: 2%;
+    padding-bottom: 0%;
+    box-sizing: border-box; 
+}
+
+img {
+    float: left;
+    margin-right: 0.5em;
+}
+h1 {
+    font: small-caps 4em sans-serif;
+    padding-top: 30px;
+    padding-left: 110px;
+    margin-left: 100px;
+    margin:0;
+    color: #bbb;
+    width:100%;
+    position:fixed;
+}
+a {
+    color: #369;
+    text-decoration: none;
+    text-align: right;
+}
+section:hover a {
+    color: #eee;
+    text-decoration: underline;
+}
+
+#domain {
+    color: #eee;
+}
+
+label, button {
+    display:block;
+    width: 100%;
+    border: 0;
+    font: small-caps 1em sans-serif;
+    background: #333;
+    margin: 2px 0;
+    color: #bbb;
+    background: #333;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+}
+button {
+    padding: 0.9em 0.5em;
+    width:100px;
+}
+button:hover:not([id=nosite]), label:hover {
+    background: #444;
+    color: #eee;
+}
+
+input[type=checkbox] {
+    display:inline;
+}
+
+.hide {
+    display: none;
+}
+
+.blocked:after {
+    content: "first visited today, not trusted";
+    color: #666;
+}
+.blocked.visited:after {
+    content: "previously visited, not trusted yet";
+    color: #999;
+}
+.unblocked:after {
+    content: "trusted because visited regularly";
+    color: yellow;
+}
+
+.manual.unblocked:after {
+    content: "trusted by choice";
+    color: yellow;
+}
+.manual.blocked:after {
+    content: "blocked by choice";
+    color: #369;
+}
+
+.sidenav {
+    background:#111;
+    height:96%;
+    padding-bottom:2%;
+    width:  220px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+span{
+    width:100%;
+}
+.dark {
+    margin: 2em 1em 1.5em 1.5em;
+    color: #bbb;
+}
+
+#frill{
+    position: fixed !important;
+    background-color:#024792 !important;
+    padding-left:220px;
+    width:30px;
+    height:100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+div body #main{
+    margin: 0 !important;
+}
+#main #wide {
+    position:fixed;
+    float:left;
+    display:block;
+    padding-left:0;
+    width:82%;
+    height:16%;
+}
+
+form input {
+    display:block;
+}
+
+#inner {
+    box-sizing: border-box; 
+    padding-top: 120px;
+    min-width:100%;
+}
+
+#wide {
+    box-sizing: border-box; 
+    display:block;
+    word-wrap:break-word;
+    padding: 0 0 0 250px;
+}
+
+#main {
+    box-sizing: border-box; 
+    margin: 1% 2% 2% 220px;
+    min-width:82%;
+    height:96%;
+}
+
+p {
+    color: #bbb;
+    width:100%;
+}
+
+textarea {
+    border-radius: 5px;
+    width: 400px;
+    text-align:left;
+    vertical-align:top;
+    padding: 6px 0 0 5px;
+}
+
+textarea#box1 {
+    font-weight:bold;
+    padding: 10px 0 0 5px;
+    height:24px;
+}
+
+textarea#box3 {
+    height:40px;
+}
+
+textarea#box2-2 {
+    height:80px;
+}
+
+textarea#box2 {
+    height:100px;
+}
+
+form {
+    width: 410px;
+}
+
+#bugsubmit {
+    float:right;
+}
+
+#checkvalue {
+    margin-top: 20px;
+}

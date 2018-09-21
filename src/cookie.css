@@ -4,6 +4,7 @@ body {
     background: #111;
     font: 1em sans-serif;
     max-width: 22em;
+    overflow:auto;
 }
 
 img {
@@ -40,7 +41,7 @@ span {
 }
 
 label, button {
-    display: block;
+    display:block;
     width: 100%;
     border: 0;
     font: small-caps 1em sans-serif;
@@ -103,7 +104,7 @@ input[type=checkbox]:checked {
 
 .unknown #managed, .unknown label, 
 .managed #unknown, .managed button, 
-.hide{
+.hide {
     display: none;
 }
 
