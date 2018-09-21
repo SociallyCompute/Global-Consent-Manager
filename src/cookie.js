@@ -77,5 +77,4 @@ async function main() {
         updateSecondary(isWebsite);
     }
 }
-
 main();

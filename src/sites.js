@@ -232,42 +232,12 @@ const sites = [
 ];
 
 async function getSite(host) {
-    if (host == undefined || host == "") {
-        return null;
-    } else {
-        let site = sites.find((s) => host.endsWith(s.domain));
-        if (site != undefined) {
-            let storage = await browser.storage.sync.get(site.domain);
-            site.storage = storage[site.domain] || {blocked: true};
-            site.blocked = site.storage.blocked;
-            site.manual = site.storage.manual;
-        }
+    let site = sites.find((s) => host.endsWith(s.domain));
+    if (site) {
+        let storage = await browser.storage.sync.get(site.domain);
+        site.storage = storage[site.domain] || {blocked: true};
+        site.blocked = site.storage.blocked;
+        site.manual = site.storage.manual;
         return site;
     }
 }
-
-async function sendSite() {
-    let newContent = "";
-    for (let i = 0; i < sites.length; i++) {
-        newContent += sites[i].domain + "<br>";
-    }
-    document.body.innerHTML += newContent;
-}
-function listen() {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded',
-            browser.runtime.onMessage.addListener(function(message) {
-                if (message.greeting == "sendSite") {
-                    sendSite();
-                }
-            }));
-    } else {
-        browser.runtime.onMessage.addListener(function(message) {
-            console.log("GREETING: " + message.greeting);
-            if (message.greeting == "sendSite") {
-                sendSite();
-            }
-        });
-    }
-}
-window.onload = listen();
