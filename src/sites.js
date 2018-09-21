@@ -1,7 +1,5 @@
 "use strict";
 
-/* exported sites, getSite */
-
 const sites = [
     {
         // Working 9/11/2018 (M)
@@ -231,6 +229,7 @@ const sites = [
     },
 ];
 
+// eslint-disable-next-line
 async function getSite(host) {
     let site = sites.find((s) => host.endsWith(s.domain));
     if (site) {
