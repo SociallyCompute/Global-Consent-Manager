@@ -1,7 +1,10 @@
 body {
+    background: #111;
     font: 1em sans-serif;
-    max-width: 22em;
     overflow:auto;
+    width:100%;
+    height:100%;
+    position:fixed;
 }
 
 img {
@@ -9,7 +12,8 @@ img {
     margin-right: 0.5em;
 }
 h1 {
-    font: small-caps 1.4em sans-serif;
+    margin:0 !important;
+    font: small-caps 4em sans-serif;
     padding-top: 0.3em;
     margin: 0.5em;
     color: #bbb;
@@ -23,15 +27,11 @@ section:hover a {
     color: #eee;
     text-decoration: underline;
 }
-
 p {
     clear: left;
     margin: 2em 1em 1.5em 1.5em;
-    color: #666;
     text-align: left;
-}
-span {
-    display: block;
+    color: #666;
 }
 #domain {
     color: #eee;
@@ -125,4 +125,55 @@ input[type=checkbox]:checked {
 .manual.blocked:after {
     content: "blocked by choice";
     color: #369;
+}
+
+.sidenav {
+    background:#111;
+    height: 100%;
+    width:  12%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+span{
+    padding-left:30px
+}
+.dark {
+    clear: left;
+    margin: 2em 1em 1.5em 1.5em;
+    text-align: left;
+    color: #bbb;
+}
+
+
+#frill{
+    position: fixed !important;
+    background-color:#024792 !important;
+    padding-left:11%;
+    width:40px;
+    height:100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+div body #main{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+#main #wide {
+    float:left;
+    position:absolute;
+    display:block;
+    padding-left:0;
+    width:82%;
+    height:16%;
+}
+
+#main {
+    padding: 1% 2% 2% 14%;
+    width:82%;
+    height:96%;
 }
