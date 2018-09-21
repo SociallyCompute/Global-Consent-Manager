@@ -8,7 +8,7 @@
 <body>
     <div class="sidenav scroll">
         <h2 class="dark" style="font-weight:bold;">Supported<br>Domains</h2>
-        <p class="dark" id="container"></p>
+        <p class="dark"  id="container"></p>
     </div>
     <div id="frill"></div>
     <div id="main">
@@ -16,5 +16,25 @@
                     <img src="../icon-96.png">
                     <h1>Global Consent Manager</h1>
             </span>
+        <div id="inner">
+            <form>
+                <p>Title:</p>
+                <textarea id="box1"></textarea>
+                <p>Your ordeal:</p>
+                <textarea id="box2" type="text"></textarea>
+                <p>Computer specs</p>
+                <textarea id="box2-2" type="text"></textarea>
+                <p>Extra information:</p>
+                <textarea id="box3" type="text"></textarea>
+                <br><br>
+                <button id="bugsubmit" type="submit" text="Send Issue">
+                    Submit
+                </button>
+                <input type="checkbox" id="checkvalue">
+                <p id="checkvalue" style="display:inline;">
+                    I am submitting an issue to GitHub.
+                </p>
+            </form>
+        </div>
     </div>
 </body>

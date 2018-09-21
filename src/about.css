@@ -2,9 +2,12 @@ body {
     background: #111;
     font: 1em sans-serif;
     overflow:auto;
-    width:100%;
-    height:100%;
-    position:fixed;
+    min-width:96%;
+    min-height:96%;
+    position:absolute;
+    padding-left: 2%;
+    padding-bottom: 0%;
+    box-sizing: border-box; 
 }
 
 img {
@@ -12,11 +15,14 @@ img {
     margin-right: 0.5em;
 }
 h1 {
-    margin:0 !important;
     font: small-caps 4em sans-serif;
-    padding-top: 0.3em;
-    margin: 0.5em;
+    padding-top: 30px;
+    padding-left: 110px;
+    margin-left: 100px;
+    margin:0;
     color: #bbb;
+    width:100%;
+    position:fixed;
 }
 a {
     color: #369;
@@ -27,12 +33,7 @@ section:hover a {
     color: #eee;
     text-decoration: underline;
 }
-p {
-    clear: left;
-    margin: 2em 1em 1.5em 1.5em;
-    text-align: left;
-    color: #666;
-}
+
 #domain {
     color: #eee;
 }
@@ -52,6 +53,7 @@ label, button {
 }
 button {
     padding: 0.9em 0.5em;
+    width:100px;
 }
 button:hover:not([id=nosite]), label:hover {
     background: #444;
@@ -59,48 +61,9 @@ button:hover:not([id=nosite]), label:hover {
 }
 
 input[type=checkbox] {
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0 0 0 1em;
-    width: 62px;
-    height: 32px;
-    display: inline-block;
-    position: relative;
-    border-radius: 50px;
-    overflow: hidden;
-    outline: none;
-    cursor: pointer;
-    background: #111;
-    vertical-align: middle;
-    transition: all ease 0.2s;
-}
-input[type=checkbox]:before {
-    content: "ON OFF";
-    display: block;
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    background: #bbb;
-    left: 5px;
-    top: 5px;
-    border-radius: 50%;
-    font: bold 10px/22px sans-serif;
-    text-indent: -22px;
-    word-spacing: 34px;
-    white-space: nowrap;
-    transition: all ease 0.2s;
-}
-input[type=checkbox]:checked:before {
-    left: 34px;
-    color: #eee;
-    background: #eee;
-}
-input[type=checkbox]:checked {
-    background: #369;
+    display:inline;
 }
 
-.unknown #managed, .unknown label, 
-.managed #unknown, .managed button, 
 .hide {
     display: none;
 }
@@ -129,8 +92,9 @@ input[type=checkbox]:checked {
 
 .sidenav {
     background:#111;
-    height: 100%;
-    width:  12%;
+    height:96%;
+    padding-bottom:2%;
+    width:  220px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -139,21 +103,18 @@ input[type=checkbox]:checked {
 }
 
 span{
-    padding-left:30px
+    width:100%;
 }
 .dark {
-    clear: left;
     margin: 2em 1em 1.5em 1.5em;
-    text-align: left;
     color: #bbb;
 }
-
 
 #frill{
     position: fixed !important;
     background-color:#024792 !important;
-    padding-left:11%;
-    width:40px;
+    padding-left:220px;
+    width:30px;
     height:100%;
     position:absolute;
     top: 0;
@@ -161,19 +122,79 @@ span{
 }
 div body #main{
     margin: 0 !important;
-    padding: 0 !important;
 }
 #main #wide {
+    position:fixed;
     float:left;
-    position:absolute;
     display:block;
     padding-left:0;
     width:82%;
     height:16%;
 }
 
+form input {
+    display:block;
+}
+
+#inner {
+    box-sizing: border-box; 
+    padding-top: 120px;
+    min-width:100%;
+}
+
+#wide {
+    box-sizing: border-box; 
+    display:block;
+    word-wrap:break-word;
+    padding: 0 0 0 250px;
+}
+
 #main {
-    padding: 1% 2% 2% 14%;
-    width:82%;
+    box-sizing: border-box; 
+    margin: 1% 2% 2% 220px;
+    min-width:82%;
     height:96%;
+}
+
+p {
+    color: #bbb;
+    width:100%;
+}
+
+textarea {
+    border-radius: 5px;
+    width: 400px;
+    text-align:left;
+    vertical-align:top;
+    padding: 6px 0 0 5px;
+}
+
+textarea#box1 {
+    font-weight:bold;
+    padding: 10px 0 0 5px;
+    height:24px;
+}
+
+textarea#box3 {
+    height:40px;
+}
+
+textarea#box2-2 {
+    height:80px;
+}
+
+textarea#box2 {
+    height:100px;
+}
+
+form {
+    width: 410px;
+}
+
+#bugsubmit {
+    float:right;
+}
+
+#checkvalue {
+    margin-top: 20px;
 }
