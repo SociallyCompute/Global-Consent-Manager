@@ -35,6 +35,7 @@ p {
 }
 span {
     display: block;
+    padding-left:20px;
 }
 #domain {
     color: #eee;
@@ -128,4 +129,12 @@ input[type=checkbox]:checked {
 .manual.blocked:after {
     content: "blocked by choice";
     color: #369;
+}
+.notmanaged:after {
+    content: "Unknown Site";
+    color: #bbb;
+}
+.managed:after {
+    content: "Managed Site";
+    color: #bbb;
 }
