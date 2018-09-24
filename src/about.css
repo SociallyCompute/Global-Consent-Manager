@@ -9,6 +9,7 @@ body {
     padding-bottom: 0%;
     box-sizing: border-box; 
     margin-top:0;
+    overflow:hidden;
 }
 
 img {
@@ -16,7 +17,7 @@ img {
     margin-right: 0.5em;
 }
 h1 {
-    font: small-caps 4em sans-serif;
+    font: small-caps 1.8em sans-serif;
     padding-top: 30px;
     padding-left: 110px;
     margin-left: 100px;
@@ -24,6 +25,7 @@ h1 {
     color: #bbb;
     width:100%;
     position:fixed;
+    vertical-align: baseline;
 }
 a {
     color: #369;
@@ -104,11 +106,12 @@ div body #main{
     margin: 0 !important;
 }
 #main #wide {
-    position:fixed;
-    float:left;
-    display:block;
-    padding-left:0;
-    height:16%;
+    z-index: -1;
+    position: absolute;
+    float: left;
+    display: block;
+    padding-left: 0;
+    height: 4%;
 }
 
 form input {
@@ -120,10 +123,9 @@ form {
 }
 
 #wide {
-    width:48%;
     box-sizing: border-box; 
     display:block;
-    padding: 60px 0 140px;
+    padding: 0 240px 0 0;
     z-index:2;
     top:0;
     border-bottom:4px blue;
@@ -131,11 +133,14 @@ form {
 }
 
 #main {
+    z-index:1;
     top:50px;
     box-sizing: border-box; 
-    margin: 0 2% 0 220px;
-    width:940px;
-    height:96%;
+    margin: 0 0 0 0;
+    width:48vw;
+    height:96vw;
+    left:260px;
+    position:relative;
 }
 
 p {
@@ -145,16 +150,15 @@ p {
 
 textarea {
     border-radius: 5px;
-    width: 400px;
+    width: 100px;
     text-align:left;
     vertical-align:top;
-    padding: 6px 0 0 5px;
+    padding: 6px 240px 0 5px;
     background:#bbb;
 }
 
 textarea#box1 {
     font-weight:bold;
-    padding: 10px 0 0 5px;
     height:24px;
 }
 
@@ -196,6 +200,7 @@ form {
 .leftnav {
     background:#111;
     width:  220px;
+    height:100%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -214,6 +219,7 @@ form {
 }
 
 #frillright{
+    z-index:1;
     position: fixed !important;
     background-color:#024792 !important;
     padding-right:670px;
@@ -235,14 +241,18 @@ form {
 
 #textcontainer {
     display:inline;
-    position:relative;
-    max-width:915px;
+    position:fixed;
+    width:100%;
     top:195px;
     text-overflow: ellipsis;
     overflow: hidden;
     word-wrap:break-word;
+    position:absolute;
 }
 
 #maintext {
-
+    z-index: 1;
+    height:46em;
+    width:100%;
+    overflow-y: scroll;
 }
