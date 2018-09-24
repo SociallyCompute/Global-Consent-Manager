@@ -6,6 +6,8 @@ function updateManaged(site) {
     managed.classList.toggle("blocked", site.blocked);
     managed.classList.toggle("unblocked", !site.blocked);
     managed.classList.toggle("visited", Object.keys(site.storage).length > 2);
+    document.querySelector("#management").classList.toggle("notmanaged", !managed);
+    document.querySelector("#management").classList.toggle("managed", managed);
     console.log("managed: ", managed.className, Object.keys(site.storage).length);
 }
 
@@ -16,6 +18,8 @@ function updateSecondary(isWebsite) {
     cdblock.classList.toggle("hide", !isWebsite);
     report.classList.toggle("hide", !isWebsite);
     nosite.classList.toggle("hide", isWebsite);
+    document.querySelector("#management").classList.toggle("notmanaged", true);
+    document.querySelector("#management").classList.toggle("managed", false);
 }
 
 let actions = {
