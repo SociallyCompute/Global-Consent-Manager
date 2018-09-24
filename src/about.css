@@ -1,31 +1,42 @@
 body {
     background: #111;
     font: 1em sans-serif;
-    overflow:auto;
     min-width:98%;
     min-height:98%;
-    position:absolute;
     padding-left: 2%;
     padding-bottom: 0%;
     box-sizing: border-box; 
     margin-top:0;
+    white-space:nowrap;
     overflow:hidden;
+    display:inline-block;
+}
+
+arch {
+    position:relative;
+    flex-direction:column;
 }
 
 img {
+    width:150px;
+    height:150px;
     float: left;
     margin-right: 0.5em;
 }
+
 h1 {
-    font: small-caps 1.8em sans-serif;
-    padding-top: 30px;
+    font: small-caps 2.8vw sans-serif;
     padding-left: 110px;
     margin-left: 100px;
     margin:0;
     color: #bbb;
     width:100%;
-    position:fixed;
+    position:relative;
     vertical-align: baseline;
+    top:0;
+}
+h3 {
+
 }
 a {
     color: #369;
@@ -35,10 +46,6 @@ a {
 section:hover a {
     color: #eee;
     text-decoration: underline;
-}
-
-#domain {
-    color: #eee;
 }
 
 label, button {
@@ -106,12 +113,8 @@ div body #main{
     margin: 0 !important;
 }
 #main #wide {
-    z-index: -1;
     position: absolute;
     float: left;
-    display: block;
-    padding-left: 0;
-    height: 4%;
 }
 
 form input {
@@ -124,23 +127,25 @@ form {
 
 #wide {
     box-sizing: border-box; 
-    display:block;
-    padding: 0 240px 0 0;
-    z-index:2;
+    padding: 0 0 0 0;
+    z-index:-2;
     top:0;
-    border-bottom:4px blue;
+    height:20px;
     background:#111;
+    flex:1;
+    left: 30px;
 }
 
 #main {
-    z-index:1;
     top:50px;
     box-sizing: border-box; 
     margin: 0 0 0 0;
-    width:48vw;
-    height:96vw;
-    left:260px;
-    position:relative;
+    height:98%;
+    left:250px;
+    right:700px;
+    position:absolute;
+    display:inline-block;
+    flex:1;
 }
 
 p {
@@ -155,6 +160,7 @@ textarea {
     vertical-align:top;
     padding: 6px 240px 0 5px;
     background:#bbb;
+    flex:2;
 }
 
 textarea#box1 {
@@ -193,40 +199,51 @@ form {
     width:  440px;
     z-index: 1;
     right:0;
-    position:fixed;
+    position: absolute;
     padding: 60px 100px 0 120px;
+    flex:2;
 }
 
 .leftnav {
     background:#111;
-    width:  220px;
+    width:  210px;
     height:100%;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     top: 0;
     left: 0;
-    overflow-x: hidden;
+    flex:0;
 }
 
-#frillleft{
-    position: fixed !important;
+#frillleft #frillright {
+    position: absolute !important;
     background-color:#024792 !important;
-    padding-left:220px;
     width:30px;
     height:100%;
     top: 0;
     left: 0;
 }
 
-#frillright{
-    z-index:1;
-    position: fixed !important;
+#frillleft {
+    padding-left:220px;    
+    position: absolute !important;
     background-color:#024792 !important;
-    padding-right:670px;
     width:30px;
     height:100%;
     top: 0;
-    right:0;
+    left: 0;
+    flex:0;
+}
+
+#frillright{
+    padding-right:670px;
+    position: absolute !important;
+    background-color:#024792 !important;
+    width:30px;
+    height:100%;
+    top: 0;
+    right: 0;
+    flex:1;
 }
 
 .darkright {
@@ -240,19 +257,32 @@ form {
 }
 
 #textcontainer {
-    display:inline;
-    position:fixed;
+    float:left;
     width:100%;
     top:195px;
+    height:calc(70%);
     text-overflow: ellipsis;
-    overflow: hidden;
-    word-wrap:break-word;
+    overflow-y: hidden;
     position:absolute;
+    border-top-style: solid;
+    border-top-width: 40px;
+    border-top-color: #024792;
+    border-bottom-style: solid;
+    border-bottom-width: 40px;
+    border-bottom-color: #024792;
+    word-wrap:break-word;
 }
 
 #maintext {
-    z-index: 1;
-    height:46em;
-    width:100%;
-    overflow-y: scroll;
+    float:left;
+    position:relative;
+    left:15px;
+    top:0;
+    right:0;
+    bottom:0;
+    width:97.5%;
+    height:94%;
+    overflow-y: auto;
+    hyphens: auto;
+    word-break: break-all;
 }
