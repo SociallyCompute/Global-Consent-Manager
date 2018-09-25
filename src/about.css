@@ -5,11 +5,13 @@ body {
     min-height:98%;
     padding-left: 2%;
     padding-bottom: 0%;
-    box-sizing: border-box; 
     margin-top:0;
-    white-space:nowrap;
     overflow:hidden;
     display:inline-block;
+}
+
+div body #main{
+    margin: 0 !important;
 }
 
 arch {
@@ -27,6 +29,24 @@ img.logo {
     float: left;
 }
 
+span{
+    width:100%;
+}
+
+p {
+    color: #bbb;
+    width:100%;
+}
+
+form input {
+    display:block;
+}
+
+form {
+    padding: 160px 0px 0 60px;
+    width: 410px;
+}
+
 img:not([class=logo])
 {
     margin-top:35px;
@@ -34,7 +54,7 @@ img:not([class=logo])
     float: right;
     width:120px;
     height:120px;
-    background:#bbb;
+    background:#ffffff;
     border-radius:20px;
 }
 
@@ -49,14 +69,19 @@ h1 {
     vertical-align: baseline;
     top:0;
 }
+
+h2 {
+    color: #FFCB05;
+}
+h3 {
+    color: #ffffff;
+}
 a {
-    color: #369;
+    color: #024792;
     text-decoration: none;
     text-align: right;
-}
-section:hover a {
-    color: #eee;
-    text-decoration: underline;
+    position: relative;
+    z-index: 3;
 }
 
 label, button {
@@ -76,7 +101,7 @@ button {
     padding: 0.9em 0.5em;
     width:100px;
 }
-button:hover:not([id=nosite]), label:hover {
+button:hover, label:hover {
     background: #444;
     color: #eee;
 }
@@ -85,68 +110,9 @@ input[type=checkbox] {
     display:inline;
 }
 
-.hide {
-    display: none;
-}
-
-.blocked:after {
-    content: "first visited today, not trusted";
-    color: #666;
-}
-.blocked.visited:after {
-    content: "previously visited, not trusted yet";
-    color: #999;
-}
-.unblocked:after {
-    content: "trusted because visited regularly";
-    color: yellow;
-}
-
-.manual.unblocked:after {
-    content: "trusted by choice";
-    color: yellow;
-}
-.manual.blocked:after {
-    content: "blocked by choice";
-    color: #369;
-}
-
-span{
-    width:100%;
-}
-.dark {
-    margin: 2em 1em 1.5em 1.5em;
-    color: #bbb;
-}
-
-
-div body #main{
-    margin: 0 !important;
-}
 #main #wide {
     position: absolute;
     float: left;
-}
-
-form input {
-    display:block;
-}
-
-form {
-    padding: 160px 0px 0 60px;
-    width: 410px;
-}
-
-#wide {
-    height:30%;
-    width:96%;
-    box-sizing: border-box; 
-    padding: 0 0 0 0;
-    z-index:-2;
-    top:0;
-    background:#111;
-    flex:1;
-    left: 30px;
 }
 
 #main {
@@ -160,74 +126,49 @@ form {
     display:inline-block;
 }
 
-p {
-    color: #bbb;
-    width:100%;
-}
-
-textarea {
-    border-radius: 5px;
-    width: 100px;
-    text-align:left;
-    vertical-align:top;
-    padding: 6px 240px 0 5px;
-    background:#bbb;
-}
-
-textarea#box1 {
-    font-weight:bold;
-    height:24px;
-}
-
-textarea#box3 {
-    height:40px;
-}
-
-textarea#box2-2 {
-    height:80px;
-}
-
-textarea#box2 {
-    height:100px;
-}
-
-#bugsubmit {
-    display:block;
-    float:right;
-    margin-right:50px;
-    margin-top:20px;
-}
-
-#checkvalue {
-    margin-left:20px;
-    margin-top: 20px;
-}
-
-#checkvalue2 {
-    font-size: 1.1em;
-    display:inline;
-}
-
-.rightnav {
+#wide {
+    height:30%;
+    width:96%;
+    white-space: nowrap;
+    box-sizing: border-box; 
+    padding: 0 0 0 0;
+    z-index:1;
     top:0;
     background:#111;
-    height:100%;
-    z-index: 1;
-    right:0;
-    position: absolute;
-    flex:2;
-    overflow-y: scroll;
+    flex:1;
+    left: 30px;
 }
 
-.leftnav {
-    background:#111;
-    width:  210px;
-    height:100%;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    flex:0;
+
+#textcontainer {
+    float:left;
+    width:100%;
+    top:195px;
+    height:70%;
+    z-index:1;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    position:absolute;
+    border-top-style: solid;
+    border-top-width: 40px;
+    border-top-color: #024792;
+    border-bottom-style: solid;
+    border-bottom-width: 40px;
+    border-bottom-color: #024792;
+}
+
+#maintext {
+    float:left;
+    position:relative;
+    left:15px;
+    top:0;
+    right:0;
+    bottom:0;
+    width:97.5%;
+    height:94%;
+    overflow-y: auto;
+    overflow-x:hidden;
+    hyphens: auto;
 }
 
 #frillleft #frillright {
@@ -247,7 +188,7 @@ textarea#box2 {
     height:100%;
     top: 0;
     left: 0;
-    flex:0;
+    z-index:1;
 }
 
 #frillright{
@@ -259,51 +200,89 @@ textarea#box2 {
     top: 0;
     right: 0;
     flex:1;
+    z-index:1;
+}
+
+#bugsubmit {
+    display:block;
+    float:right;
+    margin-right:50px;
+    margin-top:20px;
+}
+
+#checkvalue {
+    margin-left:20px;
+    margin-top: 20px;
+}
+
+#checkvalue2 {
+    font-size: 1.1em;
+    display:inline;
+}
+
+#text {
+    display:none;
+}
+
+.leftnav {
+    background:#111;
+    width:  210px;
+    height:100%;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    flex:0;
+}
+
+.rightnav {
+    top:0;
+    background:#111;
+    height:100%;
+    z-index: 3;
+    right:0;
+    position: absolute;
+    flex:2;
+    overflow-y: scroll;
+}
+
+.dark {
+    margin: 2em 1em 1.5em 1.5em;
+    color: #ffffff;
 }
 
 .darkright {
     margin-top:70px;
     padding-right:20px;
-    color: #bbb;
+    color: #ffffff;
     text-align:right;
     float:right;
     width: 200px;
     margin-right:50px;
 }
 
-#textcontainer {
-    float:left;
-    width:100%;
-    top:195px;
-    height:70%;
-    text-overflow: ellipsis;
-    overflow-y: hidden;
-    position:absolute;
-    border-top-style: solid;
-    border-top-width: 40px;
-    border-top-color: #024792;
-    border-bottom-style: solid;
-    border-bottom-width: 40px;
-    border-bottom-color: #024792;
-    word-wrap: break-word;
-    flex-flow: row wrap;
-    overflow-wrap: break-word;
+textarea {
+    border-radius: 5px;
+    width: 100px;
+    text-align:left;
+    vertical-align:top;
+    padding: 6px 240px 0 5px;
+    background:#ffffff;
 }
 
-#maintext {
-    float:left;
-    position:relative;
-    left:15px;
-    top:0;
-    right:0;
-    bottom:0;
-    width:97.5%;
-    height:94%;
-    overflow-y: auto;
-    overflow-x:hidden;
-    word-wrap: break-word;
-    flex-flow: row wrap;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    word-break: break-all;
+textarea#box1 {
+    font-weight:bold;
+    height:24px;
+}
+
+textarea#box3 {
+    height:40px;
+}
+
+textarea#box2-2 {
+    height:80px;
+}
+
+textarea#box2 {
+    height:100px;
 }

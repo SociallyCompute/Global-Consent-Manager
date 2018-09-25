@@ -80,7 +80,7 @@ async function main() {
 
     browser.contextMenus.create({
         id: "report-bug",
-        title: "Report a GCM Bug",
+        title: "GCM Dashboard",
         contexts: ["all"],
     });
 
