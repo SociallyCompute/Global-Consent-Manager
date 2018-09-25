@@ -20,12 +20,26 @@ arch {
 img {
     width:150px;
     height:150px;
-    float: left;
+}
+
+img.logo {
     margin-right: 0.5em;
+    float: left;
+}
+
+img:not([class=logo])
+{
+    margin-top:35px;
+    margin-right:20px;
+    float: right;
+    width:120px;
+    height:120px;
+    background:#bbb;
+    border-radius:20px;
 }
 
 h1 {
-    font: small-caps 2.8vw sans-serif;
+    font: small-caps 2em sans-serif;
     padding-left: 110px;
     margin-left: 100px;
     margin:0;
@@ -34,9 +48,6 @@ h1 {
     position:relative;
     vertical-align: baseline;
     top:0;
-}
-h3 {
-
 }
 a {
     color: #369;
@@ -122,30 +133,31 @@ form input {
 }
 
 form {
-    padding-top:150px;
+    padding: 160px 0px 0 60px;
+    width: 410px;
 }
 
 #wide {
+    height:30%;
+    width:96%;
     box-sizing: border-box; 
     padding: 0 0 0 0;
     z-index:-2;
     top:0;
-    height:20px;
     background:#111;
     flex:1;
     left: 30px;
 }
 
 #main {
+    height:100%;
     top:50px;
     box-sizing: border-box; 
     margin: 0 0 0 0;
-    height:98%;
     left:250px;
-    right:700px;
+    right:510px;
     position:absolute;
     display:inline-block;
-    flex:1;
 }
 
 p {
@@ -160,7 +172,6 @@ textarea {
     vertical-align:top;
     padding: 6px 240px 0 5px;
     background:#bbb;
-    flex:2;
 }
 
 textarea#box1 {
@@ -180,28 +191,32 @@ textarea#box2 {
     height:100px;
 }
 
-form {
-    width: 410px;
-}
-
 #bugsubmit {
+    display:block;
     float:right;
+    margin-right:50px;
+    margin-top:20px;
 }
 
 #checkvalue {
+    margin-left:20px;
     margin-top: 20px;
+}
+
+#checkvalue2 {
+    font-size: 1.1em;
+    display:inline;
 }
 
 .rightnav {
     top:0;
     background:#111;
     height:100%;
-    width:  440px;
     z-index: 1;
     right:0;
     position: absolute;
-    padding: 60px 100px 0 120px;
     flex:2;
+    overflow-y: scroll;
 }
 
 .leftnav {
@@ -236,10 +251,10 @@ form {
 }
 
 #frillright{
-    padding-right:670px;
+    padding-right:470px;
     position: absolute !important;
     background-color:#024792 !important;
-    width:30px;
+    width:50px;
     height:100%;
     top: 0;
     right: 0;
@@ -247,20 +262,20 @@ form {
 }
 
 .darkright {
-    margin-top:50px;
-    padding-bottom:50px;
-    padding:20px;
+    margin-top:70px;
+    padding-right:20px;
     color: #bbb;
     text-align:right;
     float:right;
     width: 200px;
+    margin-right:50px;
 }
 
 #textcontainer {
     float:left;
     width:100%;
     top:195px;
-    height:calc(70%);
+    height:70%;
     text-overflow: ellipsis;
     overflow-y: hidden;
     position:absolute;
@@ -270,7 +285,9 @@ form {
     border-bottom-style: solid;
     border-bottom-width: 40px;
     border-bottom-color: #024792;
-    word-wrap:break-word;
+    word-wrap: break-word;
+    flex-flow: row wrap;
+    overflow-wrap: break-word;
 }
 
 #maintext {
@@ -283,6 +300,10 @@ form {
     width:97.5%;
     height:94%;
     overflow-y: auto;
+    overflow-x:hidden;
+    word-wrap: break-word;
+    flex-flow: row wrap;
+    overflow-wrap: break-word;
     hyphens: auto;
     word-break: break-all;
 }

@@ -12,10 +12,16 @@
     </div>
     <div id="frillleft"></div>
     <div id="main">
-            <span id="wide">
-                    <img src="../icon-96.png">
+            <div id="wide">
+                    <img src="../icon-96.png" class="logo">
                     <h1>Global Consent Manager</h1>
-            </span>
+                    <h1>User Dashboard</h1>
+                    <br><br>
+                    <h1>
+                        <a href="http://www.globalconsentmanager.com">
+                        Learn More About Us...</a>
+                    </h1>
+                </div>
             <div id="textcontainer">
             <p id="maintext">
                     
@@ -35,11 +41,10 @@
             </div>
     </div>
     <div id="frillright"></div>
-        <div id="inner" class="rightnav" style="padding-right:100px;">
+        <div id="inner" class="rightnav">
             <h2 class="darkright" style="font-weight:bold;">Submit a
                 <br>GithHub Issue<br>(Requires Login)</h2>
-            <img src="icons/github.svg" style="width:150px;height:150px;
-            background:#bbb;border-radius:20px;">
+            <img src="icons/github.svg">
             <form>
                 <p>Title:</p>
                 <textarea id="box1"></textarea>
@@ -50,13 +55,13 @@
                 <p>Extra Information:</p>
                 <textarea id="box3" type="text"></textarea>
                 <br><br>
-                <button id="bugsubmit" type="button" text="Send Issue">
-                    Submit
-                </button>
                 <input type="checkbox" id="checkvalue">
-                <p id="checkvalue2" style="display:inline;">
+                <p id="checkvalue2">
                     I am submitting an issue to GitHub.
                 </p>
+                <button id="bugsubmit" type="button" text="Send Issue">
+                        Submit
+                </button>
             </form>
         </div>
     <script type="text/javascript" src="act.js"></script>
