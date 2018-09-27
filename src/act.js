@@ -29,7 +29,6 @@ async function toGH(e) {
         body += "_This issue was submitted via the Global Consent Manager Web Extension_";
         let title = document.getElementById("box1").value;
         console.log(title);
-        let [tab] = await browser.tabs.query({active: true, currentWindow: true});
         await browser.tabs.create({
             url: "https://github.com/SociallyCompute/Global-Consent-Manager/issues/new?title="
             + document.getElementById("box1").value
