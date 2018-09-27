@@ -168,9 +168,6 @@ input[type=checkbox] {
 }
 
 #frillright{
-    border-right-style:solid;
-    border-right-color:#FFCB05;
-    border-right-width: 8px;
     right:470px;
     position: fixed !important;
     background-color:#024792 !important;
@@ -241,10 +238,10 @@ input[type=checkbox] {
 
 textarea {
     border-radius: 5px;
-    width: 100px;
+    width: 330px;
     text-align:left;
     vertical-align:top;
-    padding: 6px 240px 0 5px;
+    padding: 6px 5px 0 5px;
     background:#ffffff;
 }
 
