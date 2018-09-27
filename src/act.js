@@ -35,7 +35,7 @@ async function toGH(e) {
             + document.getElementById("box1").value
             + "&body="
             + body
-            + "&projects=loading..." + tab.url + "&labels=not listed"});
+            + "&projects=loading..."});
     } else {
         console.log("DOESNT WORK");
         document.getElementById("checkvalue2").style.color = "#cb4335";
