@@ -6,7 +6,6 @@ body {
     padding-left: 2%;
     padding-bottom: 0%;
     margin-top:0;
-    overflow:hidden;
     display:inline-block;
 }
 
@@ -14,10 +13,6 @@ div body #main{
     margin: 0 !important;
 }
 
-arch {
-    position:relative;
-    flex-direction:column;
-}
 
 img {
     width:150px;
@@ -27,6 +22,17 @@ img {
 img.logo {
     margin-right: 0.5em;
     float: left;
+}
+
+img:not([class=logo])
+{
+    margin-top:35px;
+    margin-right:20px;
+    float: right;
+    width:120px;
+    height:120px;
+    background:#ffffff;
+    border-radius:20px;
 }
 
 span{
@@ -47,17 +53,6 @@ form {
     width: 410px;
 }
 
-img:not([class=logo])
-{
-    margin-top:35px;
-    margin-right:20px;
-    float: right;
-    width:120px;
-    height:120px;
-    background:#ffffff;
-    border-radius:20px;
-}
-
 h1 {
     font: small-caps 2em sans-serif;
     padding-left: 110px;
@@ -71,13 +66,13 @@ h1 {
 }
 
 h2 {
-    color: #FFCB05;
+    color: #0260c5;
 }
 h3 {
     color: #ffffff;
 }
 a {
-    color: #024792;
+    color: #0260c5;
     text-decoration: none;
     text-align: right;
     position: relative;
@@ -130,31 +125,12 @@ input[type=checkbox] {
     height:30%;
     width:96%;
     white-space: nowrap;
-    box-sizing: border-box; 
     padding: 0 0 0 0;
     z-index:1;
     top:0;
     background:#111;
     flex:1;
     left: 30px;
-}
-
-
-#textcontainer {
-    float:left;
-    width:100%;
-    top:195px;
-    height:70%;
-    z-index:1;
-    text-overflow: ellipsis;
-    overflow-y: hidden;
-    position:absolute;
-    border-top-style: solid;
-    border-top-width: 40px;
-    border-top-color: #024792;
-    border-bottom-style: solid;
-    border-bottom-width: 40px;
-    border-bottom-color: #024792;
 }
 
 #maintext {
@@ -165,40 +141,42 @@ input[type=checkbox] {
     right:0;
     bottom:0;
     width:97.5%;
-    height:94%;
-    overflow-y: auto;
+    overflow-y:auto;
     overflow-x:hidden;
     hyphens: auto;
 }
 
-#frillleft #frillright {
-    position: absolute !important;
-    background-color:#024792 !important;
-    width:30px;
-    height:100%;
-    top: 0;
-    left: 0;
+#textcontainer {
+    float:left;
+    width:98%;
+    top:165px;
+    left:1%;
+    z-index:1;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    position:absolute;
 }
 
 #frillleft {
-    padding-left:220px;    
-    position: absolute !important;
+    left:210px;    
+    position: fixed !important;
     background-color:#024792 !important;
-    width:30px;
+    width:40px;
     height:100%;
     top: 0;
-    left: 0;
     z-index:1;
 }
 
 #frillright{
-    padding-right:470px;
-    position: absolute !important;
+    border-right-style:solid;
+    border-right-color:#FFCB05;
+    border-right-width: 8px;
+    right:470px;
+    position: fixed !important;
     background-color:#024792 !important;
-    width:50px;
+    width:45px;
     height:100%;
     top: 0;
-    right: 0;
     flex:1;
     z-index:1;
 }
@@ -227,12 +205,12 @@ input[type=checkbox] {
 .leftnav {
     background:#111;
     width:  210px;
-    height:100%;
     position: absolute;
     z-index: 3;
     top: 0;
     left: 0;
     flex:0;
+    overflow:hidden;
 }
 
 .rightnav {
@@ -241,9 +219,9 @@ input[type=checkbox] {
     height:100%;
     z-index: 3;
     right:0;
-    position: absolute;
+    position: fixed;
     flex:2;
-    overflow-y: scroll;
+    overflow-y:hidden;
 }
 
 .dark {
