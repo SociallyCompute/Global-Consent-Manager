@@ -98,18 +98,6 @@ const sites = [
         selector: "#inforcwp",
     },
     {
-        // Broken 9/11/2018 (M)
-        // Manage consentSaw cookie on load?
-        domain: "index.hr",
-        selector: ".cookie-consent-container",
-    },
-    {
-        // Broken 9/11/2018 (M)
-        // Manage was-set cookie on load?
-        domain: "investing.com",
-        selector: ".consentBarWrapper",
-    },
-    {
         // Working 9/11/2018 (M)
         domain: "thejournal.ie",
         selector: "#notify-container",
@@ -226,6 +214,18 @@ const sites = [
         // Working 9/14/2018 (M)
         domain: "dailymail.co.uk",
         selector: ".mol-ads-cmp--banner",
+    },
+    {
+        // Broken 9/11/2018 (M)
+        // Manage consentSaw cookie on load?
+        domain: "index.hr",
+        selector: ".cookie-consent-container",
+    },
+    {
+        // Broken 9/11/2018 (M)
+        // Manage was-set cookie on load?
+        domain: "investing.com",
+        selector: ".consentBarWrapper",
     },
 ];
 

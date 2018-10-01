@@ -49,14 +49,12 @@ form input {
 }
 
 form {
-    padding: 160px 0px 0 60px;
+    padding: 160px 20px 0 60px;
     width: 410px;
 }
 
 h1 {
     font: small-caps 2em sans-serif;
-    padding-left: 110px;
-    margin-left: 100px;
     margin:0;
     color: #bbb;
     width:100%;
@@ -130,27 +128,22 @@ input[type=checkbox] {
     top:0;
     background:#111;
     flex:1;
-    left: 30px;
 }
 
 #maintext {
-    float:left;
+    float:right;
     position:relative;
-    left:15px;
     top:0;
-    right:0;
     bottom:0;
-    width:97.5%;
-    overflow-y:auto;
-    overflow-x:hidden;
+    width:100%;
     hyphens: auto;
+    margin:0;
 }
 
 #textcontainer {
     float:left;
-    width:98%;
+    width:calc(100% - 40px);
     top:165px;
-    left:1%;
     z-index:1;
     text-overflow: ellipsis;
     overflow-y: hidden;
@@ -160,7 +153,6 @@ input[type=checkbox] {
 #frillleft {
     left:210px;    
     position: fixed !important;
-    background-color:#024792 !important;
     width:40px;
     height:100%;
     top: 0;
@@ -168,15 +160,16 @@ input[type=checkbox] {
 }
 
 #frillright{
-    right:470px;
+    right:490px;
     position: fixed !important;
     background-color:#024792 !important;
-    width:45px;
+    width:25px;
     height:100%;
     top: 0;
     flex:1;
     z-index:1;
 }
+
 
 #bugsubmit {
     display:block;
@@ -217,7 +210,6 @@ input[type=checkbox] {
     z-index: 3;
     right:0;
     position: fixed;
-    flex:2;
     overflow-y:hidden;
 }
 
@@ -226,9 +218,9 @@ input[type=checkbox] {
     color: #ffffff;
 }
 
-.darkright {
+.formright {
     margin-top:70px;
-    padding-right:20px;
+    padding-right:40px;
     color: #ffffff;
     text-align:right;
     float:right;
