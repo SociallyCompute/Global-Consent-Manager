@@ -2,14 +2,20 @@
 
  This public repository is used to publish a Firefox web extension.
  
- This extension streamlines the user's consent experience while on GDPR-regulated websites.<br />
+ This extension streamlines the user's consent experience while on GDPR-regulated websites.
  
- ## How to install this web extension
+  Our list of currently supported websites can be found [in this file](supported.md)
+ 
+ ## Installation: Firefox add-on
+ 
+ 1. Navigate to the GCM add-on page at:<br /> 
+ https://addons.mozilla.org/en-US/firefox/addon/global-consent-manager/?src=search
+ 2. Click "add" and enjoy Global Consent Manager!
+ 
+ ## Installation: npm (development)
  
  1. Download this repository to a location of your choice.
  2. Install Web-Ext from Mozilla's Github Repository here: https://github.com/mozilla/web-ext
- 
- ### Installation: npm
  
  3. Install Global-Consent-Manager in its directory:
  ```
@@ -19,15 +25,22 @@
  ```
  npm start
  ```
- This will also launch Web-Ext.
+ This will also launch Web-Ext.<br />
+ 
+ If you want to test your code for validity, use this command:
+ ```
+ npm test
+ ```
  
  ## How to use this Web Extension
- Global Consent Manager will do almost all of the work for you; your consent is managed with one click on each supported website.
+ Global Consent Manager will do almost all of the work for you. Your consent is managed on every supported website.
+ 
  ### Supported Sites
  If the domain you are on is registered by Global Consent Manager, it will not show consent dialogs on first visit.<br /> 
  If so, you can toggle the button labeled "Block Consent Dialog" to hide or show consent dialogs on this page. <br /> 
      -If the toggle switch status is "ON", supported sites will proceed normally.<br /> 
      -If the toggle switch status is "OFF", supported sites will not provide consent dialogs.<br /> 
+     
  ### Unsupported Sites
  If you see a consent dialog on first visit, the site is probably not registered by Global Consent Manager.<br /> 
  In this case, please click the button labeled "Report Missing Site..." and present an issue on GitHub.<br />
