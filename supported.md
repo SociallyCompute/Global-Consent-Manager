@@ -2,7 +2,7 @@
 
 This is the list of domains that Global Consent Manager currently supports.\
 It is sorted in alphabetical order.\
-If you find any discrepancies, please submit an issue to thjis repository.
+If you find any discrepancies, please submit an issue to this repository.
 
 bbc.com\
 businessinsider.de\
