@@ -9,7 +9,8 @@
   https://help.getfoxyproxy.org/index.php/knowledge-base/proxy-firefox-no-extension/
 3. Morae Installed (Probably already the case in usability lab)
 4. Define the news items for the day, and list of sites to look at.
-  Monday, October 15: Find out the background, context, and involved organizations and people in stories about "Jamal Khashoggi".  Also, what is his profession?
+  - Monday, October 15: Find out the background, context, and involved organizations and people in stories about "Jamal Khashoggi".  Also, what is his profession?
+  - Tuesday, October 16:
 5. Give the users a choice of looking for information related to the news item of the day from 3 of these websites (they can choose which ones, or click all 6 and choose 3 to focus on)
     1. https://bbc.com
     2. https://dailymail.co.uk
