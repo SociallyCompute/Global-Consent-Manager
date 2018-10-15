@@ -23,3 +23,10 @@
   - Make hand written notes on paper about 3 individuals and 2 organizations that play a role in the event, and to summarize that role in 1 or 2 sentences for each individual and organization.
 7. In between each person, we need to clear the browser data and cookies: Paste in browser: *about:preferences#privacy*
 ![Missing Firefox Image](./firefoxPurge.png)
+
+# Executing Studies
+1. Use the daily protocol template and pick a news item of the day to write it around.
+2. Ensure that openVPN is connected by right clicking on the small icon in the "windows tray"
+  - "Connect"
+  - Open the webpage http://whatismyip.com to ensure that your ip is resolving as being in Frankfurt, Germany
+3. Then Follow the user protocol with the user.
