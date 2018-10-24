@@ -1,0 +1,13 @@
+{
+    "path" : "~/Dropbox/Work/notes/ResearchStrategy/Global Consent Manager",
+    "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 4
+        },
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
