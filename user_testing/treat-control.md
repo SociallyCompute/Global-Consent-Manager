@@ -1,0 +1,13 @@
+ID, Group, Seconds
+1, treat, 784
+2, treat, 1887
+3, control, 1432
+4, control, 673
+5, treat, 1132
+6, treat, 691
+7, control, 408
+8, control, 807
+9, treat, 1002
+10, control, 893
+11, treat, 1693
+12, control, 887
