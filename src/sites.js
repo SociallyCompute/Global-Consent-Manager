@@ -227,6 +227,12 @@ const sites = [
         domain: "dailymail.co.uk",
         selector: ".mol-ads-cmp--banner",
     },
+    {
+        // Broken 9/11/2018 (M)
+        // Manage was-set cookie on load?
+        domain: "wordpress.com",
+        selector: "a8c-cookie-banner, .custom-cookie-banner",
+    },
 ];
 
 // eslint-disable-next-line
