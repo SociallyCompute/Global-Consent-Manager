@@ -228,16 +228,19 @@ const sites = [
         selector: ".mol-ads-cmp--banner",
     },
     {
-        // Broken 9/11/2018 (M)
-        // Manage was-set cookie on load?
+        //added 10/26/2018
         domain: "wordpress.com",
         selector: "a8c-cookie-banner, .custom-cookie-banner",
     },
     {
-        // Broken 9/11/2018 (M)
-        // Manage was-set cookie on load?
+        //added 11/14/2018
         domain: "blog.zgp.org",
         selector: ".as-oil",
+    },
+    {
+        //added 11/14/2018
+        domain: "orcid.org",
+        selector: ".alert-banner",
     },
 ];
 
