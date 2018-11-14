@@ -228,37 +228,37 @@ const sites = [
         selector: ".mol-ads-cmp--banner",
     },
     {
-        //added 10/26/2018
+        // added 10/26/2018
         domain: "wordpress.com",
         selector: "a8c-cookie-banner, .custom-cookie-banner",
     },
     {
-        //added 11/14/2018
+        // added 11/14/2018
         domain: "blog.zgp.org",
         selector: ".as-oil",
     },
     {
-        //added 11/14/2018
+        // added 11/14/2018
         domain: "orcid.org",
         selector: ".alert-banner",
     },
     {
-        //mostly added 11/14/2018
+        // mostly added 11/14/2018
         domain: "wikitribune.com",
         selector: ".ctcc-inner",
     },
     {
-        //added 11/14/2018
+        // added 11/14/2018
         domain: "software.ac.uk",
         selector: ".gdpr-popup-content",
     },
     {
-        //added 11/14/2018
+        // added 11/14/2018
         domain: "usenix.org",
         selector: ".sliding-popup-top",
     },
     {
-        //added 11/14/2018
+        // added 11/14/2018
         domain: "speakerinnen.org",
         selector: ".cookie-consent-dialog",
     },
