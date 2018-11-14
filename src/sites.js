@@ -233,6 +233,12 @@ const sites = [
         domain: "wordpress.com",
         selector: "a8c-cookie-banner, .custom-cookie-banner",
     },
+    {
+        // Broken 9/11/2018 (M)
+        // Manage was-set cookie on load?
+        domain: "blog.zgp.org",
+        selector: ".as-oil",
+    },
 ];
 
 // eslint-disable-next-line
