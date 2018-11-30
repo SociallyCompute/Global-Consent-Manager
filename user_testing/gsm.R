@@ -9,6 +9,7 @@ pairwise.t.test(gsm$Seconds, gsm$Group,  p.adj = "bonferroni")
 t.test(gsm$Seconds ~ gsm$Group)
 TukeyHSD(aov(Seconds ~ gsm$Group, gsm))
 
+#Eliminating one case because its an outlier
 gsm2 <- subset(gsm, ID != 3)
 pairwise.t.test(gsm2$Seconds, gsm2$Group,  p.adj = "bonferroni")
 t.test(gsm2$Seconds ~ gsm2$Group)
