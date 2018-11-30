@@ -23,6 +23,11 @@ gd <- gsm2 %>%
   summarise(Seconds = mean(Seconds))
 gd
 
+gdsd <- gsm2 %>%
+  group_by(Group) %>%
+  summarise(Seconds = stderr(Seconds))
+gdsd
+
 ggplot(gsm2, aes(x = Group, y = Seconds)) +
   geom_point() +
   geom_bar(data = gd, stat = "identity", alpha = .3)
@@ -38,4 +43,6 @@ ggplot(gsm2, aes(x = Group, y = Seconds, color = Group, fill = Group)) +
     x = "Treatment Group",
     y = "Seconds of Engagement"
   )
+
+mean(gd)
 
