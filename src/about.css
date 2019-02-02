@@ -1,0 +1,255 @@
+body {
+    background: #111;
+    font: 1em sans-serif;
+    min-width:98%;
+    min-height:98%;
+    padding-left: 2%;
+    padding-bottom: 0%;
+    margin-top:0;
+    display:inline-block;
+}
+
+div body #main{
+    margin: 0 !important;
+}
+
+
+img {
+    width:150px;
+    height:150px;
+}
+
+img.logo {
+    margin-right: 0.5em;
+    float: left;
+}
+
+img:not([class=logo])
+{
+    margin-top:35px;
+    margin-right:20px;
+    float: right;
+    width:120px;
+    height:120px;
+    background:#ffffff;
+    border-radius:20px;
+}
+
+span{
+    width:100%;
+}
+
+p {
+    color: #bbb;
+    width:100%;
+}
+
+form input {
+    display:block;
+}
+
+form {
+    padding: 160px 20px 0 60px;
+    width: 410px;
+}
+
+h1 {
+    font: small-caps 2em sans-serif;
+    margin:0;
+    color: #bbb;
+    width:100%;
+    position:relative;
+    vertical-align: baseline;
+    top:0;
+}
+
+h2 {
+    color: #0260c5;
+}
+h3 {
+    color: #ffffff;
+}
+a {
+    color: #0260c5;
+    text-decoration: none;
+    text-align: right;
+    position: relative;
+    z-index: 3;
+}
+
+label, button {
+    display:block;
+    width: 100%;
+    border: 0;
+    font: small-caps 1em sans-serif;
+    background: #333;
+    margin: 2px 0;
+    color: #bbb;
+    background: #333;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+}
+button {
+    padding: 0.9em 0.5em;
+    width:100px;
+}
+button:hover, label:hover {
+    background: #444;
+    color: #eee;
+}
+
+input[type=checkbox] {
+    display:inline;
+}
+
+#main #wide {
+    position: absolute;
+    float: left;
+}
+
+#main {
+    height:100%;
+    top:50px;
+    box-sizing: border-box; 
+    margin: 0 0 0 0;
+    left:250px;
+    right:510px;
+    position:absolute;
+    display:inline-block;
+}
+
+#wide {
+    height:30%;
+    width:96%;
+    white-space: nowrap;
+    padding: 0 0 0 0;
+    z-index:1;
+    top:0;
+    background:#111;
+    flex:1;
+}
+
+#maintext {
+    float:right;
+    position:relative;
+    top:0;
+    bottom:0;
+    width:100%;
+    hyphens: auto;
+    margin:0;
+}
+
+#textcontainer {
+    float:left;
+    width:calc(100% - 40px);
+    top:165px;
+    z-index:1;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    position:absolute;
+}
+
+#frillleft {
+    left:210px;    
+    position: fixed !important;
+    width:40px;
+    height:100%;
+    top: 0;
+    z-index:1;
+}
+
+#frillright{
+    right:490px;
+    position: fixed !important;
+    background-color:#024792 !important;
+    width:25px;
+    height:100%;
+    top: 0;
+    flex:1;
+    z-index:1;
+}
+
+
+#bugsubmit {
+    display:block;
+    float:right;
+    margin-right:50px;
+    margin-top:20px;
+}
+
+#checkvalue {
+    margin-left:20px;
+    margin-top: 20px;
+}
+
+#checkvalue2 {
+    font-size: 1.1em;
+    display:inline;
+}
+
+#text {
+    display:none;
+}
+
+.leftnav {
+    background:#111;
+    width:  210px;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    flex:0;
+    overflow:hidden;
+}
+
+.rightnav {
+    top:0;
+    background:#111;
+    height:100%;
+    z-index: 3;
+    right:0;
+    position: fixed;
+    overflow-y:hidden;
+}
+
+.dark {
+    margin: 2em 1em 1.5em 1.5em;
+    color: #ffffff;
+}
+
+.formright {
+    margin-top:70px;
+    padding-right:40px;
+    color: #ffffff;
+    text-align:right;
+    float:right;
+    width: 200px;
+    margin-right:50px;
+}
+
+textarea {
+    border-radius: 5px;
+    width: 330px;
+    text-align:left;
+    vertical-align:top;
+    padding: 6px 5px 0 5px;
+    background:#ffffff;
+}
+
+textarea#box1 {
+    font-weight:bold;
+    height:24px;
+}
+
+textarea#box3 {
+    height:40px;
+}
+
+textarea#box2-2 {
+    height:80px;
+}
+
+textarea#box2 {
+    height:100px;
+}

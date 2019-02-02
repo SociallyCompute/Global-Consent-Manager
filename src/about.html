@@ -1,0 +1,95 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="about.css"/>
+    <script src="sites.js"></script>
+</head>
+<body>
+    <div class="leftnav scroll">
+        <h2 class="dark" style="font-weight:bold;">Supported<br>Domains</h2>
+        <p class="dark"  id="container"></p>
+    </div>
+    <div id="frillleft"></div>
+    <div id="main">
+            <div id="wide">
+                    <a href="http://www.globalconsentmanager.com">
+                        <img src="../icon-96.png" class="logo">
+                    </a>
+                    <h1>Global Consent Manager</h1>
+                    <h1>User Dashboard</h1>
+                    <br><br>
+                    <h1>
+                        <a href="http://www.globalconsentmanager.com">
+                        Learn More About Us...</a>
+                    </h1>
+                </div>
+            <div id="textcontainer">
+            <div id="maintext">
+                    <h2>Introduction</h2>
+                    <p>This page is for the Global Consent Manager web extension. The primary purpose of this web extension is to provide users with consent management while they are on the Firefox web browser. Global Consent Manager shows businesses and consumers that a healthier consent experience is possible.<br></p>
+                    <h2>Using Global Consent Manager</h2>
+                    <p>Websites as according to this extension follow three categorizations:<br>
+                            Supported<br>
+                            Unsupported<br>
+                            Disabled<br>
+                            These use cases will be explained in the following section.
+                            </p>
+                            <h3>Supported Website</h3>
+                            <p>If Global Consent Manager can manage a specific website’s consent dialogs, the interface will change to accommodate this. The main aspects of this interface are:<br>
+                                    The domain, which reflects the current website’s domain.<br>
+                                    Blocking indicator, which updates the user on their blocking status.<br>
+                                    Consent Switch, which the user can utilize to manually change the blocking status.<br>
+                                    </p>
+                            <h3>Unsupported Website</h3>
+                            <p>If Global Consent Manager does not support a specific website, it will be indicated on the interface. The user will have the opportunity to make a GitHub issue report (see “Features of Global Consent Manager – Bug Report”).</p>
+                            <h3>Supported Website</h3>
+                            <p>If a site begins with “about:” (such as about blank), or if it is a local page or personal file, it will be disabled in Global Consent Manager’s blocking system. These websites do not provide consent dialogs, and the extension has no function on them.</p>
+                        <h2>Features of Global Consent Manager</h2>
+                        <h3>The Universal Button</h3>
+                        <p>This web extension manages its user interaction through a single button. Based on the status of a website, the button will change its function and text to accommodate the situation (see the previous section, “Using Global Consent Manager”).</p>
+                        <h3>Automatic Unblocking</h3>
+                        <p>Once a supported website can be considered “trustworthy”, Global Consent Manager will stop blocking this site so that he user may make their consent decision. The user may also override this by blocking the website again, and the decision will be remembered.</p>
+                        <h3>Bug Reporting</h3>
+                        <p>If the user is logged into GitHub and notice an unsupported site, they may click the button on Global Consent Manager’s user panel. This will automatically generate an issue on GitHub and bring the user to the submittal page, where they may choose to send the issue.</p>
+                        <h2>Uninstalling or Disabling / Enabling the Extension</h2>
+                        <h3>Uninstall</h3>
+                        <p>Uninstalling Global Consent Manager is simple:<br>
+                                1)      Right click on the blue Global Consent Manager icon in the top right of the browser.<br>
+                                2)      Click “Remove Extension” in the drop-down menu.<br>
+                                3)      When prompted, click “Remove”.</p>
+                        <h3>Disable/Enable</h3>
+                        <p>If the user would prefer to keep Global Consent Manager and stop it from running for any length of time, they may follow these steps:<br>
+                                1)      Press the keyboard combination “Ctrl+Shift+A”<br>
+                                2)      Click “Disable” in the options for Global Consent Manager.<br>
+                                The extension may be re-enabled at any time with the same steps.
+                                </p>
+            </div>
+            </div>
+    </div>
+    <div id="frillr2"></div>
+        <div id="frillright"></div>
+            <div id="inner" class="rightnav">
+                <h2 class="formright" style="font-weight:bold;">Submit a
+                    <br>GithHub Issue<br>(Requires Login)</h2>
+                <img src="icons/github.svg">
+                <form>
+                    <p>Title:</p>
+                    <textarea id="box1"></textarea>
+                    <p>The Issue:</p>
+                    <textarea id="box2" type="text"></textarea>
+                    <p>Computer Specifications:</p>
+                    <textarea id="box2-2" type="text"></textarea>
+                    <p>Extra Information:</p>
+                    <textarea id="box3" type="text"></textarea>
+                    <br><br>
+                    <input type="checkbox" id="checkvalue">
+                    <p id="checkvalue2">
+                        I am submitting an issue to GitHub.
+                    </p>
+                    <button id="bugsubmit" type="button" text="Send Issue">
+                            Submit
+                    </button>
+                </form>
+            </div>
+        <script type="text/javascript" src="act.js"></script>
+</body>

@@ -17,7 +17,8 @@
         "cookies",
         "storage",
         "tabs",
-        "webNavigation"
+        "webNavigation",
+        "contextMenus"
     ],
     "background": {
         "scripts": [

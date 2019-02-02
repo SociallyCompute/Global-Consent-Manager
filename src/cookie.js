@@ -39,7 +39,7 @@ let actions = {
         await browser.tabs.create({
             url: "https://github.com/SociallyCompute/Global-Consent-Manager/issues/new?title="
                 + "Not listed yet: " + domain + "&body=The website at this url is unlisted: " + "\n"
-                + tab.url + "&projects=loading..." + "&labels=Unlisted",
+                + tab.url + "&projects=loading..." + "&labels=not listed",
         });
         window.close();
     },
@@ -58,8 +58,14 @@ async function main() {
     let site = await getSite(host);
     let isWebsite = true;
 
-    if (tab.url.startsWith("about:") || tab.url.startsWith("file:")
-        || tab.url.startsWith("view-source:") || tab.url == "") {
+    if (tab.url.startsWith("about:")
+        || tab.url.startsWith("file:")
+        || tab.url.startsWith("view-source:")
+        || tab.url == "") {
+        isWebsite = false;
+        updateSecondary(isWebsite);
+    } else
+    if (tab.url.startsWith("moz-extension:")) {
         isWebsite = false;
         updateSecondary(isWebsite);
     } else
@@ -76,5 +82,4 @@ async function main() {
         updateSecondary(isWebsite);
     }
 }
-
 main();
