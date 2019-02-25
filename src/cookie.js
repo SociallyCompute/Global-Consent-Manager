@@ -62,18 +62,18 @@ async function main() {
         || tab.url.startsWith("view-source:") || tab.url == "") {
         isWebsite = false;
         updateSecondary(isWebsite);
-    } else
-    if (site) {
+    } else {
         let blocked = document.querySelector("#blocked");
-        blocked.checked = site.blocked;
+        blocked.checked = (site || {blocked: true}).blocked;
         blocked.addEventListener("change", actions);
         updateManaged(site);
-    } else {
-        isWebsite = true;
-        let report = document.querySelector("#report");
-        document.body.className = "unknown";
-        report.addEventListener("click", actions);
-        updateSecondary(isWebsite);
+        if (!site) {
+            isWebsite = true;
+            let report = document.querySelector("#report");
+            document.body.className = "unknown";
+            report.addEventListener("click", actions);
+            updateSecondary(isWebsite);
+        }
     }
 }
 

@@ -14,6 +14,8 @@
 
     "permissions": [
         "<all_urls>",
+        "webRequest",
+        "webRequestBlocking",
         "cookies",
         "storage",
         "tabs",
@@ -21,6 +23,7 @@
     ],
     "background": {
         "scripts": [
+            "src/consent_provider.js",
             "src/sites.js",
             "src/background.js"
         ]
