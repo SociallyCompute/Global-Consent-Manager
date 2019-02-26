@@ -10,5 +10,14 @@
     {
         "domain": "index.hr",
         "dialog": "Kolačiće upotrebljavamo"
+    },
+    {
+        "domain": "techcrunch.com",
+        "url": "http://techcrunch.com/?lang=en",
+        "dialog": "Select 'OK' to allow Oath and our partners to use your data"
+    },
+    {
+        "domain": "theatlantic.com",
+        "dialog": "Please click \"I Agree\" to accept this use of your data"
     }
 ]

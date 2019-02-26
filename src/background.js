@@ -35,10 +35,10 @@ async function disable(site) {
 
 let actions = {
     async message({domain, blocked}) {
-        console.log("message", sites)
+        console.log("message", sites);
         let site = await getSite(domain);
         if (!site) {
-            site = {blocked, manual: true, domain }
+            site = {blocked, manual: true, domain};
             sites.push(site);
         }
         site.storage = {blocked, manual: true};
@@ -70,14 +70,14 @@ let actions = {
 
 async function initRequestBlocker() {
     await browser.webRequest.onBeforeRequest.addListener(
-        async function (details) {
-            const tab = await browser.tabs.get(details.tabId)
-            const host = new URL(tab.url).host
+        async function(details) {
+            const tab = await browser.tabs.get(details.tabId);
+            const host = new URL(tab.url).host;
             const siteSettings = await getSite(host) || {blocked: true};
 
-            return { cancel: siteSettings.blocked }
+            return {cancel: siteSettings.blocked};
         },
-        { urls: domains },
+        {urls: domains},
         ["blocking"]
     );
 }
