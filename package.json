@@ -8,7 +8,7 @@
         "build": "npm test && web-ext build",
         "lint": "eslint src/*.js && web-ext lint",
         "list": "mocha --timeout 90000",
-        "start": "web-ext run --verbose",
+        "start": "web-ext run",
         "test": "npm run lint && npm run list"
     },
     "dependencies": {

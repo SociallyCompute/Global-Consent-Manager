@@ -14,7 +14,7 @@ const driver = new Builder().forBrowser("firefox").build();
 async function getPageText(url) {
     await driver.executeScript(function(url) {window.location.href=url}, url)
     //await driver.get(url);
-    await driver.sleep(5000);
+    await driver.sleep(10000);
     let body = await driver.wait(until.elementLocated(By.tagName("body")), 10000);
     return await body.getText();
 }
