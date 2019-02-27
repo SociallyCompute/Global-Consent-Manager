@@ -34,7 +34,13 @@ async function disable(site) {
 }
 
 let actions = {
-    async message({domain, blocked}) {
+    async message({domain, blocked, getDomain}) {
+        if (getDomain) {
+            const result = await getSite(getDomain);
+            console.log(result, getDomain, sites);
+            return result;
+        }
+
         console.log("message", sites);
         let site = await getSite(domain);
         if (!site) {

@@ -22,6 +22,15 @@ function updateSecondary(isWebsite) {
     document.querySelector("#management").classList.toggle("managed", false);
 }
 
+// new consent_provider based blocking allows for dynamic adding of sites.
+// Therefore the sites array can change. This function establishes a Message-Channel to background.js
+// to retrive getSite(domain);
+async function getSite(domain) {
+    return await browser.runtime.sendMessage({
+        getDomain: domain,
+    });
+}
+
 let actions = {
     async blocked(e) {
         let domain = document.querySelector("#domain").textContent;
