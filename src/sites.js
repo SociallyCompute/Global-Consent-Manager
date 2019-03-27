@@ -227,6 +227,78 @@ const sites = [
         domain: "dailymail.co.uk",
         selector: ".mol-ads-cmp--banner",
     },
+    {
+        // Working 3/27/2019 (M)
+        domain: "software.ac.uk",
+        selector: "#gdpr-popup",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "insights.com",
+        selector: "#ccc-icon, #ccc-notify",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "tiobe.com",
+        selector: ".cc_banner-wrapper",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "mybrowseraddon.com",
+        selector: ".cc_banner-wrapper",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "orcid.org",
+        selector: "#cookie-alert",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "link.springer.com",
+        selector: ".optanon-alert-box-wrapper",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "gallup.com",
+        selector: "#gel-cookie-banner",
+    },
+    //Begin sp_message banners
+    {
+        // Working 3/27/2019 (M)
+        domain: "motherboard.vice.com",
+        selector: "[id^='sp_message_id'], [class^='sp_veil']",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "theneweuropean.co.uk",
+        selector: "[id^='sp_message_id'], [class^='sp_veil']",
+    },
+    //End sp_message banners
+    {
+        // Working 3/27/2019 (M)
+        domain: "independent.ie",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "newyorker.com",
+        selector: "#_evidon_banner",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "news.yahoo.com",
+        selector: "#_evidon_banner",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "healthline.com",
+        selector: ".window-wrapper",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "rtbf.be",
+        selector: "#js-cookie-policy-default, .rtbf-cookie-policy__title, .rtbf-cookie-policy__text",
+    },
 ];
 
 // eslint-disable-next-line
