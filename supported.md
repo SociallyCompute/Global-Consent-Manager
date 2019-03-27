@@ -15,31 +15,44 @@ euractiv.com\
 eurogamer.net\
 euronews.com\
 forsal.pl\
+gallup.com\
+healthline.com\
 independent.co.uk\
+independent.ie\
 index.hr\
 index.hu\
+insights.com\
 investing.com\
 joe.ie\
 lepetitjournal.com\
+link.springer.com\
 mashable.com\
 mediapart.fr\
 meneame.net\
+motherboard.vice.com\
+mybrowseraddon.com\
+newyorker.com\
 nouvelobs.com\
-nytimes.com\
-politico.eu\
+nytimes.com (fixed 3/27/2019)\
+orcid.org\
+politico.eu (fixed 3/27/2019)\
 popularmechanics.com\
 portfolio.hu\
 public.fr\
 reuters.com\
-shetnews.co.uk\
+rtbf.be\
+shetnews.co.uk (fixed 3/27/2019)\
+software.ac.uk\
 telegraph.co.uk\
 tgcom24.mediaset.it\
 theguardian.co.uk\
 theguardian.com\
 thejournal.ie\
 thelocal.es\
+theneweuropean.co.uk\
 thenextweb.com\
 theverge.com\
+tiobe.com\
 trtworld.com\
 vilaweb.cat\
 voterspost.com\
