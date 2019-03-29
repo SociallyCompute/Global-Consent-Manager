@@ -193,6 +193,11 @@ const sites = [
     },
     {
         // Working 3/26/2019 (M)
+        domain: "sammobile.com",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 3/26/2019 (M)
         domain: "cyclingnews.com",
         selector: ".qc-cmp-ui-container",
     },
@@ -276,17 +281,17 @@ const sites = [
     //End sp_message banners
     {
         // Working 3/27/2019 (M)
+        domain: "forbes.com",
+        selector: "[id^='pop-div']",
+    },
+    {
+        // Working 3/28/2019 (M)
         domain: "independent.ie",
         selector: ".qc-cmp-ui-container",
     },
     {
         // Working 3/27/2019 (M)
         domain: "newyorker.com",
-        selector: "#_evidon_banner",
-    },
-    {
-        // Working 3/27/2019 (M)
-        domain: "news.yahoo.com",
         selector: "#_evidon_banner",
     },
     {
@@ -298,6 +303,26 @@ const sites = [
         // Working 3/27/2019 (M)
         domain: "rtbf.be",
         selector: "#js-cookie-policy-default, .rtbf-cookie-policy__title, .rtbf-cookie-policy__text",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "m.argos.ie",
+        selector: ".sk_argOverlayDiv",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "brussels-city-shuttle.com",
+        selector: "#cookie_banner",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "wp.pl",
+        selector: "#cookie_banner",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "medium.com",
+        selector: ".butterBar",
     },
 ];
 
