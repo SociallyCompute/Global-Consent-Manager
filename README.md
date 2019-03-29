@@ -47,6 +47,33 @@
  This will be automatically populated, but feel free to customize it.<br /> <br />
  Note: The button will change its label depending on the domain.<br />
  
+ ## Adding a Supported Site
+ If you are ready to contribute to Global Consent Manager, a simple process will have a new site added to the extension. Here are the steps to contributing a site to GCM.<br />
+ 
+ 1. Open the file [sites.js](https://github.com/SociallyCompute/Global-Consent-Manager/blob/master/src/sites.js)
+ 2. Navigate to the website you would like to add to GCM
+ 3. Right click on the consent dialog and choose Inspect Element
+ 4. Find the highest level class or ID that holds the consent dialog, but doesn't affect the page if it is gone.
+ 5. Add the consent dialog to the site list in sites.js with the following formats:
+ 
+ ```
+    {
+        // Working THEDATE (NAME)
+        domain: "WEBSITE.URL",
+        selector: ".CLASS_I_FOUND",
+    },
+ ```
+ ```
+    {
+        // Working THEDATE (NAME)
+        domain: "WEBSITE.URL",
+        selector: "#ID_I_FOUND",
+    },
+ ```
+ 
+ This process may require some trial and error or multiple targets so it is best to use developer tools like web-ext listed above.<br />
+ &nbsp; &nbsp; &nbsp; 6. Finally, submit a pull request to this repository and it will be reviewed and tested.
+ 
  ## Licensing and Copyright
  
  All source code copyright is retained by the contributors. All contriubtions and source code are licensed under the MIT license. 
