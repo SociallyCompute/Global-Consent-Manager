@@ -314,11 +314,13 @@ const sites = [
         domain: "brussels-city-shuttle.com",
         selector: "#cookie_banner",
     },
+    /*
     {
-        // Working 3/28/2019 (M)
+        // Broken 3/28/2019 (M)
         domain: "wp.pl",
         selector: "#cookie_banner",
     },
+    */
     {
         // Working 3/28/2019 (M)
         domain: "medium.com",
