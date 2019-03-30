@@ -188,7 +188,42 @@ const sites = [
     // Begin Quantcast
     {
         // Working 3/26/2019 (M)
+        domain: "slashdot.org",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 3/26/2019 (M)
+        domain: "buzzfeednews.com",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 3/26/2019 (M)
+        domain: "phoronix.com",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 3/26/2019 (M)
+        domain: "wccftech.com",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 3/26/2019 (M)
         domain: "meneame.net",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 3/26/2019 (M)
+        domain: "macrumors.com",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "androidguys.com",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "rawstory.com",
         selector: ".qc-cmp-ui-container",
     },
     {
@@ -214,6 +249,11 @@ const sites = [
     {
         // Working 3/26/2019 (M)
         domain: "vilaweb.cat",
+        selector: ".qc-cmp-ui-container, #accept_cookies",
+    },
+    {
+        // Working 3/26/2019 (M)
+        domain: "bleepingcomputer.com",
         selector: ".qc-cmp-ui-container, #accept_cookies",
     },
     // End Quantcast
@@ -261,6 +301,11 @@ const sites = [
         // Working 3/27/2019 (M)
         domain: "link.springer.com",
         selector: ".optanon-alert-box-wrapper",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "thedailybeast.com",
+        selector: ".optanon-alert-box-wrapper, #optanon",
     },
     {
         // Working 3/27/2019 (M)
@@ -325,6 +370,46 @@ const sites = [
         // Working 3/28/2019 (M)
         domain: "medium.com",
         selector: ".butterBar",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "programmableweb.com",
+        selector: "#sliding-popup",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "suzuki.ro",
+        selector: "#CybotCookiebotDialog",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "brdfinance.ro",
+        selector: ".wrapper-banner-cookie",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "ns.nl",
+        selector: "#r42CookieBar, #r42CookieBg",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "fool.com",
+        selector: "#gdpr-modal-background, #gdpr-modal-content, .cc-window",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "foodnetwork.co.uk",
+        selector: "#cookie-message-mask, .cookie-message",
+    },
+    {
+        // Working 3/28/2019 (M)
+        domain: "foreignaffairs.com",
+        selector: ".gdpr",
+    },
+    {
+        // Working 3/27/2019 (M)
+        domain: "smbc-comics.com",
+        selector: "[class^='banner_banner']",
     },
 ];
 
