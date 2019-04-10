@@ -48,6 +48,12 @@ const sites = [
     },
     {
         // Working 3/26/2019 (M)
+        domain: "tweakers.net",
+        name: "lastConsentChange",
+        value: "1554903588036",
+    },
+    {
+        // Working 3/26/2019 (M)
         domain: "popularmechanics.com",
         selector: "#_evidon-barrier-wrapper, #_evidon-banner, #_evidon-background",
     },
@@ -553,6 +559,31 @@ const sites = [
         // 4/10/2019 (M)
         domain: "booking.com",
         selector: "#cookie_warning",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "permanent.org",
+        selector: "#cookie-law-info-bar",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "livemint.com",
+        selector: ".cookiesbg",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "thelocal.it",
+        selector: "[class^='app_gdpr']",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "uipath.com",
+        selector: "[id*='cookie']",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "bodybuilding.com",
+        selector: ".Modal",
     },
 ];
 
