@@ -411,6 +411,149 @@ const sites = [
         domain: "smbc-comics.com",
         selector: "[class^='banner_banner']",
     },
+    //New top 50 DE sites
+    {
+        // 4/10/2019 (M)
+        // NOTE: This rule might target any banner on Facebook.com. Investigate.
+        domain: "facebook.com",
+        selector: ".fbPageBanner",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "ebay.de",
+        selector: "#gdpr-banner",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "ebay-kleinanzeigen.de",
+        selector: "#gdpr-banner",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "vk.com",
+        selector: "#cookies_policy_wrap",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "yandex.ru",
+        selector: ".lg-cc",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "paypal.com",
+        selector: "#gdprCookieBanner",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "twitter.com",
+        selector: ".eu-cookie-notice",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "gmx.net",
+        selector: ".cookie-lasche-hp",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "web.de",
+        selector: ".cookie-lasche-hp",
+    },
+    {
+        // Work in Progress 4/10/2019 (M)
+        domain: "yahoo.com",
+        selector: ".consent-semi-transparent",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "twitch.tv",
+        selector: ".gdpr-consent-banner",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "ok.ru",
+        selector: ".__cookies",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "netflix.com",
+        selector: ".cookie-disclosure-message",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "live.com",
+        selector: ".cc-banner",
+    },
+    {
+        // Evidently Working 4/10/2019 (M)
+        domain: "reddit.com",
+        selector: "[class$='-3']"
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "bing.com",
+        selector: ".hpn_top_container",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "chip.de",
+        selector: ".as-oil",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "aliexpress.com",
+        selector: ".site-notice-container",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "shop-apotheke.com",
+        selector: "#cookiebanner",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "focus.de",
+        selector: ".as-oil",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "postbank.de",
+        selector: ".cookie-disclaimer__wrapper",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "mobile.de",
+        selector: "#consentBanner",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "microsoft.com",
+        selector: "#msccBanner",
+    },
+    {
+        // 4/10/2019 (M)
+        // Consent dialog does not seem to show up after virst view
+        domain: "idealo.de",
+        selector: ".cookieBanner",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "immobilienscout24.de",
+        selector: "[id*='GDPR']",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "zdf.de",
+        selector: ".x-cookies",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "wetter.com",
+        selector: ".cookie-banner",
+    },
+    {
+        // 4/10/2019 (M)
+        domain: "booking.com",
+        selector: "#cookie_warning",
+    },
 ];
 
 // eslint-disable-next-line
