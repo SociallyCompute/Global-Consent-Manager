@@ -1,23 +1,35 @@
 "use strict";
+var cE;
+// eslint-disable-next-line
+async function sendoff(elem) {
+    await browser.contentScripts.register({
+            matches: [`<all_urls>`],
+            css: [{code: `${document.getElementById(elem)} { display: none !important }`}],
+            runAt: "document_start",
+    });
+    console.log(elem + " rule set (universal)");
+}
 
 async function enable(site) {
-    if (site.selector) {
-        site.cs = await browser.contentScripts.register({
-            matches: [`*://*.${site.domain}/*`],
-            css: [{code: `${site.selector} { display: none !important }`}],
-            runAt: "document_start",
+    if (cE != 0) {
+        if (site.selector) {
+            site.cs = await browser.contentScripts.register({
+                matches: [`*://*.${site.domain}/*`],
+                css: [{code: `${site.selector} { display: none !important }`}],
+                runAt: "document_start",
+            });
+            console.log(site.selector + " rule set for " + site.domain);
+            return;
+        }
+        await browser.cookies.set({
+            domain: site.domain,
+            name: site.name,
+            value: site.value,
+            url: `http://${site.domain}/`,
+            firstPartyDomain: "",
         });
-        console.log(site.selector + " rule set for " + site.domain);
-        return;
+        console.log(`Cookie ${site.name} set for domain ${site.domain}`);
     }
-    await browser.cookies.set({
-        domain: site.domain,
-        name: site.name,
-        value: site.value,
-        url: `http://${site.domain}/`,
-        firstPartyDomain: "",
-    });
-    console.log(`Cookie ${site.name} set for domain ${site.domain}`);
 }
 
 async function disable(site) {
@@ -44,9 +56,10 @@ let actions = {
     },
 
     async navigation({url}) {
+        console.log("CHECKING")
+        await checkElements(site)
         let site = await getSite(new URL(url).host);
         let date = new Date().toISOString().substr(0, 10);
-
         if (!site || site.manual || !site.blocked || date in site.storage) {
             return;
         }
@@ -67,6 +80,9 @@ async function main() {
         if (site.blocked) {
             await enable(site);
         }
+    }
+    for (let elem of elements) {
+        sendoff(elem);
     }
 
     await browser.runtime.onMessage.addListener(actions.message);
