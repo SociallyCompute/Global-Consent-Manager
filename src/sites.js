@@ -2,6 +2,18 @@
 
 const sites = [
     {
+        // Work in Progress 4/10/2019 (M)
+        domain: "yahoo.com",
+        name: "cmp",
+        value: "v=17&t=1555477491&j=1",
+    },
+    {
+        // Work in Progress 4/10/2019 (M)
+        domain: "yahoo.com",
+        name: "EuConsent",
+        value: "BOewwRGOfIwHCAOABCENCNAAAAAjwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    },
+    {
         // Working 3/26/2019 (M)
         domain: "mediapart.fr",
         name: "cc",
@@ -318,7 +330,7 @@ const sites = [
         domain: "gallup.com",
         selector: "#gel-cookie-banner",
     },
-    //Begin sp_message banners
+    // Begin sp_message banners
     {
         // Working 3/27/2019 (M)
         domain: "motherboard.vice.com",
@@ -329,7 +341,7 @@ const sites = [
         domain: "theneweuropean.co.uk",
         selector: "[id^='sp_message_id'], [class^='sp_veil']",
     },
-    //End sp_message banners
+    // End sp_message banners
     {
         // Working 3/27/2019 (M)
         domain: "forbes.com",
@@ -417,7 +429,7 @@ const sites = [
         domain: "smbc-comics.com",
         selector: "[class^='banner_banner']",
     },
-    //New top 50 DE sites
+    // New top 50 DE sites
     {
         // 4/10/2019 (M)
         // NOTE: This rule might target any banner on Facebook.com. Investigate.
@@ -465,11 +477,6 @@ const sites = [
         selector: ".cookie-lasche-hp",
     },
     {
-        // Work in Progress 4/10/2019 (M)
-        domain: "yahoo.com",
-        selector: ".consent-semi-transparent",
-    },
-    {
         // 4/10/2019 (M)
         domain: "twitch.tv",
         selector: ".gdpr-consent-banner",
@@ -492,7 +499,7 @@ const sites = [
     {
         // Evidently Working 4/10/2019 (M)
         domain: "reddit.com",
-        selector: "[class$='-3']"
+        selector: "[class$='-3']",
     },
     {
         // 4/10/2019 (M)
@@ -589,9 +596,9 @@ const sites = [
 
 // eslint-disable-next-line
 async function getSite(host) {
-    let site = sites.find((s) => host.endsWith(s.domain));
+    const site = sites.find((s) => host.endsWith(s.domain));
     if (site) {
-        let storage = await browser.storage.sync.get(site.domain);
+        const storage = await browser.storage.sync.get(site.domain);
         site.storage = storage[site.domain] || {blocked: true};
         site.blocked = site.storage.blocked;
         site.manual = site.storage.manual;
