@@ -12,13 +12,13 @@
         "test": "npm run lint && npm run list"
     },
     "dependencies": {
-        "chai": "^4.1.2",
+        "chai": "^4.2.0",
         "eslint": "^5.16.0",
         "eslint-config-google": "^0.9.1",
-        "geckodriver": "^1.12.2",
+        "geckodriver": "^1.16.2",
         "mocha": "^5.2.0",
-        "selenium-webdriver": "^4.0.0-alpha.1",
-        "web-ext": "^2.8.0"
+        "selenium-webdriver": "^4.0.0-alpha.4",
+        "web-ext": "^3.1.1"
     },
     "eslintConfig": {
         "extends": "google",
