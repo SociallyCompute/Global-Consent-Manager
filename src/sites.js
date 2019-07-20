@@ -2,6 +2,12 @@
 
 const sites = [
     {
+        // Global IAB TCF cookie, with none of the purposes allowed.
+        domain: "consensu.org",
+        name: "euconsent",
+        value: "BOTRKYzOTRKYzABABBENBdAAAAAgWAAA",
+    },
+    {
         // Work in Progress 4/10/2019 (M)
         domain: "yahoo.com",
         name: "cmp",
