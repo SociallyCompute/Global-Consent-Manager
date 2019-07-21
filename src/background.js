@@ -2,9 +2,10 @@
 
 async function enable(site) {
     if (site.selector) {
+        const hide = `${site.selector} { display: none !important }`;
         site.cs = await browser.contentScripts.register({
             matches: [`*://*.${site.domain}/*`],
-            css: [{code: `${site.selector} { display: none !important }`}],
+            css: [{code: `${hide} ${site.custom || ""}`}],
             runAt: "document_start",
         });
         console.log(site.selector + " rule set for " + site.domain);

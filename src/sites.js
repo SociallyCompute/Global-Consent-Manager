@@ -2,6 +2,12 @@
 
 const sites = [
     {
+        // Global IAB TCF cookie, with none of the purposes allowed.
+        domain: "consensu.org",
+        name: "euconsent",
+        value: "BOTRKYzOTRKYzABABBENBdAAAAAgWAAA",
+    },
+    {
         // Work in Progress 4/10/2019 (M)
         domain: "yahoo.com",
         name: "cmp",
@@ -213,6 +219,8 @@ const sites = [
         // Working 3/26/2019 (M)
         domain: "buzzfeednews.com",
         selector: ".qc-cmp-ui-container",
+        // Custom fix for scrolling.
+        custom: ".qc-cmp-ui-showing {overflow-y: initial}",
     },
     {
         // Working 3/26/2019 (M)
