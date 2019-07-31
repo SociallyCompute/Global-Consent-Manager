@@ -86,10 +86,9 @@ const sites = [
         selector: "#_evidon_banner",
     },
     {
-        // Working? Double-check soon 3/26/2019 (M)
         // Note the .de
         domain: "businessinsider.de",
-        selector: ".cc-window, .cc-banner, .cc-type-info, .cc-theme-block, .cc-bottom",
+        selector: ".cc-window, .cc-banner, .cc-type-info, .cc-theme-block, .cc-bottom, #CybotCookiebotDialog",
     },
     {
         // Working 3/26/2019 (M)
@@ -600,6 +599,14 @@ const sites = [
         domain: "bodybuilding.com",
         selector: ".Modal",
     },
+    {
+        domain: "businessinsider.nl",
+        selector: "#CybotCookiebotDialog",
+    },
+    {
+        domain: "businessinsider.com",
+        selector: "#CybotCookiebotDialog",
+    }
 ];
 
 // eslint-disable-next-line
