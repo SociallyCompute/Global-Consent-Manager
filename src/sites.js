@@ -606,7 +606,12 @@ const sites = [
     {
         domain: "businessinsider.com",
         selector: "#CybotCookiebotDialog",
-    }
+    },
+    {
+    	domain: "vangoghmuseum.nl",
+	name: ".GdprCookie.V1",
+	value: "0",
+    },
 ];
 
 // eslint-disable-next-line
