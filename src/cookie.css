@@ -78,7 +78,7 @@ input[type=checkbox] {
     transition: all ease 0.2s;
 }
 input[type=checkbox]:before {
-    content: "ON OFF";
+    content: "__MSG_blocking_checkbox__";
     display: block;
     position: absolute;
     width: 22px;
@@ -109,31 +109,31 @@ input[type=checkbox]:checked {
 }
 
 .blocked:after {
-    content: "first visited today, not trusted";
+    content: "__MSG_blocked_first__";
     color: #666;
 }
 .blocked.visited:after {
-    content: "previously visited, not trusted yet";
+    content: "__MSG_blocked_visited__";
     color: #999;
 }
 .unblocked:after {
-    content: "trusted because visited regularly";
+    content: "__MSG_auto_unblocked__";
     color: yellow;
 }
 
 .manual.unblocked:after {
-    content: "trusted by choice";
+    content: "__MSG_manual_unblocked__";
     color: yellow;
 }
 .manual.blocked:after {
-    content: "blocked by choice";
+    content: "__MSG_manual_blocked__";
     color: #369;
 }
 .notmanaged:after {
-    content: "Unknown Site";
+    content: "__MSG_notmanaged_site__";
     color: #bbb;
 }
 .managed:after {
-    content: "Managed Site";
+    content: "__MSG_managed_site__";
     color: #bbb;
 }
