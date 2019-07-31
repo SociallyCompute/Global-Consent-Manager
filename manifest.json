@@ -1,9 +1,10 @@
 {
     "manifest_version": 2,
-    "name": "Global Consent Manager",
+    "name": "__MSG_extension_name__",
+    "default_locale": "en",
     "version": "1.5.0",
 
-    "description": "A browser extension for managing GDPR consent dialogs across websites",
+    "description": "__MSG_extension_description__",
     "homepage_url": "http://www.globalconsentmanager.com/",
 
     "applications": {

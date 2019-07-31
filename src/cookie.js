@@ -49,6 +49,18 @@ const actions = {
     },
 };
 
+
+function localize() {
+    const {getMessage} = browser.i18n;
+
+    document.querySelector("h1").textContent = getMessage("extension_name");
+    document.querySelector("a").firstChild.textContent = getMessage("learn_more");
+    document.querySelector("#cdblock").firstChild.textContent = getMessage("blocking_label");
+    document.querySelector("#report").textContent = getMessage("report_missing_button");
+    document.querySelector("#report").title = getMessage("report_missing_title");
+    document.querySelector("#nosite").textContent = getMessage("not_a_webpage");
+}
+
 async function main() {
     const [tab] = await browser.tabs.query({active: true, currentWindow: true});
 
@@ -77,4 +89,5 @@ async function main() {
     }
 }
 
+localize();
 main();
