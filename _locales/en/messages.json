@@ -1,0 +1,78 @@
+{
+    "extension_name": {
+        "message": "Global Consent Manager",
+        "description": "Name of the extension."
+    },
+
+    "extension_description": {
+        "message": "A browser extension for managing GDPR consent dialogs across websites",
+        "description": "Description of the extension."
+    },
+
+
+    "learn_more": {
+        "message": "Learn More...",
+        "description": "Link text to (english) docs on globalconsentmanager.com."
+    },
+
+    "blocking_label": {
+        "message": "Blocking Consent Dialog",
+        "description": "Label for blocking consent dialog checkbox."
+    },
+
+    "blocking_checkbox": {
+        "message": "ON OFF",
+        "description": "Blocking consent dialog checkbox states."
+    },
+
+    "report_missing_button": {
+        "message": "Report Missing Site...",
+        "description": "Label for report missing site button."
+    },
+
+    "report_missing_title": {
+        "message": "Let us know if this site should be managed",
+        "description": "Tooltip for report missing site button."
+    },
+
+    "not_a_webpage": {
+        "message": "This site is not a webpage...",
+        "description": "Description for non-web pages."
+    },
+
+
+    "blocked_first": {
+        "message": "first visited today, not trusted",
+        "description": "Explain blocked on first visit."
+    },
+
+    "blocked_visited": {
+        "message": "previously visited, not trusted yet",
+        "description": "Explain previously visited, still blocked."
+    },
+
+    "auto_unblocked": {
+        "message": "trusted because visited regularly",
+        "description": "Explain unblocked because visited regularly."
+    },
+
+    "manual_unblocked": {
+        "message": "trusted by choice",
+        "description": "Explain unblocked by user's own action."
+    },
+
+    "manual_blocked": {
+        "message": "blocked by choice",
+        "description": "Explain blocked by user's own action."
+    },
+
+    "notmanaged_site": {
+        "message": "Unknown Site",
+        "description": "Explain site not known to or managed by the extension."
+    },
+
+    "managed_site": {
+        "message": "Managed Site",
+        "description": "Explain site known to and managed by the extension."
+    }
+}
