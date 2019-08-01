@@ -622,6 +622,11 @@ const sites = [
 	name: "FTConsent",
 	value: "marketingBypost%3Aoff%2CmarketingByemail%3Aoff%2CmarketingByphonecall%3Aoff%2CmarketingByfax%3Aoff%2CmarketingBysms%3Aoff%2CenhancementBypost%3Aoff%2CenhancementByemail%3Aoff%2CenhancementByphonecall%3Aoff%2CenhancementByfax%3Aoff%2CenhancementBysms%3Aoff%2CbehaviouraladsOnsite%3Aoff%2CdemographicadsOnsite%3Aoff%2CrecommendedcontentOnsite%3Aoff%2CprogrammaticadsOnsite%3Aoff%2CcookiesUseraccept%3Aoff%2CcookiesOnsite%3Aoff%2CmembergetmemberByemail%3Aoff",
     },
+    {
+        domain: "techrepublic.com",
+        name: "_evidon_consent_cookie",
+        value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2019-08-01T18:33:49.352Z\"}",
+    },
 ];
 
 // eslint-disable-next-line
