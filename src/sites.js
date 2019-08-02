@@ -627,6 +627,20 @@ const sites = [
         name: "_evidon_consent_cookie",
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2019-08-01T18:33:49.352Z\"}",
     },
+    {
+    	domain: "linuxize.com",
+	name: "euconsent",
+	value: "BAAAAAAAAAAAAABABAENAfAAAAAVmAAA",
+    },
+    {
+    	domain: "linuxize.com",
+	name: "CMPCookieConsent",
+	value: "-1=0|1=1|2=0|3=0|4=0"
+    },
+    {
+    	domain: "linuxize.com",
+	selector: "#ez-cookie-dialog-wrapper"
+    },
 ];
 
 // eslint-disable-next-line
