@@ -629,16 +629,6 @@ const sites = [
     },
     {
     	domain: "linuxize.com",
-	name: "euconsent",
-	value: "BAAAAAAAAAAAAABABAENAfAAAAAVmAAA",
-    },
-    {
-    	domain: "linuxize.com",
-	name: "CMPCookieConsent",
-	value: "-1=0|1=1|2=0|3=0|4=0"
-    },
-    {
-    	domain: "linuxize.com",
 	selector: "#ez-cookie-dialog-wrapper"
     },
 ];
