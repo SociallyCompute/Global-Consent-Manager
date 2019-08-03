@@ -608,19 +608,19 @@ const sites = [
         selector: "#CybotCookiebotDialog",
     },
     {
-    	domain: "vangoghmuseum.nl",
-	name: ".GdprCookie.V1",
-	value: "0",
+        domain: "vangoghmuseum.nl",
+        name: ".GdprCookie.V1",
+        value: "0",
     },
     {
-    	domain: "ft.com",
-	name: "FTCookieConsentGDPR",
-	value: "true",
+        domain: "ft.com",
+        name: "FTCookieConsentGDPR",
+        value: "true",
     },
     {
-    	domain: "ft.com",
-	name: "FTConsent",
-	value: "marketingBypost%3Aoff%2CmarketingByemail%3Aoff%2CmarketingByphonecall%3Aoff%2CmarketingByfax%3Aoff%2CmarketingBysms%3Aoff%2CenhancementBypost%3Aoff%2CenhancementByemail%3Aoff%2CenhancementByphonecall%3Aoff%2CenhancementByfax%3Aoff%2CenhancementBysms%3Aoff%2CbehaviouraladsOnsite%3Aoff%2CdemographicadsOnsite%3Aoff%2CrecommendedcontentOnsite%3Aoff%2CprogrammaticadsOnsite%3Aoff%2CcookiesUseraccept%3Aoff%2CcookiesOnsite%3Aoff%2CmembergetmemberByemail%3Aoff",
+        domain: "ft.com",
+        name: "FTConsent",
+        value: "marketingBypost%3Aoff%2CmarketingByemail%3Aoff%2CmarketingByphonecall%3Aoff%2CmarketingByfax%3Aoff%2CmarketingBysms%3Aoff%2CenhancementBypost%3Aoff%2CenhancementByemail%3Aoff%2CenhancementByphonecall%3Aoff%2CenhancementByfax%3Aoff%2CenhancementBysms%3Aoff%2CbehaviouraladsOnsite%3Aoff%2CdemographicadsOnsite%3Aoff%2CrecommendedcontentOnsite%3Aoff%2CprogrammaticadsOnsite%3Aoff%2CcookiesUseraccept%3Aoff%2CcookiesOnsite%3Aoff%2CmembergetmemberByemail%3Aoff",
     },
     {
         domain: "techrepublic.com",
@@ -628,8 +628,9 @@ const sites = [
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2019-08-01T18:33:49.352Z\"}",
     },
     {
-    	domain: "linuxize.com",
-	selector: "#ez-cookie-dialog-wrapper"
+        // 2 Aug 2019
+        domain: "linuxize.com",
+        selector: "#ez-cookie-dialog-wrapper",
     },
 ];
 
@@ -644,3 +645,6 @@ async function getSite(host) {
         return site;
     }
 }
+
+// vim: autoindent textwidth=100 tabstop=4 shiftwidth=4 expandtab softtabstop=4 filetype=javascript
+
