@@ -628,6 +628,7 @@ const sites = [
         value: "{\"vendors\":{\"0\":[]},\"consent_date\":\"2019-08-01T18:33:49.352Z\"}",
     },
     {
+        // 2 Aug 2019
         domain: "linuxize.com",
         selector: "#ez-cookie-dialog-wrapper",
     },
