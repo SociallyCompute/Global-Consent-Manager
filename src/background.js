@@ -72,5 +72,13 @@ async function main() {
 
     await browser.runtime.onMessage.addListener(actions.message);
     await browser.webNavigation.onCommitted.addListener(actions.navigation);
+
+    await browser.menus.create({
+        title: "Statistics",
+        contexts: ["browser_action"],
+        onclick() {
+            browser.tabs.create({url: browser.runtime.getURL("./src/stats.html")});
+        },
+    });
 }
 main();
