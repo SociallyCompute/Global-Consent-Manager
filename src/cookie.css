@@ -4,6 +4,7 @@ body {
     background: #111;
     font: 1em sans-serif;
     max-width: 22em;
+    color: #ccc;
 }
 
 img {
@@ -32,7 +33,7 @@ p {
     color: #666;
     text-align: left;
 }
-span {
+p > span {
     display: block;
     padding-left:20px;
 }
