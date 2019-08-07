@@ -11,7 +11,7 @@
 
 
     "learn_more": {
-        "message": "Learn More...",
+        "message": "Learn More…",
         "description": "Link text to (english) docs on globalconsentmanager.com."
     },
 
@@ -26,7 +26,7 @@
     },
 
     "report_missing_button": {
-        "message": "Report Missing Site...",
+        "message": "Report Missing Site…",
         "description": "Label for report missing site button."
     },
 
@@ -36,8 +36,8 @@
     },
 
     "not_a_webpage": {
-        "message": "This site is not a webpage...",
-        "description": "Description for non-web pages."
+        "message": "This is not a standard website",
+        "description": "Description for browser internal pages that are not standard websites."
     },
 
 
