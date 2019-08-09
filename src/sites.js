@@ -632,6 +632,11 @@ const sites = [
         domain: "linuxize.com",
         selector: "#ez-cookie-dialog-wrapper",
     },
+    {
+        // 9 Aug 2019
+        domain: "springernature.figshare.com",
+        selector: "#cookies-banner",
+    },
 ];
 
 // eslint-disable-next-line
