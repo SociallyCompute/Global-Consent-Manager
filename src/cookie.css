@@ -78,8 +78,12 @@ input[type=checkbox] {
     vertical-align: middle;
     transition: all ease 0.2s;
 }
+@font-face {
+    font-family: power_symbols;
+    src: url(./unicode_iec_symbol.woff2);
+}
 input[type=checkbox]:before {
-    content: "__MSG_blocking_checkbox__";
+    content: "⏽  ⭘";
     display: block;
     position: absolute;
     width: 22px;
@@ -88,7 +92,7 @@ input[type=checkbox]:before {
     left: 5px;
     top: 5px;
     border-radius: 50%;
-    font: bold 10px/22px sans-serif;
+    font: 16px/22px power_symbols;
     text-indent: -22px;
     word-spacing: 34px;
     white-space: nowrap;

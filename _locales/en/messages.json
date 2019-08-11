@@ -20,11 +20,6 @@
         "description": "Label for blocking consent dialog checkbox."
     },
 
-    "blocking_checkbox": {
-        "message": "ON OFF",
-        "description": "Blocking consent dialog checkbox states."
-    },
-
     "report_missing_button": {
         "message": "Report Missing Site…",
         "description": "Label for report missing site button."
