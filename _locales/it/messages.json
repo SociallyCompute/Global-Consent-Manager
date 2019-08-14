@@ -20,7 +20,7 @@
     "description": "Label for report missing site button."
   }, 
   "report_missing_title": {
-    "message": "Decidi se questo sito deve essere gestito", 
+    "message": "Decidi se gestire questo sito", 
     "description": "Tooltip for report missing site button."
   }, 
   "not_a_webpage": {
