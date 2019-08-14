@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "__MSG_extension_name__",
     "default_locale": "en",
-    "version": "1.7.0",
+    "version": "1.7.1",
 
     "description": "__MSG_extension_description__",
     "homepage_url": "http://www.globalconsentmanager.com/",
