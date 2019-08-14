@@ -1,0 +1,58 @@
+{
+  "extension_name": {
+    "message": "Global Consent Manager", 
+    "description": "Name of the extension."
+  }, 
+  "extension_description": {
+    "message": "Eine Browser-Erweiterung zum Verwalten von Website-übergreifenden GDPR-Zustimmungsdialogen", 
+    "description": "Description of the extension."
+  }, 
+  "learn_more": {
+    "message": "Weitere Informationen…", 
+    "description": "Link text to (english) docs on globalconsentmanager.com."
+  }, 
+  "blocking_label": {
+    "message": "Dialogfeld „Zustimmung sperren“", 
+    "description": "Label for blocking consent dialog checkbox."
+  }, 
+  "report_missing_button": {
+    "message": "Fehlende Website melden…", 
+    "description": "Label for report missing site button."
+  }, 
+  "report_missing_title": {
+    "message": "Teilen Sie uns mit, ob diese Website verwaltet werden soll", 
+    "description": "Tooltip for report missing site button."
+  }, 
+  "not_a_webpage": {
+    "message": "Dies ist keine Standard-Website", 
+    "description": "Description for browser internal pages that are not standard websites."
+  }, 
+  "blocked_first": {
+    "message": "heute zum ersten Mal besucht, nicht vertrauenswürdig", 
+    "description": "Explain blocked on first visit."
+  }, 
+  "blocked_visited": {
+    "message": "zuvor besucht, noch nicht vertrauenswürdig", 
+    "description": "Explain previously visited, still blocked."
+  }, 
+  "auto_unblocked": {
+    "message": "vertrauenswürdig, weil regelmäßig besucht", 
+    "description": "Explain unblocked because visited regularly."
+  }, 
+  "manual_unblocked": {
+    "message": "laut Auswahl vertrauenswürdig", 
+    "description": "Explain unblocked by user's own action."
+  }, 
+  "manual_blocked": {
+    "message": "laut Auswahl blockiert", 
+    "description": "Explain blocked by user's own action."
+  }, 
+  "notmanaged_site": {
+    "message": "Unbekannte Website", 
+    "description": "Explain site not known to or managed by the extension."
+  }, 
+  "managed_site": {
+    "message": "Verwaltete Website", 
+    "description": "Explain site known to and managed by the extension."
+  }
+}
