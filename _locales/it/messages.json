@@ -1,0 +1,58 @@
+{
+  "extension_name": {
+    "message": "Gestione centralizzata consensi GDPR", 
+    "description": "Name of the extension."
+  }, 
+  "extension_description": {
+    "message": "Un’estensione per gestire le richieste di consenso al GDPR in diversi siti web", 
+    "description": "Description of the extension."
+  }, 
+  "learn_more": {
+    "message": "Ulteriori informazioni…", 
+    "description": "Link text to (english) docs on globalconsentmanager.com."
+  }, 
+  "blocking_label": {
+    "message": "Blocco richieste di consenso", 
+    "description": "Label for blocking consent dialog checkbox."
+  }, 
+  "report_missing_button": {
+    "message": "Segnala sito mancante…", 
+    "description": "Label for report missing site button."
+  }, 
+  "report_missing_title": {
+    "message": "Decidi se questo sito deve essere gestito", 
+    "description": "Tooltip for report missing site button."
+  }, 
+  "not_a_webpage": {
+    "message": "Questo non è un sito web standard", 
+    "description": "Description for browser internal pages that are not standard websites."
+  }, 
+  "blocked_first": {
+    "message": "visitato per la prima volta oggi, non affidabile", 
+    "description": "Explain blocked on first visit."
+  }, 
+  "blocked_visited": {
+    "message": "visitato in precedenza, non ancora affidabile", 
+    "description": "Explain previously visited, still blocked."
+  }, 
+  "auto_unblocked": {
+    "message": "affidabile in quanto visitato regolarmente", 
+    "description": "Explain unblocked because visited regularly."
+  }, 
+  "manual_unblocked": {
+    "message": "considerato affidabile dall’utente", 
+    "description": "Explain unblocked by user's own action."
+  }, 
+  "manual_blocked": {
+    "message": "bloccato dall’utente", 
+    "description": "Explain blocked by user's own action."
+  }, 
+  "notmanaged_site": {
+    "message": "Sito sconosciuto", 
+    "description": "Explain site not known to or managed by the extension."
+  }, 
+  "managed_site": {
+    "message": "Sito gestito", 
+    "description": "Explain site known to and managed by the extension."
+  }
+}
