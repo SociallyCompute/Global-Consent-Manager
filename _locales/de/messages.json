@@ -4,7 +4,7 @@
     "description": "Name of the extension."
   }, 
   "extension_description": {
-    "message": "Eine Browser-Erweiterung zum Verwalten von Website-übergreifenden GDPR-Zustimmungsdialogen", 
+    "message": "Eine Browser-Erweiterung zum Verwalten von Website-übergreifenden DSGVO-Einwilligungsdialogen", 
     "description": "Description of the extension."
   }, 
   "learn_more": {
@@ -12,7 +12,7 @@
     "description": "Link text to (english) docs on globalconsentmanager.com."
   }, 
   "blocking_label": {
-    "message": "Dialogfeld „Zustimmung sperren“", 
+    "message": "Einwilligungsdialog blockieren", 
     "description": "Label for blocking consent dialog checkbox."
   }, 
   "report_missing_button": {
@@ -20,7 +20,7 @@
     "description": "Label for report missing site button."
   }, 
   "report_missing_title": {
-    "message": "Teilen Sie uns mit, ob diese Website verwaltet werden soll", 
+    "message": "Teilen Sie uns mit, ob diese Website verwaltet werden soll.", 
     "description": "Tooltip for report missing site button."
   }, 
   "not_a_webpage": {
