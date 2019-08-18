@@ -20,7 +20,7 @@
     "description": "Label for report missing site button."
   }, 
   "report_missing_title": {
-    "message": "Teilen Sie uns mit, ob diese Website verwaltet werden soll", 
+    "message": "Teilen Sie uns mit, ob diese Website verwaltet werden soll.", 
     "description": "Tooltip for report missing site button."
   }, 
   "not_a_webpage": {
