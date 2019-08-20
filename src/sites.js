@@ -632,6 +632,19 @@ const sites = [
         domain: "linuxize.com",
         selector: "#ez-cookie-dialog-wrapper",
     },
+    {
+        // 18 Aug 2019
+        domain: "pcworld.com",
+        name: "euconsent",
+        value: "BOTRKYzOTRKYzABABBENBdAAAAAgWAAA",
+    },
+    {
+        // 18 Aug 2019
+        domain: "pcworld.com",
+        name: "consentUUID",
+        value: "7eaa0f27-49be-481f-a86d-645397b2b6ea",
+    },
+
 ];
 
 // eslint-disable-next-line
