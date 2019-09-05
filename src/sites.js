@@ -281,6 +281,11 @@ const sites = [
         domain: "bleepingcomputer.com",
         selector: ".qc-cmp-ui-container, #accept_cookies",
     },
+    {
+        // 5 Sep 2019
+        domain: "unilad.co.uk",
+        selector: ".qc-cmp-ui-container",
+    },
     // End Quantcast
     {
         // No Dialog 3/26/2019 (M)
@@ -644,7 +649,6 @@ const sites = [
         name: "consentUUID",
         value: "7eaa0f27-49be-481f-a86d-645397b2b6ea",
     },
-
 ];
 
 // eslint-disable-next-line
