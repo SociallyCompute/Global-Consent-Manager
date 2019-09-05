@@ -655,6 +655,12 @@ const sites = [
         name: "consentUUID",
         value: "7eaa0f27-49be-481f-a86d-645397b2b6ea",
     },
+    {
+        // 5 Sep 2019
+        domain: "timeanddate.com",
+        name: "PRIVACY",
+        value: "v1_1567718268_1567718268_1567718268_1_cookie1_third0_social0_5ae7c1ee67f4",
+    },
 ];
 
 // eslint-disable-next-line
