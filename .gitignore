@@ -3,3 +3,4 @@ package-lock.json
 *.zip
 .Rproj.user
 .DS_Store
+*.swp
