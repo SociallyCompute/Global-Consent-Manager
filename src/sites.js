@@ -286,6 +286,12 @@ const sites = [
         domain: "unilad.co.uk",
         selector: ".qc-cmp-ui-container",
     },
+    {
+        // 5 Sep 2019
+        domain: "androidpolice.com",
+        selector: ".qc-cmp-ui-container",
+    },
+
     // End Quantcast
     {
         // No Dialog 3/26/2019 (M)
