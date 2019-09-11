@@ -291,7 +291,6 @@ const sites = [
         domain: "androidpolice.com",
         selector: ".qc-cmp-ui-container",
     },
-
     // End Quantcast
     {
         // No Dialog 3/26/2019 (M)
@@ -660,6 +659,12 @@ const sites = [
         domain: "timeanddate.com",
         name: "PRIVACY",
         value: "v1_1567718268_1567718268_1567718268_1_cookie1_third0_social0_5ae7c1ee67f4",
+    },
+    {
+        // 11 Sep 2019
+        domain: "imgur.com",
+        selector: ".qc-cmp-ui-container",
+        inject: "document.getElementsByTagName('body')[0].classList.remove('qc-cmp-ui-showing');",
     },
 ];
 

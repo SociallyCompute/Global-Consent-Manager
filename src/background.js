@@ -9,6 +9,17 @@ async function enable(site) {
             runAt: "document_start",
         });
         console.log(site.selector + " rule set for " + site.domain);
+    }
+    if (site.inject) {
+        const toInject = `window.setTimeout(function(){${site.inject}}, 2000)`;
+        site.js = await browser.contentScripts.register({
+            matches: [`*://*.${site.domain}/*`],
+            js: [{code: toInject}],
+            runAt: "document_idle",
+        });
+        console.log("JS injected for " + site.domain);
+    }
+    if (site.selector || site.inject) {
         return;
     }
     await browser.cookies.set({
@@ -82,3 +93,6 @@ async function main() {
     });
 }
 main();
+
+// vim: autoindent textwidth=100 tabstop=4 shiftwidth=4 expandtab softtabstop=4 filetype=javascript
+
