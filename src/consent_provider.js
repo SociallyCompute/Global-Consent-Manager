@@ -20,7 +20,9 @@ const domains = [
     // oath
     "https://guce.oath.com/collectConsent*",
     "https://consent.yahoo.com/collectConsent*",
+    "https://consent.cmp.oath.com/*",
 
     // cookiebot
     "https://consent.cookiebot.com/*",
+
 ];
