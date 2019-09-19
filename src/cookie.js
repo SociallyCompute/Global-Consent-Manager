@@ -87,8 +87,9 @@ async function main() {
         let blocked = document.querySelector("#blocked");
         blocked.checked = (site || {blocked: true}).blocked;
         blocked.addEventListener("change", actions);
-        updateManaged(site);
-        if (!site) {
+	if (site) {
+            updateManaged(site);
+        } else {
             isWebsite = true;
             let report = document.querySelector("#report");
             document.body.className = "unknown";
