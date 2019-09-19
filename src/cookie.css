@@ -107,9 +107,7 @@ input[type=checkbox]:checked {
     background: #369;
 }
 
-.unknown #managed, .unknown label, 
-.managed #unknown, .managed button, 
-.hide{
+.hide {
     display: none;
 }
 

@@ -36,16 +36,29 @@ async function disable(site) {
     if (site.selector) {
         return site.cs.unregister();
     }
-    await browser.cookies.remove({
-        name: site.name,
-        url: `http://${site.domain}/`,
-        firstPartyDomain: "",
-    });
+    if (site.name) {
+        await browser.cookies.remove({
+            name: site.name,
+            url: `http://${site.domain}/`,
+            firstPartyDomain: "",
+        });
+    }
 }
 
-const actions = {
-    async message({domain, blocked}) {
-        const site = await getSite(domain);
+let actions = {
+    async message({domain, blocked, getDomain}) {
+        if (getDomain) {
+            const result = await getSite(getDomain);
+            console.log(result, getDomain, sites);
+            return result;
+        }
+
+        console.log("message", sites);
+        let site = await getSite(domain);
+        if (!site) {
+            site = {blocked, manual: true, domain};
+            sites.push(site);
+        }
         site.storage = {blocked, manual: true};
         await browser.storage.sync.set({[site.domain]: site.storage});
         if (blocked) {
@@ -73,6 +86,20 @@ const actions = {
     },
 };
 
+async function initRequestBlocker() {
+    await browser.webRequest.onBeforeRequest.addListener(
+        async function(details) {
+            const tab = await browser.tabs.get(details.tabId);
+            const host = new URL(tab.url).host;
+            const siteSettings = await getSite(host) || {blocked: true};
+
+            return {cancel: siteSettings.blocked};
+        },
+        {urls: domains},
+        ["blocking"]
+    );
+}
+
 async function main() {
     for (const {domain} of sites) {
         const site = await getSite(domain);
@@ -81,6 +108,7 @@ async function main() {
         }
     }
 
+    await initRequestBlocker();
     await browser.runtime.onMessage.addListener(actions.message);
     await browser.webNavigation.onCommitted.addListener(actions.navigation);
 
