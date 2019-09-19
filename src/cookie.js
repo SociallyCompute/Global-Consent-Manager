@@ -22,7 +22,16 @@ function updateSecondary(isWebsite) {
     document.querySelector("#management").classList.toggle("managed", false);
 }
 
-const actions = {
+// new consent_provider based blocking allows for dynamic adding of sites.
+// Therefore the sites array can change. This function establishes a Message-Channel to background.js
+// to retrive getSite(domain);
+async function getSite(domain) {
+    return await browser.runtime.sendMessage({
+        getDomain: domain,
+    });
+}
+
+let actions = {
     async blocked(e) {
         const domain = document.querySelector("#domain").textContent;
         await browser.runtime.sendMessage({
@@ -74,18 +83,18 @@ async function main() {
         || tab.url.startsWith("view-source:") || tab.url == "") {
         isWebsite = false;
         updateSecondary(isWebsite);
-    } else
-    if (site) {
-        const blocked = document.querySelector("#blocked");
-        blocked.checked = site.blocked;
+    } else {
+        let blocked = document.querySelector("#blocked");
+        blocked.checked = (site || {blocked: true}).blocked;
         blocked.addEventListener("change", actions);
         updateManaged(site);
-    } else {
-        isWebsite = true;
-        const report = document.querySelector("#report");
-        document.body.className = "unknown";
-        report.addEventListener("click", actions);
-        updateSecondary(isWebsite);
+        if (!site) {
+            isWebsite = true;
+            let report = document.querySelector("#report");
+            document.body.className = "unknown";
+            report.addEventListener("click", actions);
+            updateSecondary(isWebsite);
+        }
     }
 }
 
