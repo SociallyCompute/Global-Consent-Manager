@@ -107,11 +107,7 @@ input[type=checkbox]:checked {
     background: #369;
 }
 
-.unknown #managed, .unknown label, 
-.managed #unknown, .managed button, 
-.hide{
-    display: none;
-}
+
 
 .blocked:after {
     content: "__MSG_blocked_first__";
