@@ -47,8 +47,25 @@
  This will be automatically populated, but feel free to customize it.<br /> <br />
  Note: The button will change its label depending on the domain.<br />
  
- ## Adding a Supported Site
- If you are ready to contribute to Global Consent Manager, a simple process will have a new site added to the extension. Here are the steps to contributing a site to GCM.<br />
+ If you are ready to contribute to Global Consent Manager, a simple process will have a new site added to the extension. Here are the steps to contribute support for a new site to GCM.<br /> 
+
+ ## Adding a Supported Site, Part 1: Cookies
+
+ 1. Open the site in web-ext and manually decline consent. You should stop seeing the consent dialog.
+ 2. In Developer Tools, remove the cookies set by the site, and reload the page.
+ 3. If removing a cookie brings back the dialog, you have found the consent cookie! Add an entry in `sites.js`:
+
+ ```
+     {
+        // Working 3/26/2019 (M)
+        domain: "thelocal.es",
+        name: "euconsent",
+        value: "BOTRKYzOTRKYzABABBENBdAAAAAgWAAA",
+    },
+ ```
+
+ ## Adding a Supported Site, Part 2: Selectors
+
  
  1. Open the file [sites.js](https://github.com/SociallyCompute/Global-Consent-Manager/blob/master/src/sites.js)
  2. Navigate to the website you would like to add to GCM
