@@ -1,4 +1,4 @@
-"use strict";
+alert('console plz');
 
 async function enable(site) {
     if (site.selector) {
@@ -9,8 +9,23 @@ async function enable(site) {
             runAt: "document_start",
         });
         console.log(site.selector + " rule set for " + site.domain);
-        return;
     }
+    if (site.classRemoveSelector) {
+    	// FIXME should remove this class from all elements, not just the first.
+    	const removeClass = `document.getElementsByClassName("${site.classRemoveSelector}")[0].classList.remove("${site.classRemoveSelector}")`;
+    	const injectJs = `window.setTimeout(function(){${site.inject}}, 2000)`;
+	site.js = await browser.contentScripts.register({
+            matches: [`*://*.${site.domain}/*`],
+            js: [{code: injectJs}],
+            runAt: "document_idle",
+        });
+        console.log(site.injectJs + " injected for " + site.domain);
+    }
+
+    if (site.selector || site.classRemoveSelector) {
+    	return;
+    }
+
     await browser.cookies.set({
         domain: site.domain,
         name: site.name,

@@ -661,6 +661,14 @@ const sites = [
         name: "PRIVACY",
         value: "v1_1567718268_1567718268_1567718268_1_cookie1_third0_social0_5ae7c1ee67f4",
     },
+    {
+        domain: "imgur.com",
+        selector: ".qc-cmp-ui-container",
+    },
+    {
+        domain: "imgur.com",
+        classRemoveSelector: ".qc-cmp-ui-showing",
+    }
 ];
 
 // eslint-disable-next-line
