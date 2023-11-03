@@ -1,5 +1,5 @@
  # Global Consent Manager
-
+[![Scorecard supply-chain security](https://github.com/SociallyCompute/Global-Consent-Manager/actions/workflows/scorecard.yml/badge.svg)](https://github.com/SociallyCompute/Global-Consent-Manager/actions/workflows/scorecard.yml)
  This public repository is used to publish a Firefox web extension.
  
  This extension streamlines the user's consent experience while on GDPR-regulated websites.
